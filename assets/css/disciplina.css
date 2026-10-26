@@ -1,0 +1,857 @@
+/*
+  disciplina.css: modelo de página inicial das disciplinas.
+  versão 4 · 2026-10-07 (assinatura da Faculdade: linha laranja e azul na barra e cartão do logo)
+
+  Usa as cores, fontes e peças do estilo.css (carregue o estilo.css antes).
+  Este arquivo é igual em todas as disciplinas: o que muda de uma para
+  outra é só o texto do index.html.
+*/
+
+
+/* ========== abertura ========== */
+
+.abertura {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding-block: clamp(3.5rem, 9vw, 6.5rem);
+}
+
+/* brilhos difusos atrás do título, como no portal */
+.abertura::before,
+.abertura::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.abertura::before {
+  width: 38rem;
+  height: 26rem;
+  left: -8rem;
+  top: -6rem;
+  background: var(--brilho-1);
+}
+
+.abertura::after {
+  width: 34rem;
+  height: 24rem;
+  right: -10rem;
+  bottom: -8rem;
+  background: var(--brilho-2);
+}
+
+.abertura-grade {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.trilha-migalhas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  align-items: center;
+  font-family: var(--f-mono);
+  font-size: .8rem;
+  color: var(--texto-3);
+}
+
+.trilha-migalhas a {
+  color: var(--texto-2);
+  text-decoration: none;
+}
+
+.trilha-migalhas a:hover {
+  color: var(--ouro-forte);
+}
+
+.abertura h1 {
+  margin-top: 1rem;
+  font-size: clamp(2.4rem, 6.4vw, 4.8rem);
+  font-weight: 850;
+  font-stretch: 112%;
+  letter-spacing: -.04em;
+  line-height: 1;
+}
+
+.abertura .subtitulo {
+  margin-top: .8rem;
+  font-family: var(--f-titulo);
+  font-weight: 600;
+  font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+  color: var(--menta);
+}
+
+.abertura .chamada {
+  margin-top: 1.2rem;
+  max-width: 46ch;
+  font-size: 1.12rem;
+  color: var(--texto-2);
+}
+
+.abertura .acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+  margin-top: 2rem;
+}
+
+/* janela de código da abertura */
+.codigo {
+  margin: 0;
+  padding: clamp(1.2rem, 3vw, 1.6rem);
+  font-family: var(--f-mono);
+  font-size: .95rem;
+  line-height: 1.8;
+  color: var(--texto);
+  background: var(--chip);
+  overflow-x: auto;
+}
+
+[data-tema="claro"] .codigo {
+  color: #e9e6dc;
+}
+
+.codigo .linha {
+  display: block;
+}
+
+.codigo .num {
+  display: inline-block;
+  width: 1.8rem;
+  color: #4d5a53;
+  user-select: none;
+}
+
+.codigo .tag { color: #ff7b72; }
+.codigo .var { color: #9fd0b7; }
+.codigo .str { color: #ecc874; }
+.codigo .fn  { color: #79c0ff; }
+.codigo .com { color: #6e7d75; font-style: italic; }
+
+@media (max-width: 860px) {
+  .abertura-grade {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ========== ficha da disciplina ========== */
+
+/* faixa estreita: menos espaço que uma seção normal */
+.bloco.faixa {
+  padding-block: clamp(2rem, 5vw, 3rem);
+}
+
+.ficha {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+/* card com link (professora): texto normal, não dourado */
+.ficha a.cartao {
+  text-decoration: none;
+  color: var(--texto);
+}
+
+.ficha a.cartao:hover {
+  border-color: color-mix(in srgb, var(--ouro) 55%, transparent);
+}
+
+.ficha .cartao strong {
+  font-family: var(--f-titulo);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -.015em;
+  line-height: 1.2;
+}
+
+.ficha .cartao span:last-child {
+  color: var(--texto-2);
+  font-size: .95rem;
+}
+
+@media (max-width: 900px) {
+  .ficha {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .ficha {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ========== ementa e objetivos ========== */
+
+.ementa {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.ementa-texto {
+  font-family: var(--f-titulo);
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -.01em;
+  color: var(--texto);
+}
+
+.palavras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin-top: 1.6rem;
+}
+
+.ementa .janela h3 {
+  margin-bottom: .7rem;
+  font-size: 1.15rem;
+}
+
+.objetivo-geral {
+  margin-bottom: 1.2rem;
+  color: var(--texto-2);
+}
+
+.lista-check {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lista-check li {
+  display: flex;
+  gap: .8rem;
+  align-items: flex-start;
+  padding: .8rem 0;
+}
+
+.lista-check li + li {
+  border-top: 1px solid var(--borda);
+}
+
+.lista-check svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: .15rem;
+  color: var(--menta);
+}
+
+@media (max-width: 860px) {
+  .ementa {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ========== conteúdo programático: uma placa por unidade ========== */
+
+.unidades {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
+  gap: 1rem;
+  counter-reset: unidade;
+}
+
+.unidade {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+
+.unidade-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .6rem;
+}
+
+.unidade h3 {
+  font-size: 1.12rem;
+}
+
+.unidade ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+
+.unidade li {
+  position: relative;
+  padding-left: 1.1rem;
+  color: var(--texto-2);
+  font-size: .95rem;
+}
+
+.unidade li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ouro);
+}
+
+/* unidade com material interativo: card com link */
+a.unidade {
+  text-decoration: none;
+  color: var(--texto);
+}
+
+a.unidade:hover {
+  color: var(--texto);
+  border-color: color-mix(in srgb, var(--ouro) 55%, transparent);
+}
+
+
+/* ========== como as aulas funcionam ========== */
+
+.metodo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.metodo .texto {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--texto-2);
+  font-size: 1.08rem;
+}
+
+.ferramentas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+@media (max-width: 860px) {
+  .metodo {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ========== próximas entregas ========== */
+
+.entregas {
+  max-width: 48rem;
+}
+
+.entregas-vazio {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}
+
+.entregas-vazio svg {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  color: var(--ouro);
+}
+
+
+/* ========== rodapé completo ========== */
+
+.rodape {
+  padding-block: clamp(3rem, 7vw, 4.5rem) 2rem;
+}
+
+/* o estilo.css deixa o rodapé simples em uma linha; aqui ele tem colunas */
+.rodape .envolve {
+  display: block;
+}
+
+.rodape-grade {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.rodape h2 {
+  margin-bottom: .9rem;
+  font-family: var(--f-mono);
+  font-size: .8rem;
+  font-weight: 500;
+  letter-spacing: .02em;
+  color: var(--ouro);
+}
+
+.rodape ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.rodape a {
+  color: var(--texto-2);
+  text-decoration: none;
+}
+
+.rodape a:hover {
+  color: var(--texto);
+}
+
+.rodape-marca {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  max-width: 30ch;
+}
+
+.rodape-marca img {
+  width: 40px;
+}
+
+.rodape-fim {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--borda);
+  font-size: .88rem;
+  color: var(--texto-3);
+}
+
+.rodape-fim span:last-child {
+  font-family: var(--f-mono);
+}
+
+@media (max-width: 860px) {
+  .rodape-grade {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .rodape-grade {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ========== abertura: nome oficial acima do título de boas-vindas ========== */
+
+.nome-oficial {
+  display: inline-flex;
+  margin-top: 1.2rem;
+}
+
+
+/* ========== raio-x da linguagem ========== */
+
+/* fluxo: como a página chega até o aluno (passos ligados por uma trilha) */
+.fluxo {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0 0 clamp(2.5rem, 5vw, 3.5rem);
+  padding: 0;
+  list-style: none;
+  counter-reset: passo;
+}
+
+/* trilha dourada atrás dos passos */
+.fluxo::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 12%;
+  right: 12%;
+  top: 2.4rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ouro), var(--menta));
+  opacity: .5;
+}
+
+.fluxo li {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  text-align: center;
+  counter-increment: passo;
+}
+
+/* pad numerado de cada passo */
+.fluxo li::before {
+  content: counter(passo);
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin-top: .9rem;
+  border-radius: 50%;
+  font-family: var(--f-mono);
+  font-weight: 500;
+  color: var(--ouro-forte);
+  background: var(--fundo);
+  border: 2px solid var(--ouro);
+}
+
+.fluxo strong {
+  margin-top: .3rem;
+  font-family: var(--f-titulo);
+  font-size: 1.1rem;
+}
+
+.fluxo span {
+  max-width: 24ch;
+  color: var(--texto-2);
+  font-size: .95rem;
+}
+
+.fluxo code {
+  font-family: var(--f-mono);
+  font-size: .88em;
+  color: var(--ouro-forte);
+}
+
+@media (max-width: 760px) {
+  .fluxo {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  /* no celular a trilha fica na vertical, à esquerda */
+  .fluxo::before {
+    left: 1.5rem;
+    right: auto;
+    top: 2rem;
+    bottom: 2rem;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(180deg, var(--ouro), var(--menta));
+  }
+
+  .fluxo li {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    column-gap: 1rem;
+    align-items: start;
+    text-align: left;
+  }
+
+  .fluxo li::before {
+    grid-row: span 2;
+    margin-top: 0;
+  }
+
+  .fluxo strong {
+    margin-top: .6rem;
+  }
+
+  .fluxo span {
+    max-width: none;
+  }
+}
+
+/* curiosidades: grade bento */
+.curiosidades {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.curiosidades .destaque {
+  grid-row: span 2;
+  justify-content: flex-end;
+  background:
+    radial-gradient(circle at 30% 20%, var(--brilho-1), transparent 60%),
+    var(--superficie);
+}
+
+/* card que ocupa a linha toda (fecha a grade sem buraco) */
+.curiosidades .inteiro {
+  grid-column: 1 / -1;
+}
+
+/* número grande, estilo página de produto da Apple */
+.numero {
+  font-family: var(--f-titulo);
+  font-size: clamp(3.4rem, 8vw, 5.4rem);
+  font-weight: 850;
+  font-stretch: 115%;
+  letter-spacing: -.04em;
+  line-height: 1;
+  color: var(--ouro-forte);
+}
+
+.fonte {
+  margin-top: .4rem;
+  font-size: .82rem;
+  color: var(--texto-3);
+}
+
+.fonte a {
+  color: inherit;
+}
+
+@media (max-width: 900px) {
+  .curiosidades {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .curiosidades {
+    grid-template-columns: 1fr;
+  }
+
+  .curiosidades .destaque {
+    grid-row: auto;
+  }
+}
+
+
+/* ========== avaliação (opcional): um card por bimestre ========== */
+
+.avaliacao {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.avaliacao h3 {
+  font-size: 1.25rem;
+}
+
+/* barra de pontos: cada parte ocupa a largura do seu valor (--pts, de 0 a 10) */
+.pontos {
+  display: flex;
+  gap: 4px;
+  height: .7rem;
+  margin: .6rem 0 .4rem;
+}
+
+.pontos span {
+  flex: var(--pts) 0 0;
+  border-radius: 999px;
+  background: var(--ouro);
+}
+
+.pontos span:nth-child(2) {
+  background: var(--menta);
+}
+
+.pontos span:nth-child(3) {
+  background: var(--texto-3);
+}
+
+.partes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.partes li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .6rem 0;
+  color: var(--texto-2);
+}
+
+.partes li + li {
+  border-top: 1px solid var(--borda);
+}
+
+.partes strong {
+  flex: none;
+  font-family: var(--f-mono);
+  font-weight: 500;
+  color: var(--texto);
+}
+
+/* bolinha com a cor da parte, igual à da barra */
+.partes li span::before {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: .55rem;
+  border-radius: 50%;
+  background: var(--ouro);
+}
+
+.partes li:nth-child(2) span::before {
+  background: var(--menta);
+}
+
+.partes li:nth-child(3) span::before {
+  background: var(--texto-3);
+}
+
+.aprovacao {
+  margin-top: 1rem;
+  color: var(--texto-2);
+}
+
+@media (max-width: 760px) {
+  .avaliacao {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ========== bibliografia (opcional) ========== */
+
+.biblio {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+  gap: 1rem;
+}
+
+.biblio ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .9rem;
+}
+
+.biblio li {
+  padding-left: 1rem;
+  border-left: 2px solid var(--ouro);
+  color: var(--texto-2);
+}
+
+.biblio li strong {
+  display: block;
+  font-family: var(--f-titulo);
+  font-size: 1.05rem;
+  color: var(--texto);
+}
+
+@media (max-width: 760px) {
+  .biblio {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ========== logos das tecnologias ========== */
+
+/* abertura: logo grande da linguagem flutuando sobre a janela de código */
+.vitrine {
+  position: relative;
+}
+
+.logo-flutua {
+  --t: clamp(4.4rem, 8vw, 6.2rem);
+  position: absolute;
+  z-index: 2;
+  top: -2.4rem;
+  right: -1.2rem;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .7) inset,
+    0 0 0 1px rgba(0, 0, 0, .07),
+    0 24px 50px -18px rgba(0, 0, 0, .7),
+    0 0 70px -10px var(--brilho-1);
+  animation: flutua 6s ease-in-out infinite;
+}
+
+@keyframes flutua {
+  50% {
+    transform: translateY(-10px) rotate(-4deg);
+  }
+}
+
+@media (max-width: 860px) {
+  .logo-flutua {
+    top: -1.8rem;
+    right: .6rem;
+  }
+}
+
+/* logo pequeno dentro de uma etiqueta (ferramentas) */
+.etiqueta .tec {
+  --t: 1.15rem;
+  border-radius: 5px;
+  box-shadow: none;
+}
+
+/* logo no card de destaque do raio-x */
+.destaque > .tec {
+  --t: 3rem;
+  margin-bottom: auto;
+}
+
+
+/* ---------- assinatura da Faculdade (Fac Senac DF): azul-marinho e laranja do logo ---------- */
+:root {
+  --senac-azul: #3b6fd4;   /* no escuro, um azul mais aberto para aparecer */
+  --senac-laranja: #f39a1e;
+}
+
+[data-tema="claro"] {
+  --senac-azul: #082c75;
+}
+
+/* linha fina laranja e azul embaixo da barra do topo */
+.barra::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--senac-laranja), var(--senac-azul));
+  pointer-events: none;
+}
+
+/* o logo da Faculdade num cartão branco, como no portal */
+.logo-faculdade {
+  display: block;
+  justify-self: center;
+  width: fit-content;
+  margin: 1.4rem auto 0;
+  padding: .55rem .9rem;
+  border-radius: var(--raio-p);
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .07), 0 18px 40px -20px rgba(0, 0, 0, .6);
+  transition: transform .2s;
+}
+
+.logo-faculdade:hover {
+  transform: translateY(-2px);
+}
+
+.pausado .logo-faculdade {
+  transition: none;
+}
+
+.logo-faculdade img {
+  display: block;
+  width: clamp(11rem, 26vw, 15rem);
+  height: auto;
+}

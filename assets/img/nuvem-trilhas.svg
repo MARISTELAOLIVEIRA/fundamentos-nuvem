@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- símbolo da disciplina Fundamentos de Computação em Nuvem: nuvem branca ligada por trilhas de circuito azul-céu e lilás -->
+  <rect width="64" height="64" rx="12" fill="#14213d"/>
+  <path fill="none" stroke="#5ec8ff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M22 40v8l-6 6"/>
+  <path fill="none" stroke="#b89cff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M32 40v14"/>
+  <path fill="none" stroke="#5ec8ff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M42 40v8l6 6"/>
+  <circle cx="16" cy="54" r="3" fill="#5ec8ff"/>
+  <circle cx="32" cy="55" r="3" fill="#b89cff"/>
+  <circle cx="48" cy="54" r="3" fill="#5ec8ff"/>
+  <path fill="#ffffff" d="M17 40h30a9.5 9.5 0 0 0 1.4-18.9A14 14 0 0 0 21.3 18.6 10.8 10.8 0 0 0 17 40z"/>
+</svg>

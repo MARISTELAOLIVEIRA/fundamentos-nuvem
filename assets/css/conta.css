@@ -1,0 +1,237 @@
+/* conta.css: botão Entrar e janela de login dos alunos (assets/js/conta.js) · versão 3 · 2026-10-15
+   Comum às disciplinas. As cores vêm do estilo.css; nas páginas com visual próprio (como o
+   PyQuiz), caem nas cores de lá (--surface, --text...). */
+
+.conta-janela {
+  --conta-fundo: var(--superficie, var(--surface, #121a16));
+  --conta-texto: var(--texto, var(--text, #f2efe6));
+  --conta-suave: var(--texto-2, var(--text-dim, #a3b0a8));
+  --conta-linha: var(--borda-forte, var(--border, #2a3530));
+  --conta-campo: var(--fundo, var(--bg, #0a0f0d));
+  --conta-destaque: var(--neon, var(--menta, var(--neon-green, #9fd0b7)));
+  --conta-titulo: var(--f-titulo, var(--font-mono, system-ui, sans-serif));
+  --conta-letra: var(--f-texto, var(--font-mono, system-ui, sans-serif));
+}
+
+/* o botão da barra usa o mesmo estilo dos outros botões dela; o "Olá, nome" encurta com reticências */
+#btn-conta {
+  max-width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  #btn-conta {
+    max-width: 6.5rem;
+  }
+}
+
+@media (max-width: 520px) {
+  #btn-conta {
+    max-width: 4.75rem;
+  }
+
+  /* celular: com o Entrar, a barra só cabe numa linha com os botões um pouco mais juntos */
+  .barra:has(#btn-conta) .envolve {
+    gap: .45rem;
+  }
+
+  .barra:has(#btn-conta) .ajustes {
+    gap: .25rem;
+  }
+
+  .barra:has(#btn-conta) .ajustes button,
+  .barra:has(#btn-conta) .btn-menu {
+    padding-inline: .5rem;
+  }
+}
+
+.conta-janela {
+  width: min(92vw, 440px);
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  margin: auto; /* centraliza; algumas páginas zeram a margem de tudo (* { margin: 0 }) */
+  padding: 1.4rem;
+  color: var(--conta-texto);
+  background: var(--conta-fundo);
+  border: 1px solid var(--conta-linha);
+  border-radius: 12px;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .8);
+}
+
+.conta-janela::backdrop {
+  background: rgba(3, 6, 12, .7);
+}
+
+.conta-janela h2 {
+  margin: 0 0 .6rem;
+  font: 700 1.3rem var(--conta-titulo);
+}
+
+.conta-janela p {
+  margin: 0 0 .8rem;
+  color: var(--conta-suave);
+  font: 400 .95rem/1.5 var(--conta-letra);
+}
+
+.conta-abas {
+  display: flex;
+  gap: .4rem;
+  margin: .4rem 0 1rem;
+}
+
+.conta-abas button {
+  flex: 1;
+  padding: .5rem;
+  font: 600 .9rem var(--conta-titulo);
+  color: var(--conta-suave);
+  background: transparent;
+  border: 1px solid var(--conta-linha);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.conta-abas button[aria-selected="true"] {
+  color: var(--conta-texto);
+  border-color: var(--conta-destaque);
+}
+
+.conta-form {
+  display: grid;
+  gap: .7rem;
+}
+
+.conta-form label {
+  display: grid;
+  gap: .3rem;
+  font: 600 .9rem var(--conta-titulo);
+}
+
+/* o campo "Nome completo" só aparece na aba Criar conta (o display:grid acima venceria o hidden) */
+.conta-form [hidden] {
+  display: none;
+}
+
+.conta-form input {
+  font: 400 1rem var(--conta-letra);
+  padding: .55rem .7rem;
+  color: var(--conta-texto);
+  background: var(--conta-campo);
+  border: 1px solid var(--conta-linha);
+  border-radius: 6px;
+}
+
+.conta-form input:focus {
+  border-color: var(--conta-destaque);
+  outline: none;
+}
+
+.conta-msg {
+  min-height: 1.2em;
+  color: var(--conta-destaque) !important;
+}
+
+.conta-botoes {
+  display: flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+}
+
+.conta-botoes button {
+  padding: .55rem 1.1rem;
+  font: 700 .95rem var(--conta-titulo);
+  color: var(--conta-campo); /* a cor do fundo da página: escura no tema escuro, clara no claro */
+  background: var(--conta-destaque);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.conta-botoes button.sec {
+  color: var(--conta-texto);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--conta-linha);
+}
+
+.conta-lgpd {
+  font-size: .8rem !important;
+}
+
+/* resultado registrado: o código de verificação que vai no comprovante */
+.registro-tentativa {
+  margin-top: .8rem;
+  padding: .7rem .9rem;
+  border: 1px dashed var(--conta-linha, currentColor);
+  border-radius: 10px;
+  font-size: .92rem;
+}
+
+.registro-tentativa strong {
+  font-family: var(--f-mono, var(--font-mono, monospace));
+  letter-spacing: .08em;
+}
+
+/* páginas com visual próprio (o botão vai para o lugar marcado com data-conta-lugar) */
+[data-conta-lugar] #btn-conta {
+  font: inherit;
+  font-size: .9rem;
+  padding: .35rem .85rem;
+  color: inherit;
+  background: transparent;
+  border: 1px solid var(--borda-forte, var(--border, currentColor));
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+[data-conta-lugar] #btn-conta:hover {
+  border-color: var(--neon, var(--neon-green, currentColor));
+}
+
+@media (max-width: 520px) {
+  [data-conta-lugar] #btn-conta {
+    padding: .3rem .6rem;
+    font-size: .82rem;
+  }
+}
+
+/* atividade que vale nota, sem login: a área fica apagada e não responde (conta.js, data-exige-login) */
+.bloqueado-login {
+  opacity: .45;
+  filter: grayscale(.4);
+  user-select: none;
+}
+
+.aviso-login {
+  display: flex;
+  gap: .8rem 1.2rem;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 0 1rem;
+  padding: .9rem 1.1rem;
+  border: 1px solid var(--neon, var(--ouro, var(--neon-green, currentColor)));
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--neon, var(--ouro, var(--neon-green, #d6b25e))) 10%, transparent);
+}
+
+.aviso-login[hidden] {
+  display: none;
+}
+
+.aviso-login p {
+  margin: 0;
+  flex: 1 1 18rem;
+  line-height: 1.5;
+}
+
+.aviso-login button {
+  padding: .5rem 1.2rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--fundo, var(--bg, #0a0f0d));
+  background: var(--neon, var(--ouro, var(--neon-green, #d6b25e)));
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+}

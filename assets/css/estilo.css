@@ -1,0 +1,251 @@
+/* estilo.css: visual comum de todos os sites (portal, cursos e disciplinas).
+   versão 7 · 2026-10-06
+   github.com + Apple/macOS + a placa de circuito da Stela.
+   Escuro por padrão; o botão de tema da barra troca para o claro.
+
+   Cada site tem a sua própria cópia deste arquivo e do assets/js/placa.js.
+   Ao mudar algo aqui, copie para os outros sites e aumente a versão acima
+   (e a do placa.js): assim dá para saber qual site está desatualizado.
+
+   Como usar em um novo site (no <head>, nesta ordem):
+     <script src="assets/js/placa.js"></script>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100..125,400..900&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap">
+     <link rel="stylesheet" href="assets/css/estilo.css">
+   A barra do topo pronta para copiar está no README. */
+
+/* ---------- cores e medidas ---------- */
+:root{
+  color-scheme: dark;
+  --fundo:#0a0f0d;          /* quase preto esverdeado, como o substrato da placa */
+  --fundo-2:#0d1411;        /* seções alternadas */
+  --superficie:#121a16;     /* cards e janelas */
+  --superficie-2:#18221d;
+  --borda:rgba(236,230,211,.09);
+  --borda-forte:rgba(236,230,211,.17);
+  --texto:#f2efe6;
+  --texto-2:#a3b0a8;
+  --texto-3:#75837b;
+  --ouro:#d6b25e;           /* trilhas, detalhes */
+  --ouro-forte:#ecc874;     /* links, botões */
+  --menta:#9fd0b7;          /* ativo, em andamento, acerto */
+  --brilho-1:rgba(214,178,94,.20);
+  --brilho-2:rgba(159,208,183,.16);
+  --janela-barra:#19221e;
+  --chip:#050807;           /* encapsulamento dos CIs, blocos de código */
+  --sombra:0 1px 0 rgba(255,255,255,.04) inset, 0 40px 80px -40px rgba(0,0,0,.9);
+  --f-titulo:"Mona Sans", -apple-system, system-ui, sans-serif;
+  --f-texto:"Atkinson Hyperlegible Next", -apple-system, system-ui, sans-serif;
+  --f-mono:"Atkinson Hyperlegible Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --raio:22px;              /* cards grandes, como na Apple */
+  --raio-p:12px;            /* janelas e cards pequenos */
+  --suave:cubic-bezier(.2,.7,.2,1);
+}
+[data-tema="claro"]{
+  color-scheme: light;
+  --fundo:#f6f5f1;
+  --fundo-2:#efeee8;
+  --superficie:#ffffff;
+  --superficie-2:#f8f7f3;
+  --borda:rgba(18,23,20,.09);
+  --borda-forte:rgba(18,23,20,.17);
+  --texto:#121714;
+  --texto-2:#4a5650;
+  --texto-3:#6d7a73;
+  --ouro:#a07a22;           /* dourado mais escuro: contraste no fundo claro */
+  --ouro-forte:#8a6614;
+  --menta:#2e7d5b;
+  --brilho-1:rgba(214,178,94,.32);
+  --brilho-2:rgba(159,208,183,.38);
+  --janela-barra:#efeee9;
+  --sombra:0 1px 2px rgba(0,0,0,.04), 0 30px 60px -30px rgba(30,45,38,.28);
+}
+
+/* ---------- base ---------- */
+html{font-size:100%; scroll-padding-top:4.5rem} /* âncoras não ficam escondidas atrás da barra do topo */
+html.fonte-1{font-size:112.5%}
+html.fonte-2{font-size:125%}
+body{margin:0; background:var(--fundo); color:var(--texto); font-family:var(--f-texto); font-size:1.0625rem; line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+a{color:var(--ouro-forte); text-underline-offset:3px}
+a:hover{color:var(--menta)}
+:focus-visible{outline:2px solid var(--menta); outline-offset:3px; border-radius:6px}
+img{max-width:100%; height:auto; display:block} /* height:auto: a altura acompanha a largura, sem deformar */
+h1,h2,h3,h4{font-family:var(--f-titulo); font-weight:700; line-height:1.08; text-wrap:balance; margin:0; color:var(--texto)}
+p{margin:0}
+.envolve{max-width:72rem; margin:0 auto; padding-inline:clamp(16px,4vw,40px)}
+.texto{max-width:62ch}
+.olho{font-family:var(--f-mono); font-size:.8rem; letter-spacing:.02em; color:var(--ouro)}   /* designador: U1, J1, F1… */
+.citacao{font-family:var(--f-titulo); font-weight:600; font-size:1.3rem; letter-spacing:-.01em; color:var(--menta); border-left:3px solid var(--ouro); padding-left:1rem}
+.pendente{color:var(--ouro); font-style:italic}
+
+/* ---------- placa de circuito no fundo (trilhas, pads e um chip, como no coração e na estrela) ----------
+   O desenho é uma máscara: a cor vem de --ouro, então muda sozinha com o tema.
+   Seções .alt ficam levemente translúcidas para a placa aparecer por trás. */
+body::before{content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; background:var(--ouro); opacity:.07;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 xmlns:xlink=%22http://www.w3.org/1999/xlink%22 width=%22720%22 height=%22720%22 viewBox=%220 0 720 720%22%3E%3Cdefs%3E%3Cg id=%22t%22%3E%3Cg fill=%22none%22 stroke=%22%23000%22 stroke-width=%221.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M0 60H90l30 30h80%22/%3E%3Cpath d=%22M300 60h60%22/%3E%3Cpath d=%22M40 0v40l30 30v70l30 30h60%22/%3E%3Cpath d=%22M40 360v-36%22/%3E%3Cpath d=%22M80 0v22%22/%3E%3Cpath d=%22M0 250h50l30 30v80%22/%3E%3Cpath d=%22M330 250h30%22/%3E%3Cpath d=%22M150 360v-60l30-30h30%22/%3E%3Cpath d=%22M150 0v28%22/%3E%3Cpath d=%22M236 180v-30l20-20h64%22/%3E%3Cpath d=%22M284 230v40l26 26h50%22/%3E%3Cpath d=%22M0 296h24%22/%3E%3Cpath d=%22M252 230v28l-22 22h-40%22/%3E%3Cpath d=%22M268 180v-18%22/%3E%3Crect x=%22220%22 y=%22180%22 width=%2280%22 height=%2250%22 rx=%224%22/%3E%3Cpath d=%22M228 180v-7M244 180v-7M260 180v-7M276 180v-7M292 180v-7M228 230v7M244 230v7M260 230v7M276 230v7M292 230v7%22/%3E%3Ccircle cx=%22200%22 cy=%2290%22 r=%226%22/%3E%3Ccircle cx=%22300%22 cy=%2260%22 r=%226%22/%3E%3Ccircle cx=%22160%22 cy=%22170%22 r=%226%22/%3E%3Ccircle cx=%2240%22 cy=%22324%22 r=%226%22/%3E%3Ccircle cx=%2280%22 cy=%2222%22 r=%226%22/%3E%3Ccircle cx=%22330%22 cy=%22250%22 r=%226%22/%3E%3Ccircle cx=%22150%22 cy=%2228%22 r=%226%22/%3E%3Ccircle cx=%22210%22 cy=%22270%22 r=%226%22/%3E%3Ccircle cx=%22320%22 cy=%22130%22 r=%226%22/%3E%3Ccircle cx=%2224%22 cy=%22296%22 r=%226%22/%3E%3Ccircle cx=%22190%22 cy=%22280%22 r=%226%22/%3E%3Ccircle cx=%22268%22 cy=%22162%22 r=%224%22/%3E%3Ccircle cx=%22110%22 cy=%22250%22 r=%223%22/%3E%3Ccircle cx=%22330%22 cy=%2220%22 r=%223%22/%3E%3Ccircle cx=%2220%22 cy=%22150%22 r=%223%22/%3E%3Ccircle cx=%22250%22 cy=%22330%22 r=%223%22/%3E%3C/g%3E%3Cg fill=%22%23000%22%3E%3Ccircle cx=%22200%22 cy=%2290%22 r=%222%22/%3E%3Ccircle cx=%22300%22 cy=%2260%22 r=%222%22/%3E%3Ccircle cx=%22160%22 cy=%22170%22 r=%222%22/%3E%3Ccircle cx=%2240%22 cy=%22324%22 r=%222%22/%3E%3Ccircle cx=%2280%22 cy=%2222%22 r=%222%22/%3E%3Ccircle cx=%22330%22 cy=%22250%22 r=%222%22/%3E%3Ccircle cx=%22150%22 cy=%2228%22 r=%222%22/%3E%3Ccircle cx=%22210%22 cy=%22270%22 r=%222%22/%3E%3Ccircle cx=%22320%22 cy=%22130%22 r=%222%22/%3E%3Ccircle cx=%2224%22 cy=%22296%22 r=%222%22/%3E%3Ccircle cx=%22190%22 cy=%22280%22 r=%222%22/%3E%3Ccircle cx=%22234%22 cy=%22188%22 r=%222.4%22/%3E%3C/g%3E%3C/g%3E%3C/defs%3E%3Cuse xlink:href=%22%23t%22/%3E%3Cuse xlink:href=%22%23t%22 transform=%22translate(720 0) rotate(90)%22/%3E%3Cuse xlink:href=%22%23t%22 transform=%22translate(0 720) rotate(-90)%22/%3E%3Cuse xlink:href=%22%23t%22 transform=%22translate(720 720) rotate(180)%22/%3E%3C/svg%3E") 0 0/720px 720px repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 xmlns:xlink=%22http://www.w3.org/1999/xlink%22 width=%22720%22 height=%22720%22 viewBox=%220 0 720 720%22%3E%3Cdefs%3E%3Cg id=%22t%22%3E%3Cg fill=%22none%22 stroke=%22%23000%22 stroke-width=%221.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M0 60H90l30 30h80%22/%3E%3Cpath d=%22M300 60h60%22/%3E%3Cpath d=%22M40 0v40l30 30v70l30 30h60%22/%3E%3Cpath d=%22M40 360v-36%22/%3E%3Cpath d=%22M80 0v22%22/%3E%3Cpath d=%22M0 250h50l30 30v80%22/%3E%3Cpath d=%22M330 250h30%22/%3E%3Cpath d=%22M150 360v-60l30-30h30%22/%3E%3Cpath d=%22M150 0v28%22/%3E%3Cpath d=%22M236 180v-30l20-20h64%22/%3E%3Cpath d=%22M284 230v40l26 26h50%22/%3E%3Cpath d=%22M0 296h24%22/%3E%3Cpath d=%22M252 230v28l-22 22h-40%22/%3E%3Cpath d=%22M268 180v-18%22/%3E%3Crect x=%22220%22 y=%22180%22 width=%2280%22 height=%2250%22 rx=%224%22/%3E%3Cpath d=%22M228 180v-7M244 180v-7M260 180v-7M276 180v-7M292 180v-7M228 230v7M244 230v7M260 230v7M276 230v7M292 230v7%22/%3E%3Ccircle cx=%22200%22 cy=%2290%22 r=%226%22/%3E%3Ccircle cx=%22300%22 cy=%2260%22 r=%226%22/%3E%3Ccircle cx=%22160%22 cy=%22170%22 r=%226%22/%3E%3Ccircle cx=%2240%22 cy=%22324%22 r=%226%22/%3E%3Ccircle cx=%2280%22 cy=%2222%22 r=%226%22/%3E%3Ccircle cx=%22330%22 cy=%22250%22 r=%226%22/%3E%3Ccircle cx=%22150%22 cy=%2228%22 r=%226%22/%3E%3Ccircle cx=%22210%22 cy=%22270%22 r=%226%22/%3E%3Ccircle cx=%22320%22 cy=%22130%22 r=%226%22/%3E%3Ccircle cx=%2224%22 cy=%22296%22 r=%226%22/%3E%3Ccircle cx=%22190%22 cy=%22280%22 r=%226%22/%3E%3Ccircle cx=%22268%22 cy=%22162%22 r=%224%22/%3E%3Ccircle cx=%22110%22 cy=%22250%22 r=%223%22/%3E%3Ccircle cx=%22330%22 cy=%2220%22 r=%223%22/%3E%3Ccircle cx=%2220%22 cy=%22150%22 r=%223%22/%3E%3Ccircle cx=%22250%22 cy=%22330%22 r=%223%22/%3E%3C/g%3E%3Cg fill=%22%23000%22%3E%3Ccircle cx=%22200%22 cy=%2290%22 r=%222%22/%3E%3Ccircle cx=%22300%22 cy=%2260%22 r=%222%22/%3E%3Ccircle cx=%22160%22 cy=%22170%22 r=%222%22/%3E%3Ccircle cx=%2240%22 cy=%22324%22 r=%222%22/%3E%3Ccircle cx=%2280%22 cy=%2222%22 r=%222%22/%3E%3Ccircle cx=%22330%22 cy=%22250%22 r=%222%22/%3E%3Ccircle cx=%22150%22 cy=%2228%22 r=%222%22/%3E%3Ccircle cx=%22210%22 cy=%22270%22 r=%222%22/%3E%3Ccircle cx=%22320%22 cy=%22130%22 r=%222%22/%3E%3Ccircle cx=%2224%22 cy=%22296%22 r=%222%22/%3E%3Ccircle cx=%22190%22 cy=%22280%22 r=%222%22/%3E%3Ccircle cx=%22234%22 cy=%22188%22 r=%222.4%22/%3E%3C/g%3E%3C/g%3E%3C/defs%3E%3Cuse xlink:href=%22%23t%22/%3E%3Cuse xlink:href=%22%23t%22 transform=%22translate(720 0) rotate(90)%22/%3E%3Cuse xlink:href=%22%23t%22 transform=%22translate(0 720) rotate(-90)%22/%3E%3Cuse xlink:href=%22%23t%22 transform=%22translate(720 720) rotate(180)%22/%3E%3C/svg%3E") 0 0/720px 720px repeat}
+[data-tema="claro"] body::before{opacity:.13}
+
+/* ---------- barra do topo: translúcida como a do macOS ---------- */
+.barra{position:sticky; top:0; z-index:10; background:color-mix(in srgb,var(--fundo) 72%,transparent); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--borda)}
+.barra .envolve{display:flex; align-items:center; gap:1rem; justify-content:space-between; min-height:3.5rem; flex-wrap:wrap}
+.marca{display:flex; align-items:center; gap:.55rem; text-decoration:none; color:var(--texto); font-family:var(--f-titulo); font-weight:700; font-size:1.05rem}
+.marca:hover{color:var(--texto)}
+.marca img{width:26px; height:auto}
+/* nas disciplinas: "Stela / Nome da disciplina", cada parte com o seu link (portal e página inicial da disciplina) */
+.marcas{display:flex; align-items:center; gap:.55rem; min-width:0}
+.marca-disc{display:flex; align-items:center; gap:.55rem; font-family:var(--f-titulo); font-weight:600; font-size:1rem; color:var(--texto-2); text-decoration:none; white-space:nowrap}
+.marca-disc::before{content:"/"; font-weight:400; color:var(--texto-3)}
+.marca-disc:hover{color:var(--ouro-forte)}
+/* nos sites de disciplina, a esquerda é da disciplina: o primeiro link vem sem a barra "/" e com mais destaque */
+.marcas .marca-disc{font-size:1.12rem; color:var(--neon,var(--menta)); text-shadow:0 0 6px var(--neon-brilho,transparent)}
+.marcas>.marca-disc:first-child{font-size:1.32rem; font-weight:800; letter-spacing:.02em; text-shadow:0 0 6px var(--neon-brilho,transparent),0 0 18px var(--neon-brilho,transparent)}
+.marcas .marca-disc:hover{color:var(--neon,var(--menta)); text-shadow:0 0 8px var(--neon-brilho,transparent),0 0 26px var(--neon-brilho,transparent)}
+.marcas>.marca-disc:first-child::before{content:none}
+/* e o link "Stela" (portal) fica sempre à direita, depois dos botões */
+.ajustes .marca{margin-left:.85rem; font-size:.95rem}
+@media (min-width:521px){.ajustes .marca{margin-right:-.6rem}}   /* um pouco mais para o canto direito */
+@media (max-width:420px){.marca .marca-texto{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}}
+/* telas bem estreitas: botões mais justos para a barra caber numa linha */
+@media (max-width:360px){.barra .envolve{gap:.6rem}.ajustes{gap:.25rem}.ajustes button,.btn-menu{padding:.3rem .6rem}#btn-tema,#btn-movimento{width:1.95rem}}
+.nav{display:flex; gap:1.3rem; flex-wrap:wrap; font-size:.88rem}
+.nav a{color:var(--texto-2); text-decoration:none; transition:color .2s}
+.nav a:hover{color:var(--texto)}
+.ajustes{display:flex; gap:.4rem; align-items:center}
+.ajustes button,.btn-menu{font:inherit; font-size:.8rem; color:var(--texto); background:var(--superficie); border:1px solid var(--borda-forte); border-radius:999px; padding:.32rem .8rem; min-height:2.1rem; cursor:pointer; transition:border-color .2s, background .2s}
+.ajustes button:hover,.btn-menu:hover{border-color:var(--ouro)}
+.ajustes button[aria-pressed="true"],.btn-menu[aria-expanded="true"]{border-color:var(--menta); color:var(--menta)}
+.ajustes svg{width:15px; height:15px; flex:none}
+#btn-tema{display:grid; place-items:center; width:2.1rem; padding:0}
+#btn-tema .lua{display:none}
+[data-tema="claro"] #btn-tema .sol{display:none}
+[data-tema="claro"] #btn-tema .lua{display:block}
+#btn-movimento{display:inline-flex; align-items:center; gap:.4rem}
+#btn-movimento .tocar{display:none}
+.pausado #btn-movimento .pausar{display:none}
+.pausado #btn-movimento .tocar{display:block}
+.btn-menu{display:none; margin-left:auto}
+@media (max-width:960px){
+  .nav{display:none}
+  .btn-menu{display:inline-block}
+  .nav.aberto{display:flex; flex-direction:column; gap:0; order:3; flex-basis:100%; border-top:1px solid var(--borda)}
+  .nav.aberto a{padding:.8rem .1rem; font-size:1rem; color:var(--texto)}
+  .nav.aberto a + a{border-top:1px solid var(--borda)}
+}
+/* celular: o botão de pausa vira só ícone (o texto continua para leitores de tela) */
+@media (max-width:520px){
+  #btn-movimento{width:2.1rem; padding:0; justify-content:center}
+  #btn-movimento .rotulo{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+}
+
+/* ---------- aparecer ao rolar (só com JS; pausado, tudo aparece na hora) ---------- */
+.js [data-revela]{opacity:0; transform:translateY(28px); transition:opacity .8s var(--suave), transform .8s var(--suave); transition-delay:calc(var(--i,0) * 70ms)}
+.js [data-revela].visivel{opacity:1; transform:none}
+
+/* ---------- seções ---------- */
+.bloco{padding-block:clamp(5rem,12vw,8.5rem); border-top:1px solid var(--borda)}
+.bloco.alt{background:color-mix(in srgb,var(--fundo-2) 82%,transparent)}
+.cab{display:flex; flex-direction:column; gap:.8rem; margin-bottom:clamp(2.5rem,5vw,3.5rem); max-width:44rem}
+.cab h2{font-size:clamp(2.2rem,5.4vw,3.8rem); font-weight:800; font-stretch:110%; letter-spacing:-.035em}
+.cab p{color:var(--texto-2); font-size:1.15rem; max-width:52ch}
+
+/* ---------- luz que segue o mouse (estilo github.com): adicione .luz a um card ---------- */
+.luz{position:relative; overflow:hidden; isolation:isolate}
+.luz::before{content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:0; transition:opacity .35s;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%), color-mix(in srgb,var(--ouro) 16%,transparent), transparent 65%)}
+.luz:hover::before{opacity:1}
+
+/* ---------- cartão simples ---------- */
+.cartao{background:var(--superficie); border:1px solid var(--borda); border-radius:var(--raio); padding:1.5rem; display:flex; flex-direction:column; gap:.45rem; min-width:0; transition:border-color .3s}
+.cartao:hover{border-color:var(--borda-forte)}
+.cartao h3{font-size:1.2rem; font-weight:700; letter-spacing:-.015em}
+.cartao p{color:var(--texto-2); font-size:.97rem}
+
+/* ---------- janela do macOS ---------- */
+.janela{background:var(--superficie); border:1px solid var(--borda-forte); border-radius:var(--raio-p); box-shadow:var(--sombra); overflow:hidden; min-width:0}
+.janela-barra{display:flex; align-items:center; gap:.8rem; padding:.7rem .9rem; background:var(--janela-barra); border-bottom:1px solid var(--borda)}
+.semaforo{display:flex; gap:7px}
+.semaforo i{width:12px; height:12px; border-radius:50%; background:#ff5f57}
+.semaforo i:nth-child(2){background:#febc2e}
+.semaforo i:nth-child(3){background:#28c840}
+.janela-titulo{flex:1; text-align:center; font-family:var(--f-mono); font-size:.78rem; color:var(--texto-3); margin-right:46px; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.janela-corpo{padding:clamp(1.3rem,3vw,2rem)}
+.prompt{font-family:var(--f-mono); font-size:.88rem; color:var(--texto-3); margin-bottom:1.1rem}
+.prompt b{color:var(--menta); font-weight:500}
+.prompt span{color:var(--ouro)}
+
+/* ---------- etiquetas e botões ---------- */
+.etiqueta{display:inline-flex; align-items:center; gap:.4rem; font-family:var(--f-mono); font-size:.74rem; padding:.12rem .6rem; border-radius:999px; border:1px solid var(--borda-forte); color:var(--texto-2); white-space:nowrap}
+.etiqueta.verde{color:var(--menta); border-color:color-mix(in srgb,var(--menta) 45%,transparent); background:color-mix(in srgb,var(--menta) 10%,transparent)}
+.etiqueta.ouro{color:var(--ouro-forte); border-color:color-mix(in srgb,var(--ouro) 45%,transparent); background:color-mix(in srgb,var(--ouro) 10%,transparent)}
+.botao{display:inline-flex; align-items:center; gap:.5rem; font-weight:700; text-decoration:none; color:var(--fundo); background:var(--ouro-forte); border:1px solid var(--ouro-forte); border-radius:999px; padding:.65rem 1.3rem; transition:transform .2s var(--suave), opacity .2s}
+.botao:hover{color:var(--fundo); opacity:.9; transform:translateY(-1px)}
+.botao.contorno{color:var(--texto); background:transparent; border-color:var(--borda-forte)}
+.botao.contorno:hover{color:var(--texto); border-color:var(--ouro)}
+
+/* ---------- logos das tecnologias: azulejo claro, como os ícones do macOS ----------
+   Fundo claro nos dois temas: assim logos escuros (GitHub, AWS) continuam visíveis.
+   Tamanho pela variável --t (padrão 2.2rem). Logos em assets/img/tec/ (Devicon e Simple Icons). */
+.tec{display:inline-grid; place-items:center; flex:none; width:var(--t,2.2rem); height:var(--t,2.2rem); border-radius:24%; background:#fbfaf6;
+  box-shadow:0 1px 0 rgba(255,255,255,.7) inset, 0 0 0 1px rgba(0,0,0,.07), 0 8px 18px -10px rgba(0,0,0,.6)}
+.tec img{width:62%; height:62%; object-fit:contain}
+.tecs{display:flex; flex-wrap:wrap; gap:.45rem; margin-top:auto; padding-top:.6rem}
+.tecs .tec{--t:1.9rem}
+
+/* faixa de tecnologias deslizando, como o Dock do Mac (a lista vem duas vezes para o giro não ter emenda) */
+.doca{overflow:hidden; padding-block:1.6rem; border-top:1px solid var(--borda);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent); mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.doca-trilho{display:flex; gap:1.1rem; width:max-content; animation:desliza 45s linear infinite}
+.doca .tec{--t:3.2rem; transition:transform .25s var(--suave)}
+.doca .tec:hover{transform:translateY(-6px) scale(1.12)}
+.doca:hover .doca-trilho{animation-play-state:paused}
+@keyframes desliza{to{transform:translateX(calc(-50% - .55rem))}}
+
+/* ---------- histórico de commits (formação no portal; cronograma e prazos nas disciplinas) ---------- */
+.repo-topo{display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:1.4rem; font-size:.9rem; color:var(--texto-2)}
+.ramo{display:inline-flex; align-items:center; gap:.45rem; font-family:var(--f-mono); color:var(--texto); background:var(--superficie); border:1px solid var(--borda-forte); border-radius:8px; padding:.3rem .7rem}
+.ramo svg{width:15px; height:15px; fill:var(--texto-2)}
+.log{list-style:none; margin:0; padding:0 0 0 2rem; position:relative; display:flex; flex-direction:column; gap:1rem}
+.log::before{content:""; position:absolute; left:.6rem; top:.5rem; bottom:.5rem; width:2px; background:linear-gradient(var(--borda-forte),var(--borda-forte) 85%,transparent)}
+.commit{position:relative; background:var(--superficie); border:1px solid var(--borda); border-radius:var(--raio-p); padding:1.1rem 1.25rem; transition:border-color .25s}
+.commit:hover{border-color:var(--borda-forte)}
+.commit::before{content:""; position:absolute; left:calc(-2rem + .6rem - 6px); top:1.35rem; width:10px; height:10px; border-radius:50%; background:var(--fundo); border:2px solid var(--ouro)}
+.commit.andamento::before{border-color:var(--menta); background:var(--menta); animation:pulsa 2.4s ease-out infinite}
+.commit-linha{display:flex; align-items:flex-start; justify-content:space-between; gap:1rem}
+.commit h3{font-size:1.12rem; font-weight:650; letter-spacing:-.01em}
+.hash{flex:none; font-family:var(--f-mono); font-size:.78rem; color:var(--texto-2); background:var(--superficie-2); border:1px solid var(--borda); border-radius:6px; padding:.1rem .5rem}
+.commit .meta{display:flex; align-items:center; gap:.45rem; margin-top:.5rem; font-size:.86rem; color:var(--texto-3)}
+.commit .meta img{width:18px; height:18px; object-fit:contain; border-radius:50%; background:var(--superficie-2); padding:2px; box-sizing:content-box}
+.commit .meta b{color:var(--texto-2); font-weight:700}
+.commit p{color:var(--texto-2); margin-top:.45rem}
+.commit p.pendente{color:var(--ouro)}
+.commit ul{margin:.6rem 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:.35rem}
+.commit ul li{font-size:.95rem; color:var(--texto); padding-left:1.4rem; position:relative}
+.commit ul li::before{content:"+"; position:absolute; left:0; font-family:var(--f-mono); color:var(--menta)}
+@keyframes pulsa{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--menta) 60%,transparent)}70%,100%{box-shadow:0 0 0 8px transparent}}
+
+/* ---------- cards de repositório (disciplinas no portal; aulas e atividades nas disciplinas) ---------- */
+.grupo + .grupo{margin-top:3rem}
+.grupo > h3{display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; font-size:1.35rem; letter-spacing:-.015em; margin-bottom:1.1rem}
+.repos{display:grid; grid-template-columns:repeat(auto-fill,minmax(17rem,1fr)); gap:1rem}
+.repo{display:flex; flex-direction:column; gap:.55rem; text-decoration:none; color:var(--texto); background:var(--superficie); border:1px solid var(--borda); border-radius:var(--raio-p); padding:1.15rem 1.2rem; min-width:0; transition:border-color .25s, transform .25s var(--suave)}
+.repo:hover{color:var(--texto); border-color:color-mix(in srgb,var(--ouro) 55%,transparent); transform:translateY(-2px)}
+.repo-nome{display:flex; align-items:center; gap:.5rem; font-family:var(--f-mono); font-size:.84rem; color:var(--ouro-forte); min-width:0; white-space:nowrap}
+.repo-nome svg{flex:none; width:16px; height:16px; fill:var(--texto-3)}
+.repo h4{font-size:1.08rem; font-weight:650; letter-spacing:-.01em}
+.repo p{color:var(--texto-2); font-size:.93rem}
+.repo-pe{display:flex; align-items:center; justify-content:space-between; gap:.6rem; flex-wrap:wrap; margin-top:auto; padding-top:.5rem}
+.ling{display:flex; align-items:center; gap:.45rem; font-size:.84rem; color:var(--texto-2)}
+.ling i{width:11px; height:11px; border-radius:50%; background:var(--cor,#8b949e)}
+
+/* ---------- rodapé ---------- */
+footer{border-top:1px solid var(--borda); padding-block:2.5rem; color:var(--texto-2); font-size:.92rem}
+footer .envolve{display:flex; align-items:center; gap:.9rem; flex-wrap:wrap}
+footer img{width:30px}
+
+/* ---------- pausar animações: botão do topo (o placa.js também respeita o "reduzir movimento" do sistema) ---------- */
+.pausado *,.pausado *::before,.pausado *::after{animation:none!important; transition:none!important}
+.pausado [data-revela]{opacity:1!important; transform:none!important}
+/* sem JavaScript, o CSS sozinho respeita a configuração do sistema */
+@media (prefers-reduced-motion:reduce){html:not(.js) *,html:not(.js) *::before,html:not(.js) *::after{animation:none!important; transition:none!important}}

@@ -1,0 +1,589 @@
+/*
+  aula.css: modelo das páginas de aula das disciplinas.
+  versão 2 · 2026-10-07 (etiqueta "Fac Senac DF")
+
+  Carregue depois do estilo.css e do disciplina.css.
+  Igual em todas as disciplinas: o que muda de uma aula para outra é só o texto do HTML.
+*/
+
+
+/* ========== cabeçalho da aula ========== */
+
+.aula-cab {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding-block: clamp(3rem, 8vw, 5rem) clamp(2.5rem, 6vw, 3.5rem);
+}
+
+.aula-cab::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 36rem;
+  height: 24rem;
+  left: -8rem;
+  top: -8rem;
+  border-radius: 50%;
+  filter: blur(80px);
+  background: var(--brilho-1);
+}
+
+.aula-etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin-top: 1.2rem;
+}
+
+.aula-cab h1 {
+  margin-top: 1rem;
+  max-width: 20ch;
+  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  font-weight: 850;
+  font-stretch: 112%;
+  letter-spacing: -.04em;
+  line-height: 1.02;
+}
+
+.aula-cab .subtitulo {
+  margin-top: .8rem;
+  font-family: var(--f-titulo);
+  font-weight: 600;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  color: var(--menta);
+}
+
+/* datas das turmas */
+.datas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin-top: 1.6rem;
+}
+
+.data {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .45rem .9rem;
+  border-radius: 999px;
+  border: 1px solid var(--borda-forte);
+  background: var(--superficie);
+  font-size: .92rem;
+  color: var(--texto-2);
+}
+
+.data strong {
+  color: var(--texto);
+}
+
+.data svg {
+  width: 16px;
+  height: 16px;
+  color: var(--ouro);
+}
+
+
+/* ========== resumo: objetivo, antes da aula, avaliação ========== */
+
+.resumo {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.resumo .cartao p {
+  color: var(--texto);
+  font-size: 1.02rem;
+}
+
+@media (max-width: 860px) {
+  .resumo {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ========== corpo da aula ========== */
+
+.aula-corpo {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 7vw, 4.5rem);
+}
+
+/* cada parte da aula: título com designador, como nas seções do portal */
+.parte > .cab {
+  margin-bottom: 1.6rem;
+}
+
+.parte .cab h2 {
+  font-size: clamp(1.8rem, 4.2vw, 2.8rem);
+}
+
+/* conceito: texto curto + exemplo de código lado a lado */
+.conceito {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(1.2rem, 3vw, 2rem);
+  align-items: start;
+  padding-block: 1.6rem;
+  border-top: 1px solid var(--borda);
+}
+
+.conceito:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.conceito h3 {
+  margin: .3rem 0 .6rem;
+  font-size: 1.3rem;
+}
+
+.conceito p + p {
+  margin-top: .7rem;
+}
+
+.conceito .texto {
+  color: var(--texto-2);
+}
+
+.conceito .texto code,
+.checklist code,
+.parte p code,
+.metodos code {
+  font-family: var(--f-mono);
+  font-size: .9em;
+  color: var(--ouro-forte);
+}
+
+/* bloco de código solto (fora de uma janela): cantos arredondados */
+.conceito > pre.codigo {
+  border-radius: var(--raio-p);
+  border: 1px solid var(--borda-forte);
+}
+
+@media (max-width: 860px) {
+  .conceito {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* dica / cuidado dentro de um conceito */
+.dica {
+  margin-top: 1rem;
+  padding: .8rem 1rem;
+  border-radius: var(--raio-p);
+  border: 1px solid color-mix(in srgb, var(--menta) 40%, transparent);
+  background: color-mix(in srgb, var(--menta) 8%, transparent);
+  color: var(--texto);
+  font-size: .96rem;
+}
+
+.dica.cuidado {
+  border-color: color-mix(in srgb, var(--ouro) 50%, transparent);
+  background: color-mix(in srgb, var(--ouro) 9%, transparent);
+}
+
+.dica strong {
+  font-family: var(--f-titulo);
+}
+
+/* tabela de métodos */
+.metodos {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .95rem;
+}
+
+.metodos th,
+.metodos td {
+  padding: .65rem .8rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--borda);
+}
+
+.metodos th {
+  font-family: var(--f-mono);
+  font-size: .78rem;
+  font-weight: 500;
+  color: var(--ouro);
+}
+
+.metodos td {
+  color: var(--texto-2);
+}
+
+.tabela-rola {
+  overflow-x: auto;
+}
+
+/* cartões visuais (ex.: map, filter, reduce) */
+.cartoes-visuais {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.cartao-visual {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+
+.cartao-visual .antes-depois {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .4rem;
+  font-family: var(--f-mono);
+  font-size: .85rem;
+}
+
+.cartao-visual .seta {
+  color: var(--ouro);
+}
+
+.cartao-visual .lista {
+  padding: .2rem .5rem;
+  border-radius: 6px;
+  background: var(--chip);
+  color: #e9e6dc;
+}
+
+@media (max-width: 860px) {
+  .cartoes-visuais {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ========== atividade: checklist que o aluno marca (fica salvo no navegador) ========== */
+
+.checklist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: passo;
+}
+
+.checklist li {
+  border-top: 1px solid var(--borda);
+}
+
+.checklist li:first-child {
+  border-top: 0;
+}
+
+.checklist label {
+  display: flex;
+  gap: .9rem;
+  align-items: flex-start;
+  padding: .85rem .2rem;
+  cursor: pointer;
+}
+
+.checklist input {
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: .2rem;
+  accent-color: var(--menta);
+  cursor: pointer;
+}
+
+.checklist input:checked + span {
+  color: var(--texto-3);
+  text-decoration: line-through;
+  text-decoration-color: var(--menta);
+}
+
+.progresso-atividade {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin-bottom: 1rem;
+  font-family: var(--f-mono);
+  font-size: .85rem;
+  color: var(--texto-2);
+}
+
+.progresso-atividade .barra-progresso {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--superficie-2);
+  overflow: hidden;
+}
+
+.progresso-atividade .barra-progresso span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--ouro), var(--menta));
+  transition: width .4s var(--suave);
+}
+
+
+/* ========== conexão STEAM ========== */
+
+.steam {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.steam .letra {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 12px;
+  font-family: var(--f-titulo);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--fundo);
+  background: var(--ouro-forte);
+}
+
+.steam .cartao:nth-child(2) .letra {
+  background: var(--menta);
+}
+
+@media (max-width: 860px) {
+  .steam {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ========== entrega ========== */
+
+.entrega {
+  display: flex;
+  flex-direction: row;
+  gap: 1.2rem;
+  align-items: flex-start;
+}
+
+.entrega svg {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  color: var(--menta);
+}
+
+.entrega h3 {
+  font-size: 1.2rem;
+  margin-bottom: .3rem;
+}
+
+
+/* ========== navegação entre aulas ========== */
+
+.nav-aulas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.nav-aulas a,
+.nav-aulas span {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  padding: 1.1rem 1.3rem;
+  border-radius: var(--raio-p);
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+  text-decoration: none;
+  color: var(--texto);
+}
+
+.nav-aulas a:hover {
+  border-color: color-mix(in srgb, var(--ouro) 55%, transparent);
+}
+
+.nav-aulas .proxima {
+  text-align: right;
+}
+
+.nav-aulas span {
+  opacity: .55;
+}
+
+.nav-aulas strong {
+  font-family: var(--f-titulo);
+  font-size: 1.05rem;
+}
+
+@media (max-width: 560px) {
+  .nav-aulas {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-aulas .proxima {
+    text-align: left;
+  }
+}
+
+
+/* ========== lista de aulas (página da disciplina) ========== */
+
+/* linhas mais compactas que o histórico de commits normal: são 18 aulas */
+.lista-aulas {
+  gap: .55rem;
+}
+
+.lista-aulas .commit {
+  padding: .7rem 1rem;
+}
+
+.lista-aulas .commit::before {
+  top: 1rem;
+}
+
+.lista-aulas .commit h3 {
+  flex: 1;
+  font-size: 1rem;
+}
+
+/* etiqueta "próxima aula" e código da aula juntos, à direita */
+.lista-aulas .commit-linha {
+  align-items: center;
+  gap: .5rem;
+}
+
+.lista-aulas .commit .meta {
+  flex-wrap: wrap;
+  margin-top: .25rem;
+  font-size: .82rem;
+}
+
+.lista-aulas a.etiqueta {
+  text-decoration: none;
+}
+
+.lista-aulas .commit h3 a {
+  color: var(--texto);
+  text-decoration: none;
+}
+
+.lista-aulas .commit h3 a:hover {
+  color: var(--ouro-forte);
+}
+
+/* aula que já passou e aula futura: mais apagadas */
+.lista-aulas .commit.passada {
+  opacity: .78;
+}
+
+.lista-aulas .commit.futura {
+  opacity: .55;
+}
+
+.lista-aulas .commit.futura::before {
+  border-color: var(--texto-3);
+}
+
+/* etiqueta "Fac Senac DF" no cabeçalho das aulas */
+.etiqueta.senac {
+  color: var(--senac-laranja);
+  background: #082c75;
+  border-color: #082c75;
+  font-weight: 700;
+}
+
+/* tutorial passo a passo: "Faça assim", "Teste" e "Agora é com você" */
+.faca-assim {
+  margin-top: 1rem;
+  padding: .9rem 1.1rem;
+  border-radius: var(--raio-p);
+  border: 1px solid var(--borda-forte);
+  background: color-mix(in srgb, var(--texto) 3%, transparent);
+}
+
+.faca-assim > strong {
+  display: block;
+  margin-bottom: .4rem;
+  font-family: var(--f-titulo);
+  color: var(--texto);
+}
+
+.faca-assim ol,
+.faca-assim ul {
+  margin: 0;
+  padding-left: 1.3rem;
+  color: var(--texto-2);
+}
+
+.faca-assim li + li {
+  margin-top: .35rem;
+}
+
+.faca-assim code,
+.faca-assim kbd {
+  font-family: var(--f-mono);
+  font-size: .9em;
+  color: var(--ouro-forte);
+}
+
+.faca-assim.desafio {
+  border-color: color-mix(in srgb, var(--menta) 45%, transparent);
+}
+
+.conceito > .faca-assim {
+  margin-top: 0;
+}
+
+/* bloco de código do tutorial, com o nome do arquivo e o botão de copiar */
+.arquivo-codigo {
+  margin-top: 1rem;
+  border-radius: var(--raio-p);
+  border: 1px solid var(--borda-forte);
+  overflow: hidden;
+}
+
+.arquivo-codigo .arquivo-cab {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem;
+  padding: .45rem .8rem;
+  background: color-mix(in srgb, var(--texto) 6%, transparent);
+  font-family: var(--f-mono);
+  font-size: .85rem;
+  color: var(--texto-2);
+}
+
+.arquivo-codigo .arquivo-cab button {
+  padding: .25rem .7rem;
+  border-radius: 999px;
+  border: 1px solid var(--borda-forte);
+  background: transparent;
+  color: var(--ouro-forte);
+  font: inherit;
+  cursor: pointer;
+}
+
+.arquivo-codigo pre.codigo {
+  margin: 0;
+  border-radius: 0;
+}
+
+/* no celular, tabela e código largos rolam dentro do bloco, sem alargar a página */
+.conceito > .texto,
+.conceito > .faca-assim,
+.arquivo-codigo {
+  min-width: 0;
+}
+
+/* código dentro do texto quebra a linha no celular, em vez de alargar a página */
+.conceito .texto code,
+.faca-assim code {
+  overflow-wrap: anywhere;
+}

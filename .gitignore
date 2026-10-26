@@ -1,0 +1,6 @@
+# arquivos do Mac e do editor
+.DS_Store
+.vscode/
+
+# notas pessoais (ficam só no computador)
+leia.txt

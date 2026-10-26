@@ -1,0 +1,9 @@
+/* atividade.css: a página de uma atividade publicada pelo Placa-Mãe (atividade.html) · versão 1 · 2026-10-19
+   (cópia comum às disciplinas) */
+.atividade-corpo { display: grid; gap: 1.1rem; max-width: 760px; }
+.atividade-corpo h2 { font-size: clamp(1.3rem, 3vw, 1.6rem); }
+.enunciado { white-space: pre-wrap; line-height: 1.7; color: var(--texto); }
+.botoes-atividade { display: flex; flex-wrap: wrap; gap: .7rem; }
+.imagem-atividade { margin: 0; display: grid; gap: .5rem; }
+.imagem-atividade img { display: block; max-width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--borda); background: var(--superficie); }
+.imagem-atividade figcaption { color: var(--texto-2); font-size: .9rem; }
