@@ -6,7 +6,7 @@
 
   <!-- EDITE AQUI: número e tema da aula -->
   <title>Aula 6: Quanto custa a nuvem? · Fundamentos de Computação em Nuvem · Stela</title>
-  <meta name="description" content="Aula 6 de Fundamentos de Computação em Nuvem: A AWS Pricing Calculator e a calculadora do Azure, na prática, com a empresa do semestre.">
+  <meta name="description" content="Aula 6 de Fundamentos de Computação em Nuvem: a estimativa do Ateliê na AWS Pricing Calculator e na calculadora do Azure, passo a passo, e os alertas de gasto.">
 
   <link rel="icon" href="../assets/img/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/img/favicon-32.png">
@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../assets/css/aula.css?v=2">
   <link rel="stylesheet" href="../assets/css/neon.css?v=1">
   <link rel="stylesheet" href="../assets/css/conta.css?v=4">
+  <link rel="stylesheet" href="../assets/css/interativos.css?v=2">
 </head>
 <body>
 
@@ -33,6 +34,7 @@
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#tutorial">Tutorial</a>
         <a href="#caso">Caso</a>
         <a href="#atividade">Atividade</a>
         <a href="#materiais">Materiais</a>
@@ -77,8 +79,8 @@
           <span class="etiqueta">Laboratório de práticas</span>
           <span class="etiqueta">Unidade 1</span>
         </div>
-        <h1>Calculadoras de preço: quanto custa a nuvem da empresa?</h1>
-        <p class="subtitulo">A AWS Pricing Calculator e a calculadora do Azure, na prática, com a empresa do semestre.</p>
+        <h1>Calculadoras de preço: quanto custa a <span class="neon">nuvem</span> do Ateliê?</h1>
+        <p class="subtitulo">A estimativa de verdade, na calculadora da AWS e na do Azure, e os alertas que impedem a conta de virar surpresa.</p>
       </div>
     </section>
 
@@ -88,15 +90,15 @@
         <div class="resumo">
           <div class="cartao">
             <span class="olho">Objetivo do dia</span>
-            <p>Estimar o custo mensal de uma solução na nuvem com as calculadoras de preço.</p>
+            <p>Estimar o custo mensal de uma solução na nuvem com as calculadoras de preço oficiais.</p>
           </div>
           <div class="cartao">
             <span class="olho">Antes da aula</span>
-            <p>Fazer a atividade Calculadora Mensal Simples, do Módulo 2 do Cloud Foundations.</p>
+            <p>Ter a ficha do Ateliê (aula 3) e a sua conta "comprar ou alugar" (aula 5).</p>
           </div>
           <div class="cartao">
             <span class="olho">Como conta ponto</span>
-            <p>Começa aqui o trabalho da Unidade 1 (3,0 pontos, entrega na aula 7).</p>
+            <p>Começa aqui o trabalho da Unidade 1 (3,0 pontos), com entrega na aula 7.</p>
           </div>
         </div>
       </div>
@@ -108,15 +110,176 @@
         <!-- ===================== CONCEITOS ===================== -->
         <section class="parte" id="conceitos">
           <div class="cab">
-            <span class="olho">C1 · conceitos</span>
-            <h2>O que você vai ver</h2>
+            <span class="olho">C1–C3 · conceitos</span>
+            <h2>Antes de abrir a calculadora</h2>
           </div>
-          <div class="cartao">
-            <ul>
-              <li>A AWS Pricing Calculator: região, serviço, quantidade e horas de uso.</li>
-              <li>A calculadora de preços do Azure: a mesma estimativa, para comparar.</li>
-              <li>Orçamentos e alertas de gasto: a conta não pode ser surpresa.</li>
-            </ul>
+
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C1</span>
+              <h3>O que entra numa estimativa</h3>
+              <p>Uma calculadora de preço só responde bem se você souber o que perguntar. Para cada serviço, ela quer saber:</p>
+              <ul>
+                <li><strong>A região:</strong> o mesmo serviço custa diferente em cada lugar do mundo.</li>
+                <li><strong>O tamanho:</strong> quantos processadores (vCPU) e quanta memória a máquina tem.</li>
+                <li><strong>O tempo de uso:</strong> ligada o mês inteiro ou só em horário comercial.</li>
+                <li><strong>O armazenamento:</strong> quantos gigabytes de disco e de arquivos.</li>
+                <li><strong>A saída de dados:</strong> quanto os clientes baixam do site.</li>
+                <li><strong>O jeito de pagar:</strong> sob demanda, plano de economia, reserva (aula 5).</li>
+              </ul>
+              <p class="dica cuidado"><strong>Os preços da AWS vêm em dólar (USD).</strong> A conta em reais muda com o câmbio do dia. A calculadora do Azure deixa trocar a moeda para real, embaixo da estimativa.</p>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C2</span>
+              <h3>A lista de compras do Ateliê</h3>
+              <p>Para a primeira estimativa, a gente simplifica: o site, os pedidos e o banco de dados ficam numa máquina só, e as fotos e os backups num armazenamento à parte. Na Unidade 2, essa arquitetura melhora.</p>
+              <div class="tabela-rola"><table class="metodos"><thead><tr><th>O que o Ateliê precisa</th><th>Na AWS</th><th>No Azure</th></tr></thead><tbody>
+                <tr><td>Uma máquina para o site, os pedidos e o banco (Linux, 2 vCPU, 4 GB de memória, ligada o mês todo)</td><td>Amazon EC2, tipo <code>t3.medium</code></td><td>Máquinas virtuais, tamanho <code>B2s</code></td></tr>
+                <tr><td>O disco dessa máquina (30 GB)</td><td>Amazon EBS, SSD de uso geral (gp3), 30 GB</td><td>Discos gerenciados, SSD Standard de 32 GiB (o tamanho mais próximo)</td></tr>
+                <tr><td>As fotos dos doces e os backups (50 GB)</td><td>Amazon S3, classe S3 Standard</td><td>Contas de armazenamento, tipo Armazenamento de Blobs de Bloco</td></tr>
+                <tr><td>Onde</td><td>América do Sul (São Paulo)</td><td>Brazil South</td></tr>
+              </tbody></table></div>
+              <p class="dica">Os tipos <code>t3.medium</code> e <code>B2s</code> têm o mesmo tamanho (2 vCPU e 4 GB de memória). Comparar máquinas de tamanhos diferentes não vale.</p>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C3</span>
+              <h3>Orçamento e alerta: a conta sem susto</h3>
+              <p>Estimar é a primeira metade. A segunda é <strong>acompanhar</strong>: definir um orçamento mensal e receber um aviso quando o gasto chegar perto dele. Na AWS, isso é o <strong>AWS Budgets</strong>; no Azure, o <strong>Gerenciamento de Custos</strong>, com orçamentos e alertas.</p>
+              <p>E três hábitos que economizam de verdade:</p>
+              <ol>
+                <li><strong>Desligar o que não está em uso</strong>, como a máquina de testes à noite e no fim de semana.</li>
+                <li><strong>Apagar o que sobrou</strong>: máquina desligada ainda paga o disco, se o disco continuar criado.</li>
+                <li><strong>Etiquetar os recursos</strong> (tags), para saber quanto cada parte da empresa gasta.</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== TUTORIAL ===================== -->
+        <section class="parte" id="tutorial">
+          <div class="cab">
+            <span class="olho">T1 · tutorial</span>
+            <h2>Mão na massa: a estimativa do Ateliê, nas duas nuvens</h2>
+            <p>As duas calculadoras são gratuitas e não pedem conta nem cartão. Faça um passo de cada vez; cada item da atividade, lá embaixo, diz qual passo mostra como fazer.</p>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-1">
+            <div class="texto">
+              <span class="olho">Passo 1 · item 1 da atividade</span>
+              <h3>A atividade do Módulo 2, na AWS Academy</h3>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Entre na <a href="https://www.awsacademy.com/vforcesite/LMS_Login">AWS Academy</a>, abra o curso <strong>Cloud Foundations</strong> e o <strong>Módulo 2</strong>.</li>
+                  <li>Faça a atividade <strong>Calculadora Mensal Simples</strong>, seguindo as instruções do módulo.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-2">
+            <div class="texto">
+              <span class="olho">Passo 2 · item 2 da atividade</span>
+              <h3>A máquina do Ateliê na AWS Pricing Calculator</h3>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Abra a <a href="https://calculator.aws/">AWS Pricing Calculator</a> e clique em <strong>Criar estimativa</strong>.</li>
+                  <li>Em <strong>Escolher uma região</strong>, troque para <strong>América do Sul (São Paulo)</strong>.</li>
+                  <li>Em <strong>Localizar serviço</strong>, digite <code>EC2</code> e clique em <strong>Configurar</strong>, no cartão do Amazon EC2.</li>
+                  <li>Em <strong>Descrição</strong>, escreva <code>Ateliê: site e pedidos</code>.</li>
+                  <li>Deixe o <strong>Sistema operacional</strong> em Linux, a carga de trabalho em <strong>Uso constante</strong> e <strong>1</strong> instância.</li>
+                  <li>Em <strong>Pesquisar tipo de instância</strong>, digite <code>t3.medium</code> e marque essa linha na lista.</li>
+                  <li>Em <strong>Opções de pagamento</strong>, escolha <strong>Sob demanda</strong> (veja o cuidado abaixo).</li>
+                  <li>Abra <strong>Amazon Elastic Block Store (EBS) - opcional</strong>: SSD de uso geral (gp3) e <strong>Quantidade de armazenamento</strong> de <code>30</code> GB.</li>
+                  <li>Clique em <strong>Salvar e adicionar serviço</strong>.</li>
+                </ol>
+              </div>
+              <p class="dica cuidado"><strong>Cuidado com o jeito de pagar:</strong> a calculadora da AWS já vem marcada com um <strong>plano de economia de 3 anos</strong>, e não com o pagamento sob demanda. Para comparar com o servidor próprio da aula 5, use <strong>Sob demanda</strong>. O plano de economia entra depois, como "e se a gente se comprometer por 3 anos?".</p>
+              <div class="faca-assim">
+                <strong>Teste:</strong>
+                <ol>
+                  <li>Antes de salvar, troque <strong>Sob demanda</strong> por um plano de economia e veja o custo mensal mudar. Volte para Sob demanda.</li>
+                  <li>Troque a região para <strong>Leste dos EUA (N. da Virgínia)</strong>. O preço mudou? Volte para São Paulo.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-3">
+            <div class="texto">
+              <span class="olho">Passo 3 · item 3 da atividade</span>
+              <h3>As fotos e o backup, e o link da estimativa</h3>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Ainda na mesma estimativa, em <strong>Localizar serviço</strong>, digite <code>S3</code> e clique em <strong>Configurar</strong> no cartão <strong>Amazon Simple Storage Service (S3)</strong>, com a região em São Paulo.</li>
+                  <li>Escreva a descrição <code>Ateliê: fotos e backups</code>. Em <strong>S3 Standard</strong>, no campo <strong>Armazenamento S3 Standard</strong>, informe <code>50</code> GB por mês.</li>
+                  <li>Clique em <strong>Salvar e visualizar resumo</strong>. Anote o <strong>custo mensal</strong> e o <strong>custo total de 12 meses</strong>.</li>
+                  <li>Clique em <strong>Compartilhar</strong>. A calculadora avisa que o link é público (qualquer pessoa com ele vê a estimativa); clique em <strong>Concordar e continuar</strong> e copie o link para o trabalho.</li>
+                </ol>
+              </div>
+              <p class="dica">Não coloque nome de cliente, senha nem dado pessoal na descrição: o link da estimativa é público.</p>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-4">
+            <div class="texto">
+              <span class="olho">Passo 4 · item 4 da atividade</span>
+              <h3>A mesma estimativa na calculadora do Azure</h3>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Abra a <a href="https://azure.microsoft.com/pt-br/pricing/calculator/">calculadora de preços do Azure</a>.</li>
+                  <li>Em <strong>Pesquisar produtos</strong>, digite <code>Máquinas virtuais</code> e clique em <strong>Adicionar à estimativa</strong>.</li>
+                  <li>Na estimativa, ajuste: <strong>Região</strong> Brazil South; <strong>Sistema operacional</strong> Linux (vem marcado Windows); a instância <code>B2s</code>; 1 máquina, <strong>730 horas</strong> (o mês inteiro).</li>
+                  <li>Deixe o pagamento em <strong>Pago conforme o uso</strong>, que é o sob demanda do Azure.</li>
+                  <li>Para o disco, pesquise <code>Discos gerenciados</code>, adicione e escolha um disco SSD Standard de 32 GiB, em Brazil South.</li>
+                  <li>Para as fotos, pesquise <code>Contas de armazenamento</code> e adicione. Deixe o <strong>Tipo</strong> em <strong>Armazenamento de Blobs de Bloco</strong>, a <strong>Camada de acesso</strong> em Quente, a região em Brazil South e a capacidade em <code>50</code> GB.</li>
+                  <li>Lá embaixo, em <strong>Moeda</strong>, escolha <strong>Brasil – Real – BRL (R$)</strong>.</li>
+                  <li>Use <strong>Compartilhar</strong> ou <strong>Exportar</strong> para guardar a estimativa.</li>
+                </ol>
+              </div>
+              <div class="faca-assim desafio">
+                <strong>Agora é com você:</strong>
+                <ol>
+                  <li>Para comparar com a AWS, converta a estimativa da AWS para reais com a cotação do dólar de hoje.</li>
+                  <li>Qual das duas ficou mais barata? E quanto as duas custam a mais ou a menos que o servidor próprio da aula 5?</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-5">
+            <div class="texto">
+              <span class="olho">Passo 5 · item 5 da atividade · desafio</span>
+              <h3>Isso entra na conta?</h3>
+              <p>Oito situações do dia a dia da nuvem. Cada acerto de primeira vale <strong>10 XP</strong>; errou, a dica aparece e você tenta de novo.</p>
+              <div class="faca-assim desafio">
+                <strong>Agora é com você:</strong>
+                <div class="classifica" data-opcoes="cobra:Cobra,gratis:Quase sempre grátis" data-dica="Lembre do conceito C3 da aula 5: computação, armazenamento e dados que saem pesam na conta.">
+                  <p class="classifica-placar" aria-live="polite"></p>
+                  <ol class="classifica-itens">
+                    <li data-resposta="cobra" data-explica="Computação é cobrada por hora ou por segundo enquanto a máquina está ligada.">Uma máquina virtual ligada o mês inteiro.</li>
+                    <li data-resposta="gratis" data-explica="Na maioria dos casos, a AWS não cobra pelos dados que entram.">Os arquivos que você envia para dentro da AWS.</li>
+                    <li data-resposta="cobra" data-explica="Os dados que saem para a internet são cobrados por gigabyte.">As fotos que os clientes baixam do site.</li>
+                    <li data-resposta="cobra" data-explica="A máquina parada não cobra computação, mas o disco que continua criado, sim.">Uma máquina desligada, mas com o disco ainda criado.</li>
+                    <li data-resposta="gratis" data-explica="As calculadoras de preço são gratuitas e não pedem conta.">Montar uma estimativa na AWS Pricing Calculator.</li>
+                    <li data-resposta="cobra" data-explica="Armazenamento é cobrado por gigabyte guardado.">50 GB de fotos guardados no Amazon S3.</li>
+                    <li data-resposta="gratis" data-explica="Na maioria dos casos, a transferência entre serviços da AWS na mesma região não é cobrada.">Copiar dados entre dois serviços da AWS, na mesma região.</li>
+                    <li data-resposta="cobra" data-explica="Esquecida ou não, a máquina ligada continua sendo cobrada: por isso os alertas de gasto.">Uma máquina de testes esquecida ligada no fim de semana.</li>
+                  </ol>
+                  <button type="button" class="botao contorno classifica-reiniciar">Jogar de novo</button>
+                </div>
+              </div>
+              <p class="fonte">Fonte: <a href="https://docs.aws.amazon.com/pt_br/whitepapers/latest/how-aws-pricing-works/key-principles.html">AWS, How AWS Pricing Works: princípios</a>. Há exceções: confira sempre a página de preços de cada serviço.</p>
+            </div>
           </div>
         </section>
 
@@ -127,13 +290,15 @@
             <h2>A estimativa do Ateliê</h2>
           </div>
           <div class="cartao caso">
-            <p>O Ateliê Doce Byte precisa de: um servidor para o site e os pedidos, um banco de dados e um lugar para guardar as fotos dos produtos e os backups.</p>
-            <p>A dona pediu duas estimativas, uma na AWS e outra no Azure, e quer comparar com o servidor próprio da aula 5.</p>
+            <p>A dona do <strong>Ateliê Doce Byte</strong> gostou da conta da aula 5, mas quer números de verdade antes de decidir: "quanto vou pagar por mês, em reais? E no Dia das Mães, quando o site precisar de mais força?"</p>
+            <p>Ela também quer saber se dá para pagar menos se prometer ficar na nuvem por alguns anos.</p>
             <h3>Para discutir</h3>
             <ol>
-              <li>Qual região você escolheu? Ela muda o preço?</li>
-              <li>O que mais pesa na conta mensal?</li>
-              <li>O que você desligaria à noite para economizar?</li>
+              <li>Qual região você escolheu? Por que não a mais barata?</li>
+              <li>O que mais pesa na conta mensal do Ateliê: a máquina, o disco ou as fotos?</li>
+              <li>Para o Dia das Mães, o que você mudaria na estimativa, e por quantos dias?</li>
+              <li>Vale a pena um plano de economia de 3 anos para uma empresa que ainda está testando a nuvem? Por quê?</li>
+              <li>Que alerta de gasto você criaria para a dona dormir tranquila?</li>
             </ol>
             <p class="fonte">Caso fictício, criado para a disciplina.</p>
           </div>
@@ -149,16 +314,37 @@
 
           <div class="cartao">
             <div class="progresso-atividade" data-progresso="passos-aula-06">
-              <span class="contagem">0 de 5</span>
+              <span class="contagem">0 de 6</span>
               <span class="barra-progresso"><span></span></span>
             </div>
             <ol class="checklist" id="passos-aula-06">
-              <li><label><input type="checkbox"><span>Fiz a atividade Calculadora Mensal Simples do Módulo 2.</span></label></li>
-              <li><label><input type="checkbox"><span>Montei a estimativa do Ateliê na AWS Pricing Calculator.</span></label></li>
-              <li><label><input type="checkbox"><span>Montei a mesma estimativa na calculadora do Azure.</span></label></li>
-              <li><label><input type="checkbox"><span>Salvei os dois links da estimativa para o trabalho.</span></label></li>
-              <li><label><input type="checkbox"><span>Comparei com o custo do servidor próprio da aula 5.</span></label></li>
+              <li><label><input type="checkbox"><span>Fiz a atividade Calculadora Mensal Simples, do Módulo 2. <a href="#passo-1">Veja o passo 1</a>.</span></label></li>
+              <li><label><input type="checkbox"><span>Configurei a máquina do Ateliê na AWS Pricing Calculator, sob demanda. <a href="#passo-2">Veja o passo 2</a>.</span></label></li>
+              <li><label><input type="checkbox"><span>Acrescentei as fotos e o backup e copiei o link da estimativa. <a href="#passo-3">Veja o passo 3</a>.</span></label></li>
+              <li><label><input type="checkbox"><span>Montei a mesma estimativa na calculadora do Azure, em reais. <a href="#passo-4">Veja o passo 4</a>.</span></label></li>
+              <li><label><input type="checkbox"><span>Fiz o desafio "Isso entra na conta?". <a href="#passo-5">Veja o passo 5</a>.</span></label></li>
+              <li><label><input type="checkbox"><span>Comparei as duas estimativas com o servidor próprio da aula 5.</span></label></li>
             </ol>
+          </div>
+        </section>
+
+        <!-- ===================== CONEXÃO STEAM ===================== -->
+        <section class="parte" id="steam">
+          <div class="cab">
+            <span class="olho">S1 · conexão STEAM</span>
+            <h2>A estimativa fora da tela</h2>
+          </div>
+          <div class="steam">
+            <div class="cartao">
+              <span class="letra">M</span>
+              <h3>Matemática</h3>
+              <p>Dólar vira real com uma multiplicação: US$ 40 com o dólar a R$ 5,50 (cotação de exemplo) dão R$ 220. Se o dólar subir para R$ 6,00, a mesma conta vira R$ 240, sem você mudar nada na nuvem.</p>
+            </div>
+            <div class="cartao">
+              <span class="letra">A</span>
+              <h3>Arte</h3>
+              <p>Desenhe a "lista de compras" do Ateliê em blocos: a máquina, o disco e o armazenamento das fotos, com o preço de cada um. É o rascunho do diagrama que vem na Unidade 2.</p>
+            </div>
           </div>
         </section>
 
@@ -166,21 +352,9 @@
         <section class="parte" id="materiais">
           <div class="cab">
             <span class="olho">J1 · materiais</span>
-            <h2>AWS Academy e Microsoft Learn</h2>
+            <h2>As calculadoras e os módulos</h2>
           </div>
           <div class="repos">
-            <a class="repo luz" href="https://www.awsacademy.com/">
-              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS Academy</span>
-              <h4>Cloud Foundations</h4>
-              <p>Módulo 2: atividade Calculadora Mensal Simples.</p>
-              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/aws.svg" alt="" width="20" height="20"></span>AWS</span><span class="etiqueta">trilha</span></span>
-            </a>
-            <a class="repo luz" href="https://learn.microsoft.com/pt-br/training/paths/describe-azure-management-governance/">
-              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Microsoft Learn</span>
-              <h4>Trilha 3: gerenciamento e governança</h4>
-              <p>Módulo Descrever o gerenciamento de custos no Azure (calculadora de preços).</p>
-              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/azure.svg" alt="" width="20" height="20"></span>Azure</span><span class="etiqueta">como é no Azure</span></span>
-            </a>
             <a class="repo luz" href="https://calculator.aws/">
               <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS</span>
               <h4>AWS Pricing Calculator</h4>
@@ -190,8 +364,20 @@
             <a class="repo luz" href="https://azure.microsoft.com/pt-br/pricing/calculator/">
               <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Azure</span>
               <h4>Calculadora de preços do Azure</h4>
-              <p>A mesma estimativa no Azure, para comparar.</p>
+              <p>A mesma estimativa no Azure, em reais.</p>
               <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/azure.svg" alt="" width="20" height="20"></span>Azure</span><span class="etiqueta">ferramenta</span></span>
+            </a>
+            <a class="repo luz" href="https://www.awsacademy.com/vforcesite/LMS_Login">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS Academy</span>
+              <h4>Cloud Foundations</h4>
+              <p>Módulo 2: a atividade Calculadora Mensal Simples.</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/aws.svg" alt="" width="20" height="20"></span>AWS</span><span class="etiqueta">trilha</span></span>
+            </a>
+            <a class="repo luz" href="https://aws.amazon.com/pt/aws-cost-management/aws-budgets/">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS</span>
+              <h4>AWS Budgets</h4>
+              <p>Orçamentos e alertas de gasto na AWS.</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/aws.svg" alt="" width="20" height="20"></span>AWS</span><span class="etiqueta">leitura</span></span>
             </a>
           </div>
         </section>
@@ -203,7 +389,7 @@
             <div>
               <span class="olho">E1 · entrega</span>
               <h3>Trabalho da Unidade 1, começado</h3>
-              <p>Modelo de serviço, modelo de implantação e as duas estimativas: a entrega é na aula 7.</p>
+              <p>Junte a ficha do Ateliê (aula 3), a conta "comprar ou alugar" (aula 5) e os links das duas estimativas de hoje. A entrega é na aula 7, com a escolha da região.</p>
             </div>
           </div>
         </section>
@@ -242,6 +428,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
   <script src="../assets/js/conta.js?v=5" data-disciplina="fundamentos-nuvem"></script>
   <script src="../assets/js/aulas.js?v=3"></script>
+  <script src="../assets/js/classifica.js?v=2"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
 </body>
 </html>
