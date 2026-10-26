@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- EDITE AQUI: número e tema da aula -->
+  <title>Aula 5: Comprar ou alugar? · Fundamentos de Computação em Nuvem · Stela</title>
+  <meta name="description" content="Aula 5 de Fundamentos de Computação em Nuvem: CapEx e OpEx, custo total de propriedade (TCO), faturamento e níveis gratuitos.">
+
+  <link rel="icon" href="../assets/img/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <script src="../assets/js/placa.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100..125,400..900&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../assets/css/estilo.css">
+  <link rel="stylesheet" href="../assets/css/disciplina.css?v=4">
+  <link rel="stylesheet" href="../assets/css/aula.css?v=2">
+  <link rel="stylesheet" href="../assets/css/neon.css?v=1">
+  <link rel="stylesheet" href="../assets/css/conta.css?v=4">
+</head>
+<body>
+
+  <!-- ===================== BARRA DO TOPO (igual em todos os sites) ===================== -->
+  <header class="barra">
+    <div class="envolve">
+      <div class="marcas">
+        <a class="marca-disc marca-logo" href="../" title="Página inicial da disciplina"><img src="../assets/img/nuvem-trilhas.svg?v=1" alt="Fundamentos de Computação em Nuvem: página inicial da disciplina" width="32" height="32"></a>
+      </div>
+      <button type="button" class="btn-menu" id="btn-menu" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav class="nav" id="menu" aria-label="Partes da aula">
+        <a href="../#aulas">← Todas as aulas</a>
+        <a href="#conceitos">Conceitos</a>
+        <a href="#caso">Caso</a>
+        <a href="#atividade">Atividade</a>
+        <a href="#materiais">Materiais</a>
+        <a href="#entrega">Entrega</a>
+      </nav>
+      <div class="ajustes">
+        <button type="button" id="btn-tema" aria-label="Mudar para o tema claro">
+          <svg class="sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+        </button>
+        <button type="button" id="btn-fonte" aria-label="Aumentar o tamanho do texto">A+</button>
+        <button type="button" id="btn-movimento" aria-pressed="false">
+          <svg class="pausar" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          <svg class="tocar" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+          <span class="rotulo">Pausar animações</span>
+        </button>
+        <a class="marca" href="/" title="Portal da Stela">
+          <img src="../assets/img/estrela.webp" alt="" width="26" height="24">
+          <span class="marca-texto">Stela</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="inicio">
+
+    <!-- ===================== CABEÇALHO DA AULA ===================== -->
+    <section class="aula-cab">
+      <canvas class="chuva-matrix" aria-hidden="true"></canvas>
+      <div class="envolve">
+        <p class="trilha-migalhas">
+          <a href="/">Stela</a> <span aria-hidden="true">/</span>
+          <a href="../">Fundamentos de Computação em Nuvem</a> <span aria-hidden="true">/</span>
+          <a href="../#aulas">Aulas</a> <span aria-hidden="true">/</span>
+          <span>Aula 5</span>
+        </p>
+
+        <!-- EDITE AQUI: número, tipo de aula, unidade e título -->
+        <div class="aula-etiquetas">
+          <span class="etiqueta senac">Fac Senac DF</span>
+          <span class="etiqueta ouro">Aula 5</span>
+          <span class="etiqueta">Estudo de caso</span>
+          <span class="etiqueta">Unidade 1</span>
+        </div>
+        <h1>Economia da nuvem: CapEx, OpEx e pagamento pelo uso</h1>
+        <p class="subtitulo">CapEx e OpEx, custo total de propriedade (TCO), faturamento e níveis gratuitos.</p>
+      </div>
+    </section>
+
+    <!-- ===================== RESUMO ===================== -->
+    <section class="bloco faixa alt" aria-label="Resumo da aula">
+      <div class="envolve">
+        <div class="resumo">
+          <div class="cartao">
+            <span class="olho">Objetivo do dia</span>
+            <p>Comparar os custos de manter servidores próprios e de usar a nuvem.</p>
+          </div>
+          <div class="cartao">
+            <span class="olho">Antes da aula</span>
+            <p>Fazer o Módulo 2 do Cloud Foundations (Economia e faturamento da nuvem).</p>
+          </div>
+          <div class="cartao">
+            <span class="olho">Como conta ponto</span>
+            <p>Atividade da aula.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="bloco">
+      <div class="envolve aula-corpo">
+
+        <!-- ===================== CONCEITOS ===================== -->
+        <section class="parte" id="conceitos">
+          <div class="cab">
+            <span class="olho">C1 · conceitos</span>
+            <h2>O que você vai ver</h2>
+          </div>
+          <div class="cartao">
+            <ul>
+              <li>CapEx (investir antes de usar) e OpEx (pagar pelo que usou).</li>
+              <li>Custo total de propriedade: os custos que ninguém vê (energia, espaço, pessoas, manutenção).</li>
+              <li>Faturamento na nuvem, níveis gratuitos e alertas de gasto.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ===================== ESTUDO DE CASO ===================== -->
+        <section class="parte" id="caso">
+          <div class="cab">
+            <span class="olho">EC1 · estudo de caso</span>
+            <h2>As contas do servidor novo</h2>
+          </div>
+          <div class="cartao caso">
+            <p>O servidor do Ateliê Doce Byte precisa ser trocado. A loja de informática ofereceu um servidor novo, pago à vista.</p>
+            <p>A dona quer saber se compensa mais comprar ou alugar na nuvem.</p>
+            <h3>Para discutir</h3>
+            <ol>
+              <li>Além do preço do servidor, que outros custos a empresa tem para mantê-lo?</li>
+              <li>Quais desses custos somem na nuvem? Quais aparecem?</li>
+              <li>Para uma confeitaria que vende muito em poucas datas do ano, qual modelo faz mais sentido?</li>
+            </ol>
+            <p class="fonte">Caso fictício, criado para a disciplina.</p>
+          </div>
+        </section>
+
+        <!-- ===================== ATIVIDADE ===================== -->
+        <section class="parte" id="atividade">
+          <div class="cab">
+            <span class="olho">A1 · atividade</span>
+            <h2>Checklist da aula</h2>
+            <p>O que você marcar fica salvo neste navegador e, se você entrar com o e-mail da faculdade (botão <strong>Entrar</strong>, no topo), na sua conta.</p>
+          </div>
+
+          <div class="cartao">
+            <div class="progresso-atividade" data-progresso="passos-aula-05">
+              <span class="contagem">0 de 4</span>
+              <span class="barra-progresso"><span></span></span>
+            </div>
+            <ol class="checklist" id="passos-aula-05">
+              <li><label><input type="checkbox"><span>Fiz o Módulo 2 do Cloud Foundations.</span></label></li>
+              <li><label><input type="checkbox"><span>Sei explicar CapEx e OpEx com um exemplo.</span></label></li>
+              <li><label><input type="checkbox"><span>Listei os custos escondidos de um servidor próprio.</span></label></li>
+              <li><label><input type="checkbox"><span>Fiz o módulo do Learn Descrever o gerenciamento de custos no Azure.</span></label></li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- ===================== MATERIAIS ===================== -->
+        <section class="parte" id="materiais">
+          <div class="cab">
+            <span class="olho">J1 · materiais</span>
+            <h2>AWS Academy e Microsoft Learn</h2>
+          </div>
+          <div class="repos">
+            <a class="repo luz" href="https://www.awsacademy.com/">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS Academy</span>
+              <h4>Cloud Foundations</h4>
+              <p>Módulo 2: Economia e faturamento da nuvem.</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/aws.svg" alt="" width="20" height="20"></span>AWS</span><span class="etiqueta">trilha</span></span>
+            </a>
+            <a class="repo luz" href="https://learn.microsoft.com/pt-br/training/paths/describe-azure-management-governance/">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Microsoft Learn</span>
+              <h4>Trilha 3: gerenciamento e governança</h4>
+              <p>Módulo Descrever o gerenciamento de custos no Azure.</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/azure.svg" alt="" width="20" height="20"></span>Azure</span><span class="etiqueta">como é no Azure</span></span>
+            </a>
+          </div>
+        </section>
+
+        <!-- ===================== ENTREGA ===================== -->
+        <section class="parte" id="entrega">
+          <div class="cartao entrega">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+            <div>
+              <span class="olho">E1 · entrega</span>
+              <h3>Atividade da aula</h3>
+              <p>A lista de custos do servidor próprio, no Moodle.</p>
+            </div>
+          </div>
+        </section>
+
+        <nav class="nav-aulas" aria-label="Outras aulas">
+          <!-- EDITE AQUI: use <a href="aula-NN.html"> quando a página da aula vizinha for liberada; <span> enquanto não for -->
+          <a class="anterior" href="aula-04.html">
+            <span class="olho">← aula anterior</span>
+            <strong>Aula 4: O que a nuvem esconde</strong>
+          </a>
+          <a class="proxima" href="aula-06.html">
+            <span class="olho">próxima aula →</span>
+            <strong>Aula 6: Quanto custa a nuvem?</strong>
+          </a>
+        </nav>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="rodape">
+    <div class="envolve">
+      <div class="rodape-fim" style="margin-top:0; padding-top:0; border-top:0">
+        <span><a href="../">Fundamentos de Computação em Nuvem</a> · Feito com ♥ e sucata eletrônica.</span>
+        <span>aws ec2 describe-regions --region sa-east-1</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ícone de repositório (Octicons, licença MIT) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="ic-repo" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/></symbol>
+  </svg>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="../assets/js/conta.js?v=5" data-disciplina="fundamentos-nuvem"></script>
+  <script src="../assets/js/aulas.js?v=3"></script>
+  <script src="../assets/js/matrix.js?v=2"></script>
+</body>
+</html>
