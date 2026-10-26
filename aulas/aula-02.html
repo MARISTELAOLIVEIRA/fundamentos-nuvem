@@ -6,7 +6,7 @@
 
   <!-- EDITE AQUI: número e tema da aula -->
   <title>Aula 2: IaaS, PaaS e SaaS · Fundamentos de Computação em Nuvem · Stela</title>
-  <meta name="description" content="Aula 2 de Fundamentos de Computação em Nuvem: A definição oficial, as cinco características essenciais e os três modelos de serviço.">
+  <meta name="description" content="Aula 2 de Fundamentos de Computação em Nuvem: a definição do NIST, as cinco características essenciais e IaaS, PaaS e SaaS, com o desafio Classifique!">
 
   <link rel="icon" href="../assets/img/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/img/favicon-32.png">
@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../assets/css/aula.css?v=2">
   <link rel="stylesheet" href="../assets/css/neon.css?v=1">
   <link rel="stylesheet" href="../assets/css/conta.css?v=4">
+  <link rel="stylesheet" href="../assets/css/interativos.css?v=1">
 </head>
 <body>
 
@@ -33,6 +34,7 @@
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#tutorial">Tutorial</a>
         <a href="#caso">Caso</a>
         <a href="#atividade">Atividade</a>
         <a href="#materiais">Materiais</a>
@@ -77,8 +79,8 @@
           <span class="etiqueta">Situação-problema</span>
           <span class="etiqueta">Unidade 1</span>
         </div>
-        <h1>O que é computação em nuvem: IaaS, PaaS e SaaS</h1>
-        <p class="subtitulo">A definição oficial, as cinco características essenciais e os três modelos de serviço.</p>
+        <h1>O que é computação em <span class="neon">nuvem</span>: IaaS, PaaS e SaaS</h1>
+        <p class="subtitulo">A definição oficial, as cinco características que fazem uma nuvem ser nuvem e os três jeitos de usar.</p>
       </div>
     </section>
 
@@ -92,11 +94,11 @@
           </div>
           <div class="cartao">
             <span class="olho">Antes da aula</span>
-            <p>Fazer o Módulo 1 do Cloud Foundations (Visão geral dos conceitos de nuvem).</p>
+            <p>Ter o acesso ao curso Cloud Foundations, da AWS Academy (o convite chega no e-mail da faculdade).</p>
           </div>
           <div class="cartao">
             <span class="olho">Como conta ponto</span>
-            <p>Atividade da aula.</p>
+            <p>Atividade da aula: os seus serviços classificados em IaaS, PaaS ou SaaS.</p>
           </div>
         </div>
       </div>
@@ -108,16 +110,159 @@
         <!-- ===================== CONCEITOS ===================== -->
         <section class="parte" id="conceitos">
           <div class="cab">
-            <span class="olho">C1 · conceitos</span>
-            <h2>O que você vai ver</h2>
+            <span class="olho">C1–C3 · conceitos</span>
+            <h2>O que é a nuvem, de verdade</h2>
           </div>
-          <div class="cartao">
-            <ul>
-              <li>A definição do NIST e as cinco características essenciais.</li>
-              <li>IaaS: você aluga a infraestrutura e cuida do resto.</li>
-              <li>PaaS: o provedor cuida também do sistema e do ambiente.</li>
-              <li>SaaS: você só usa o software pronto.</li>
-            </ul>
+
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C1</span>
+              <h3>É o computador de outra pessoa (muito bem organizado)</h3>
+              <p>Quando você assiste a uma série, guarda uma foto ou manda um e-mail, quem trabalha é um computador que você nunca viu, dentro de um data center. A nuvem é isso: usar pela internet, na hora em que precisa, as máquinas, os discos e os programas de uma empresa, e pagar pelo que usou.</p>
+              <p>A definição mais usada é a do NIST, o instituto de padrões dos Estados Unidos. Em poucas palavras: computação em nuvem é um modelo que dá acesso <strong>pela rede</strong>, <strong>quando você quiser</strong>, a um <strong>conjunto compartilhado</strong> de recursos (redes, servidores, armazenamento, aplicações e serviços), que são ligados e desligados <strong>rápido</strong> e com <strong>pouco esforço</strong> de quem usa.</p>
+              <p class="fonte">Fonte: <a href="https://csrc.nist.gov/pubs/sp/800/145/final">NIST SP 800-145</a>, setembro de 2011 (resumo em português).</p>
+              <p class="dica"><strong>Provedor</strong> é a empresa dona da nuvem, que aluga os recursos: AWS (da Amazon), Microsoft Azure, Google Cloud, entre outras. Nesta disciplina, a AWS é o exemplo principal e o Azure é a comparação.</p>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C2</span>
+              <h3>As cinco características essenciais</h3>
+              <p>São elas que separam a nuvem de um servidor alugado qualquer. Guarde as cinco: elas caem na avaliação.</p>
+              <div class="tabela-rola"><table class="metodos"><thead><tr><th>Característica</th><th>O que quer dizer</th><th>Na prática</th></tr></thead><tbody>
+                <tr><td><strong>Autoatendimento sob demanda</strong></td><td>Você mesmo pede o recurso, sem falar com ninguém.</td><td>Criar uma máquina virtual em minutos, pelo site do provedor.</td></tr>
+                <tr><td><strong>Amplo acesso pela rede</strong></td><td>Funciona pela internet, de qualquer aparelho.</td><td>O mesmo arquivo no celular, no notebook e no computador da faculdade.</td></tr>
+                <tr><td><strong>Recursos compartilhados</strong></td><td>Os servidores do provedor atendem muitos clientes ao mesmo tempo, cada um no seu espaço.</td><td>Você não sabe (nem precisa saber) em qual servidor físico está.</td></tr>
+                <tr><td><strong>Elasticidade rápida</strong></td><td>Cresce e diminui conforme a necessidade, às vezes sozinho.</td><td>Mais servidores na Black Friday, menos de madrugada.</td></tr>
+                <tr><td><strong>Serviço medido</strong></td><td>Tudo é medido, e você paga pelo que usou.</td><td>Como a conta de luz: horas de máquina ligada, gigabytes guardados.</td></tr>
+              </tbody></table></div>
+              <p class="dica cuidado"><strong>Faltou uma, não é nuvem.</strong> Um servidor alugado por contrato anual, sem autoatendimento e sem elasticidade, fica mais perto de uma hospedagem tradicional do que de uma nuvem.</p>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C3</span>
+              <h3>Três jeitos de usar: IaaS, PaaS e SaaS</h3>
+              <p>A pergunta que separa os três é uma só: <strong>até onde você cuida, e a partir de onde o provedor cuida?</strong></p>
+              <ul>
+                <li><strong>IaaS</strong> (infraestrutura como serviço): você aluga a máquina virtual, o disco e a rede. O sistema operacional e tudo o que roda nele ficam com você. Exemplos: <strong>Amazon EC2</strong> e <strong>Azure Virtual Machines</strong>.</li>
+                <li><strong>PaaS</strong> (plataforma como serviço): o provedor cuida também do sistema operacional e do ambiente de execução. Você sobe o seu código e cuida dos seus dados. Exemplos: <strong>AWS Elastic Beanstalk</strong> e <strong>Azure App Service</strong>.</li>
+                <li><strong>SaaS</strong> (software como serviço): o programa já vem pronto. Você só usa, e cuida das suas contas e dos seus dados. Exemplos: <strong>Microsoft 365</strong> e <strong>Gmail</strong>.</li>
+              </ul>
+              <div class="tabela-rola"><table class="metodos camadas"><thead><tr><th>Camada</th><th>No seu servidor</th><th>IaaS</th><th>PaaS</th><th>SaaS</th></tr></thead><tbody>
+                <tr><td>Dados e contas de acesso</td><td class="voce">você</td><td class="voce">você</td><td class="voce">você</td><td class="voce">você</td></tr>
+                <tr><td>Aplicação (o seu programa)</td><td class="voce">você</td><td class="voce">você</td><td class="voce">você</td><td class="provedor">provedor</td></tr>
+                <tr><td>Ambiente de execução</td><td class="voce">você</td><td class="voce">você</td><td class="provedor">provedor</td><td class="provedor">provedor</td></tr>
+                <tr><td>Sistema operacional</td><td class="voce">você</td><td class="voce">você</td><td class="provedor">provedor</td><td class="provedor">provedor</td></tr>
+                <tr><td>Virtualização</td><td class="voce">você</td><td class="provedor">provedor</td><td class="provedor">provedor</td><td class="provedor">provedor</td></tr>
+                <tr><td>Servidores, discos e rede</td><td class="voce">você</td><td class="provedor">provedor</td><td class="provedor">provedor</td><td class="provedor">provedor</td></tr>
+                <tr><td>Prédio, energia e refrigeração</td><td class="voce">você</td><td class="provedor">provedor</td><td class="provedor">provedor</td><td class="provedor">provedor</td></tr>
+              </tbody></table></div>
+              <p class="legenda-camadas">Em <span class="voce">destaque</span>, o que fica com você. Repare na primeira linha: os dados e quem tem acesso a eles são sempre seus, em qualquer modelo. É a responsabilidade compartilhada, que volta na aula 7.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== TUTORIAL ===================== -->
+        <section class="parte" id="tutorial">
+          <div class="cab">
+            <span class="olho">T1 · tutorial</span>
+            <h2>Mão na massa: o primeiro módulo e as três perguntas</h2>
+            <p>Faça um passo de cada vez. Cada item da atividade, lá embaixo, diz qual passo mostra como fazer.</p>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-1">
+            <div class="texto">
+              <span class="olho">Passo 1 · item 1 da atividade</span>
+              <h3>Entre na AWS Academy e faça o Módulo 1</h3>
+              <p>O curso <strong>Cloud Foundations</strong> acompanha a disciplina inteira: cada aula aponta o módulo que vai junto. Hoje é o <strong>Módulo 1: Visão geral dos conceitos de nuvem</strong>.</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Procure, no seu e-mail da faculdade, o convite da AWS Academy e crie a sua senha. Não achou? Olhe a caixa de spam e, se não estiver lá, avise a professora.</li>
+                  <li>Entre pela <a href="https://www.awsacademy.com/vforcesite/LMS_Login">página de login da AWS Academy</a> e abra o curso <strong>Cloud Foundations</strong>.</li>
+                  <li>No menu do curso, clique em <strong>Módulos</strong> e abra o <strong>Módulo 1</strong>.</li>
+                  <li>Assista ao vídeo e leia o material do módulo, com calma.</li>
+                  <li>No fim, faça o <strong>teste de conhecimento</strong> do módulo.</li>
+                </ol>
+              </div>
+              <div class="faca-assim">
+                <strong>Teste:</strong>
+                <ol>
+                  <li>Sem olhar a página, diga em voz alta as cinco características essenciais da nuvem. Faltou alguma? Volte ao conceito C2.</li>
+                  <li>Explique para alguém de casa o que é "serviço medido" usando a conta de luz como exemplo.</li>
+                </ol>
+              </div>
+              <p class="dica cuidado"><strong>O material da AWS Academy é só para quem está no curso.</strong> Não copie nem compartilhe vídeos, slides ou questões fora da plataforma.</p>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-2">
+            <div class="texto">
+              <span class="olho">Passo 2 · item 3 da atividade</span>
+              <h3>As três perguntas que classificam qualquer serviço</h3>
+              <p>Na dúvida entre IaaS, PaaS e SaaS, faça estas perguntas, nesta ordem. A primeira resposta "sim" é a certa.</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li><strong>Você só usa o programa pronto</strong>, pelo navegador ou pelo aplicativo, sem instalar nada no servidor? Então é <strong>SaaS</strong>.</li>
+                  <li><strong>Você envia o seu código</strong> e o provedor cuida do servidor, do sistema operacional e das atualizações? Então é <strong>PaaS</strong>.</li>
+                  <li><strong>Você recebe uma máquina virtual</strong> e escolhe, instala e atualiza o sistema operacional e os programas? Então é <strong>IaaS</strong>.</li>
+                </ol>
+              </div>
+              <div class="faca-assim">
+                <strong>Teste:</strong>
+                <ol>
+                  <li>Aplique as três perguntas ao <strong>Gmail</strong>. Parou na primeira? Então é SaaS.</li>
+                  <li>Agora ao <strong>Amazon EC2</strong>: você recebe a máquina e cuida do sistema. Chegou à terceira pergunta: IaaS.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-3">
+            <div class="texto">
+              <span class="olho">Passo 3 · item 4 da atividade · desafio</span>
+              <h3>Classifique! IaaS, PaaS ou SaaS?</h3>
+              <p>Nove serviços de verdade, da AWS, do Azure, do Google e do dia a dia. Cada acerto de primeira vale <strong>10 XP</strong>; errou, a dica aparece e você tenta de novo. No fim, você ganha uma insígnia.</p>
+              <div class="faca-assim desafio">
+                <strong>Agora é com você:</strong>
+                <div class="classifica" data-opcoes="iaas:IaaS,paas:PaaS,saas:SaaS">
+                  <p class="classifica-placar" aria-live="polite"></p>
+                  <ol class="classifica-itens">
+                    <li data-resposta="iaas" data-explica="No Amazon EC2 você recebe a máquina virtual e cuida do sistema operacional.">Amazon EC2</li>
+                    <li data-resposta="saas" data-explica="O Microsoft 365 vem pronto: você só usa o Word, o Excel e o Teams.">Microsoft 365</li>
+                    <li data-resposta="paas" data-explica="No Azure App Service você envia o código do site e o Azure cuida do servidor.">Azure App Service</li>
+                    <li data-resposta="iaas" data-explica="Nas Azure Virtual Machines a máquina é sua para configurar, do sistema para cima.">Azure Virtual Machines</li>
+                    <li data-resposta="saas" data-explica="O Gmail é o programa pronto, no navegador ou no aplicativo.">Gmail</li>
+                    <li data-resposta="paas" data-explica="No AWS Elastic Beanstalk você sobe a aplicação e a AWS monta e mantém o ambiente.">AWS Elastic Beanstalk</li>
+                    <li data-resposta="iaas" data-explica="No Google Compute Engine você cria máquinas virtuais e cuida delas.">Google Compute Engine</li>
+                    <li data-resposta="saas" data-explica="O Canva é usado direto no navegador: nada para instalar nem manter.">Canva</li>
+                    <li data-resposta="paas" data-explica="No Google App Engine você envia o código e o Google cuida da plataforma.">Google App Engine</li>
+                  </ol>
+                  <button type="button" class="botao contorno classifica-reiniciar">Jogar de novo</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-4">
+            <div class="texto">
+              <span class="olho">Passo 4 · item 6 da atividade</span>
+              <h3>O mesmo assunto pelo lado da Microsoft</h3>
+              <p>As trilhas do Microsoft Learn são gratuitas e contam como conquistas no seu perfil, bom para o portfólio.</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Abra a <a href="https://learn.microsoft.com/pt-br/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/">trilha Descrever os conceitos de nuvem</a>, no Microsoft Learn.</li>
+                  <li>Clique em <strong>Entrar</strong>, no topo, com uma conta Microsoft, para o progresso ficar salvo.</li>
+                  <li>Faça os módulos <strong>Descrever a computação em nuvem</strong> e <strong>Descrever os tipos de serviço de nuvem</strong>, até a verificação de conhecimento de cada um.</li>
+                  <li>Confira as conquistas no seu perfil do Learn.</li>
+                </ol>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -128,15 +273,20 @@
             <h2>A pizza como serviço</h2>
           </div>
           <div class="cartao caso">
-            <p>Fazer a pizza em casa, comprar a congelada, pedir por aplicativo ou comer no restaurante: em cada jeito, uma parte do trabalho é sua e outra é de alguém.</p>
-            <p>Os modelos de serviço da nuvem funcionam do mesmo jeito.</p>
+            <p>Você quer comer pizza hoje. Dá para fazer de quatro jeitos, e em cada um uma parte do trabalho é sua e outra é de alguém.</p>
+            <div class="tabela-rola"><table class="metodos"><thead><tr><th>Jeito</th><th>O que fica com você</th><th>Na nuvem</th></tr></thead><tbody>
+              <tr><td>Fazer em casa</td><td>Tudo: ingredientes, massa, forno, mesa e louça.</td><td>No seu servidor</td></tr>
+              <tr><td>Comprar a congelada</td><td>O forno, a mesa e a louça. A pizza já vem pronta para assar.</td><td>IaaS</td></tr>
+              <tr><td>Pedir por aplicativo</td><td>Só a mesa e os refrigerantes. A pizza chega quente.</td><td>PaaS</td></tr>
+              <tr><td>Comer no restaurante</td><td>Só escolher e comer.</td><td>SaaS</td></tr>
+            </tbody></table></div>
             <h3>Para discutir</h3>
             <ol>
-              <li>Em cada jeito de comer pizza, o que fica com você e o que fica com o outro?</li>
-              <li>Qual jeito de comer pizza é o IaaS? E o SaaS?</li>
-              <li>A sua lista da aula 1: cada serviço é IaaS, PaaS ou SaaS?</li>
+              <li>Em qual jeito você tem mais controle sobre a pizza? E menos trabalho?</li>
+              <li>Uma empresa que não tem ninguém de TI combina mais com qual jeito? Por quê?</li>
+              <li>Pense num serviço que você usa todo dia: em qual linha da tabela ele fica?</li>
             </ol>
-            <p class="fonte">Analogia muito usada no ensino de nuvem; caso adaptado para a aula.</p>
+            <p class="fonte">Analogia muito usada no ensino de nuvem ("pizza as a service"), adaptada para a aula.</p>
           </div>
         </section>
 
@@ -150,16 +300,37 @@
 
           <div class="cartao">
             <div class="progresso-atividade" data-progresso="passos-aula-02">
-              <span class="contagem">0 de 5</span>
+              <span class="contagem">0 de 6</span>
               <span class="barra-progresso"><span></span></span>
             </div>
             <ol class="checklist" id="passos-aula-02">
-              <li><label><input type="checkbox"><span>Fiz o Módulo 1 do Cloud Foundations.</span></label></li>
-              <li><label><input type="checkbox"><span>Sei dizer as cinco características essenciais da nuvem.</span></label></li>
-              <li><label><input type="checkbox"><span>Expliquei a diferença entre IaaS, PaaS e SaaS com um exemplo de cada.</span></label></li>
-              <li><label><input type="checkbox"><span>Classifiquei os serviços da minha lista da aula 1.</span></label></li>
-              <li><label><input type="checkbox"><span>Fiz os módulos do Learn: Descrever a computação em nuvem e Descrever os tipos de serviço de nuvem.</span></label></li>
+              <li><label><input type="checkbox"><span>Fiz o Módulo 1 do Cloud Foundations, com o teste de conhecimento. <a href="#passo-1">Veja o passo 1</a>.</span></label></li>
+              <li><label><input type="checkbox"><span>Sei dizer as cinco características essenciais da nuvem. <a href="#conceitos">Veja o conceito C2</a>.</span></label></li>
+              <li><label><input type="checkbox"><span>Usei as três perguntas para classificar um serviço. <a href="#passo-2">Veja o passo 2</a>.</span></label></li>
+              <li><label><input type="checkbox"><span>Fiz o desafio Classifique! e ganhei a minha insígnia. <a href="#passo-3">Veja o passo 3</a>.</span></label></li>
+              <li><label><input type="checkbox"><span>Listei cinco serviços de nuvem que eu uso e classifiquei cada um em IaaS, PaaS ou SaaS, com uma frase explicando.</span></label></li>
+              <li><label><input type="checkbox"><span>Fiz os dois módulos do Microsoft Learn. <a href="#passo-4">Veja o passo 4</a>.</span></label></li>
             </ol>
+          </div>
+        </section>
+
+        <!-- ===================== CONEXÃO STEAM ===================== -->
+        <section class="parte" id="steam">
+          <div class="cab">
+            <span class="olho">S1 · conexão STEAM</span>
+            <h2>A nuvem fora da tela</h2>
+          </div>
+          <div class="steam">
+            <div class="cartao">
+              <span class="letra">M</span>
+              <h3>Matemática</h3>
+              <p>Serviço medido é conta de multiplicar: uma máquina ligada o mês inteiro são 24 horas × 30 dias = 720 horas. Desligue à noite (12 horas por dia) e a conta cai pela metade.</p>
+            </div>
+            <div class="cartao">
+              <span class="letra">A</span>
+              <h3>Arte</h3>
+              <p>Desenhe a sua "pizza como serviço" com um exemplo do seu dia a dia (lanche, roupa, transporte): fazer, comprar pronto, pedir ou usar o serviço.</p>
+            </div>
           </div>
         </section>
 
@@ -170,7 +341,7 @@
             <h2>AWS Academy e Microsoft Learn</h2>
           </div>
           <div class="repos">
-            <a class="repo luz" href="https://www.awsacademy.com/">
+            <a class="repo luz" href="https://www.awsacademy.com/vforcesite/LMS_Login">
               <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS Academy</span>
               <h4>Cloud Foundations</h4>
               <p>Módulo 1: Visão geral dos conceitos de nuvem.</p>
@@ -182,6 +353,12 @@
               <p>Módulos Descrever a computação em nuvem e Descrever os tipos de serviço de nuvem.</p>
               <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/azure.svg" alt="" width="20" height="20"></span>Azure</span><span class="etiqueta">como é no Azure</span></span>
             </a>
+            <a class="repo luz" href="https://csrc.nist.gov/pubs/sp/800/145/final">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>NIST</span>
+              <h4>SP 800-145: a definição de nuvem</h4>
+              <p>O documento original, em inglês, com só três páginas de definição.</p>
+              <span class="repo-pe"><span class="ling" style="--cor:#ecc874"><i></i>Leitura</span><span class="etiqueta">fonte</span></span>
+            </a>
           </div>
         </section>
 
@@ -191,8 +368,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             <div>
               <span class="olho">E1 · entrega</span>
-              <h3>Atividade da aula</h3>
-              <p>A classificação dos seus serviços, no Moodle.</p>
+              <h3>Os seus cinco serviços classificados</h3>
+              <p>No Moodle: cada serviço com o modelo (IaaS, PaaS ou SaaS) e uma frase explicando. Na próxima aula, os modelos de implantação e a empresa que vai acompanhar o semestre.</p>
             </div>
           </div>
         </section>
@@ -231,6 +408,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
   <script src="../assets/js/conta.js?v=5" data-disciplina="fundamentos-nuvem"></script>
   <script src="../assets/js/aulas.js?v=3"></script>
+  <script src="../assets/js/classifica.js?v=1"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
 </body>
 </html>
