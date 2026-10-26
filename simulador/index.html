@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Simulador do portal de nuvem · Fundamentos de Computação em Nuvem · Stela</title>
+  <meta name="description" content="Simulador para estudo que imita o fluxo do portal do Azure: grupo de recursos, máquina virtual e custos, com as missões do Ateliê Doce Byte. Sem conta, sem cartão e sem risco.">
+
+  <link rel="icon" href="../assets/img/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <script src="../assets/js/placa.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100..125,400..900&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../assets/css/estilo.css">
+  <link rel="stylesheet" href="../assets/css/disciplina.css?v=4">
+  <link rel="stylesheet" href="../assets/css/aula.css?v=2">
+  <link rel="stylesheet" href="../assets/css/neon.css?v=1">
+  <link rel="stylesheet" href="../assets/css/conta.css?v=4">
+  <link rel="stylesheet" href="portal.css?v=1">
+</head>
+<body>
+
+  <!-- ===================== BARRA DO TOPO (igual em todos os sites) ===================== -->
+  <header class="barra">
+    <div class="envolve">
+      <div class="marcas">
+        <a class="marca-disc marca-logo" href="../" title="Página inicial da disciplina"><img src="../assets/img/nuvem-trilhas.svg?v=1" alt="Fundamentos de Computação em Nuvem: página inicial da disciplina" width="32" height="32"></a>
+      </div>
+      <button type="button" class="btn-menu" id="btn-menu" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav class="nav" id="menu" aria-label="Partes do simulador">
+        <a href="../#atividades">← Atividades</a>
+        <a href="#simulador">Simulador</a>
+        <a href="#missoes">Missões</a>
+        <a href="#como-funciona">Como funciona</a>
+      </nav>
+      <div class="ajustes">
+        <button type="button" id="btn-tema" aria-label="Mudar para o tema claro">
+          <svg class="sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+        </button>
+        <button type="button" id="btn-fonte" aria-label="Aumentar o tamanho do texto">A+</button>
+        <button type="button" id="btn-movimento" aria-pressed="false">
+          <svg class="pausar" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          <svg class="tocar" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+          <span class="rotulo">Pausar animações</span>
+        </button>
+        <a class="marca" href="/" title="Portal da Stela">
+          <img src="../assets/img/estrela.webp" alt="" width="26" height="24">
+          <span class="marca-texto">Stela</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="inicio">
+
+    <!-- ===================== CABEÇALHO ===================== -->
+    <section class="aula-cab">
+      <canvas class="chuva-matrix" aria-hidden="true"></canvas>
+      <div class="envolve">
+        <p class="trilha-migalhas">
+          <a href="/">Stela</a> <span aria-hidden="true">/</span>
+          <a href="../">Fundamentos de Computação em Nuvem</a> <span aria-hidden="true">/</span>
+          <a href="../#atividades">Atividades</a> <span aria-hidden="true">/</span>
+          <span>Simulador</span>
+        </p>
+        <div class="aula-etiquetas">
+          <span class="etiqueta senac">Fac Senac DF</span>
+          <span class="etiqueta ouro">Simulador</span>
+          <span class="etiqueta">Unidade 1</span>
+        </div>
+        <h1>Simulador do portal de <span class="neon">nuvem</span></h1>
+        <p class="subtitulo">Treine o caminho do portal do Azure antes de usar o de verdade: criar o grupo de recursos, a máquina virtual do Ateliê e cuidar da conta. Sem conta, sem cartão e sem risco.</p>
+      </div>
+    </section>
+
+    <div class="bloco">
+      <div class="envolve">
+
+        <!-- aviso fixo: isto é um simulador -->
+        <p class="sim-aviso" role="note">
+          <strong>Simulador para estudo: não é o Azure de verdade.</strong>
+          Nada aqui é criado na nuvem e nada é cobrado. Os nomes das telas e dos campos imitam o portal do Azure, para você reconhecer o caminho quando usar o de verdade.
+        </p>
+
+        <!-- data-exige-login: o simulador é uma atividade que vale nota e só abre com o login da faculdade (conta.js) -->
+        <div class="sim-grade" data-exige-login>
+
+          <!-- ===================== O PORTAL SIMULADO ===================== -->
+          <section class="sim-portal" id="simulador" aria-label="Portal de nuvem simulado">
+            <div class="sim-topo">
+              <button type="button" class="sim-hamburguer" aria-expanded="false" aria-controls="sim-menu" aria-label="Abrir o menu do portal">☰</button>
+              <span class="sim-marca">Portal de nuvem <em>(simulado)</em></span>
+              <label class="sim-busca">
+                <span class="visualmente-oculto">Pesquisar recursos e serviços</span>
+                <input type="search" id="sim-busca" placeholder="Pesquisar recursos e serviços" autocomplete="off">
+              </label>
+              <span class="sim-conta" aria-label="Conta de estudo">Assinatura de estudo</span>
+            </div>
+            <div class="sim-corpo">
+              <nav class="sim-menu" id="sim-menu" aria-label="Menu do portal">
+                <button type="button" data-ir="inicio">🏠 Página inicial</button>
+                <button type="button" data-ir="criar">＋ Criar um recurso</button>
+                <button type="button" data-ir="todos">▦ Todos os recursos</button>
+                <button type="button" data-ir="grupos">🗂 Grupos de recursos</button>
+                <button type="button" data-ir="vms">🖥 Máquinas virtuais</button>
+                <button type="button" data-ir="custos">💲 Gerenciamento de Custos</button>
+              </nav>
+              <div class="sim-tela" id="sim-tela" tabindex="-1" aria-live="polite"></div>
+            </div>
+            <div class="sim-notificacao" id="sim-notificacao" role="status" aria-live="polite" hidden></div>
+          </section>
+
+          <!-- ===================== AS MISSÕES ===================== -->
+          <aside class="sim-missoes cartao" id="missoes" aria-label="Missões do Ateliê">
+            <span class="olho">Missões do Ateliê</span>
+            <p class="sim-placar" id="sim-placar" aria-live="polite"></p>
+            <ol class="sim-lista-missoes" id="sim-lista-missoes"></ol>
+            <div class="sim-dica" id="sim-dica" aria-live="polite" hidden></div>
+            <button type="button" class="botao contorno sim-recomecar" id="sim-recomecar">Recomeçar o simulador</button>
+          </aside>
+        </div>
+
+        <!-- ===================== COMO FUNCIONA ===================== -->
+        <section class="parte" id="como-funciona">
+          <div class="cab">
+            <span class="olho">Como funciona</span>
+            <h2>O caminho de verdade, sem a conta de verdade</h2>
+          </div>
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <ul>
+                <li>Cada missão vale <strong>100 XP</strong>. Cada tentativa que não cumpre a missão tira 10 XP (até o mínimo de 50). No fim das três, você ganha uma insígnia.</li>
+                <li>O portal confere os campos obrigatórios, como o de verdade. A <strong>conferência da missão</strong>, na tela "Revisar + criar", diz o que ainda não bate com o pedido do Ateliê.</li>
+                <li><strong>É uma atividade que vale nota:</strong> entre com o e-mail da faculdade (botão <strong>Entrar</strong>, no topo) para começar. As missões cumpridas ficam salvas na sua conta, em qualquer computador. Quando as três terminam, o resultado é registrado para a professora, com um código de verificação.</li>
+                <li>Os recursos que você cria ficam só neste navegador. O botão <strong>Recomeçar o simulador</strong> apaga os recursos e as missões deste navegador.</li>
+                <li>Os custos aparecem em níveis ($, $$, $$$), não em reais: o preço de verdade você vê na calculadora da <a href="../aulas/aula-06.html">aula 6</a>.</li>
+              </ul>
+              <p class="dica">Quando estiver seguro aqui, faça o mesmo caminho no portal de verdade, no laboratório da AWS Academy (o console da AWS) ou nos exercícios do Microsoft Learn.</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="rodape">
+    <div class="envolve">
+      <div class="rodape-fim" style="margin-top:0; padding-top:0; border-top:0">
+        <span><a href="../">Fundamentos de Computação em Nuvem</a> · Feito com ♥ e sucata eletrônica.</span>
+        <span>Simulador para estudo · não é o Azure de verdade</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="../assets/js/conta.js?v=5" data-disciplina="fundamentos-nuvem"></script>
+  <script src="../assets/js/matrix.js?v=2"></script>
+  <script src="portal.js?v=1"></script>
+</body>
+</html>
