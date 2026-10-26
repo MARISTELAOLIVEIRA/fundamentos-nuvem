@@ -1,11 +1,11 @@
 /*
-  classifica.js: desafio "Classifique!" das aulas (versão 1 · 2026-10-26).
+  classifica.js: desafio "Classifique!" das aulas (versão 2 · 2026-10-26: a dica do erro vem de data-dica).
   Cada item da lista tem a resposta certa em data-resposta e a explicação em data-explica;
-  as opções vêm de data-opcoes no bloco (ex.: "iaas:IaaS,paas:PaaS,saas:SaaS").
+  as opções vêm de data-opcoes no bloco (ex.: "iaas:IaaS,paas:PaaS,saas:SaaS") e a dica do erro, de data-dica.
   Cada acerto na primeira tentativa vale 10 XP. No fim aparece a insígnia, conforme o placar.
 
   Uso:
-    <div class="classifica" data-opcoes="iaas:IaaS,paas:PaaS,saas:SaaS">
+    <div class="classifica" data-opcoes="iaas:IaaS,paas:PaaS,saas:SaaS" data-dica="Pense em quem cuida do sistema operacional.">
       <p class="classifica-placar" aria-live="polite"></p>
       <ol class="classifica-itens">
         <li data-resposta="iaas" data-explica="...">Amazon EC2</li>
@@ -30,6 +30,7 @@
     });
     const itens = Array.from(bloco.querySelectorAll(".classifica-itens > li"));
     const placar = bloco.querySelector(".classifica-placar");
+    const dica = bloco.dataset.dica || "Releia os conceitos da aula.";
     let respondidos = 0;
     let acertos = 0;
 
@@ -72,7 +73,7 @@
             item.classList.add("certo");
             retorno.textContent = `✔ Isso! ${item.dataset.explica}`;
           } else {
-            retorno.textContent = "✘ Ainda não. Pense em quem cuida do sistema operacional e tente de novo.";
+            retorno.textContent = `✘ Ainda não. ${dica} Tente de novo.`;
           }
           atualizarPlacar();
         });

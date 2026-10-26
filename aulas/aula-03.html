@@ -6,7 +6,7 @@
 
   <!-- EDITE AQUI: número e tema da aula -->
   <title>Aula 3: Pública, privada ou híbrida? · Fundamentos de Computação em Nuvem · Stela</title>
-  <meta name="description" content="Aula 3 de Fundamentos de Computação em Nuvem: Nuvem pública, privada, híbrida e multinuvem, e a apresentação do Ateliê Doce Byte.">
+  <meta name="description" content="Aula 3 de Fundamentos de Computação em Nuvem: nuvem pública, privada, híbrida e multinuvem, os benefícios da nuvem e o estudo de caso do Ateliê Doce Byte.">
 
   <link rel="icon" href="../assets/img/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/img/favicon-32.png">
@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../assets/css/aula.css?v=2">
   <link rel="stylesheet" href="../assets/css/neon.css?v=1">
   <link rel="stylesheet" href="../assets/css/conta.css?v=4">
+  <link rel="stylesheet" href="../assets/css/interativos.css?v=1">
 </head>
 <body>
 
@@ -33,6 +34,7 @@
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#tutorial">Tutorial</a>
         <a href="#caso">Caso</a>
         <a href="#atividade">Atividade</a>
         <a href="#materiais">Materiais</a>
@@ -77,8 +79,8 @@
           <span class="etiqueta">Estudo de caso</span>
           <span class="etiqueta">Unidade 1</span>
         </div>
-        <h1>Modelos de implantação e benefícios da nuvem</h1>
-        <p class="subtitulo">Nuvem pública, privada, híbrida e multinuvem, e a apresentação do Ateliê Doce Byte.</p>
+        <h1>Pública, privada ou híbrida? Os modelos de implantação e os benefícios da <span class="neon">nuvem</span></h1>
+        <p class="subtitulo">Onde a nuvem fica e para quem ela serve, o que a empresa ganha com ela e a empresa que vai acompanhar o semestre.</p>
       </div>
     </section>
 
@@ -88,15 +90,15 @@
         <div class="resumo">
           <div class="cartao">
             <span class="olho">Objetivo do dia</span>
-            <p>Diferenciar os modelos de implantação e reconhecer os benefícios da nuvem.</p>
+            <p>Diferenciar os modelos de implantação e reconhecer os benefícios da nuvem num caso real de empresa.</p>
           </div>
           <div class="cartao">
             <span class="olho">Antes da aula</span>
-            <p>Fazer o módulo do Learn Descrever os benefícios do uso de serviços de nuvem.</p>
+            <p>Ter feito a aula 2: IaaS, PaaS e SaaS são a base de hoje.</p>
           </div>
           <div class="cartao">
             <span class="olho">Como conta ponto</span>
-            <p>Participação na atividade.</p>
+            <p>Participação na atividade: a ficha do Ateliê, que abre o trabalho da Unidade 1.</p>
           </div>
         </div>
       </div>
@@ -108,16 +110,137 @@
         <!-- ===================== CONCEITOS ===================== -->
         <section class="parte" id="conceitos">
           <div class="cab">
-            <span class="olho">C1 · conceitos</span>
-            <h2>O que você vai ver</h2>
+            <span class="olho">C1–C3 · conceitos</span>
+            <h2>Onde a nuvem fica, e o que ela resolve</h2>
           </div>
-          <div class="cartao">
-            <ul>
-              <li>Nuvem pública, privada, híbrida e multinuvem.</li>
-              <li>Alta disponibilidade, escalabilidade e elasticidade.</li>
-              <li>Confiabilidade, previsibilidade, segurança e governança.</li>
-              <li>O Ateliê Doce Byte: o que a empresa tem hoje e o que quer da nuvem.</li>
-            </ul>
+
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C1</span>
+              <h3>Os modelos de implantação</h3>
+              <p>Na aula 2 a pergunta era "até onde eu cuido?". Hoje é outra: <strong>de quem é a infraestrutura e quem pode usar?</strong></p>
+              <div class="tabela-rola"><table class="metodos"><thead><tr><th>Modelo</th><th>Como é</th><th>Quando faz sentido</th></tr></thead><tbody>
+                <tr><td><strong>Pública</strong></td><td>A infraestrutura é do provedor (AWS, Azure, Google) e atende muitos clientes, cada um no seu espaço.</td><td>Quase sempre: começa rápido, sem comprar nada, e paga pelo uso.</td></tr>
+                <tr><td><strong>Privada</strong></td><td>A nuvem é de uma organização só, no data center dela ou num provedor, mas reservada para ela.</td><td>Quando uma lei ou um contrato exige controle total, como em bancos e órgãos públicos.</td></tr>
+                <tr><td><strong>Híbrida</strong></td><td>Parte no data center da empresa, parte na nuvem pública, conversando entre si.</td><td>Quando um sistema precisa ficar no prédio, mas o resto pode ir para a nuvem.</td></tr>
+                <tr><td><strong>Multinuvem</strong></td><td>A empresa usa mais de um provedor de nuvem pública ao mesmo tempo.</td><td>Para não depender de um provedor só, ou para usar o melhor serviço de cada um.</td></tr>
+              </tbody></table></div>
+              <p class="dica">O NIST cita ainda a <strong>nuvem comunitária</strong>: compartilhada por um grupo de organizações com o mesmo interesse, como órgãos de um mesmo governo. É menos comum no dia a dia.</p>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C2</span>
+              <h3>Os benefícios, um por um</h3>
+              <p>São os benefícios que o Microsoft Learn cobra no módulo de hoje e que aparecem em qualquer certificação de nuvem.</p>
+              <div class="tabela-rola"><table class="metodos"><thead><tr><th>Benefício</th><th>O que quer dizer</th></tr></thead><tbody>
+                <tr><td><strong>Alta disponibilidade</strong></td><td>O serviço continua no ar mesmo quando uma peça falha. O provedor promete um percentual no contrato (o SLA).</td></tr>
+                <tr><td><strong>Escalabilidade</strong></td><td>Dá para crescer: <strong>vertical</strong> é trocar por uma máquina maior; <strong>horizontal</strong> é pôr mais máquinas iguais.</td></tr>
+                <tr><td><strong>Elasticidade</strong></td><td>Cresce e diminui sozinho, conforme o movimento. A escalabilidade é poder crescer; a elasticidade é fazer isso automaticamente, nos dois sentidos.</td></tr>
+                <tr><td><strong>Confiabilidade</strong></td><td>O sistema se recupera de falhas, por exemplo com cópias em outro lugar.</td></tr>
+                <tr><td><strong>Previsibilidade</strong></td><td>De desempenho (o site responde no mesmo tempo, com pouco ou muito acesso) e de custo (dá para estimar a conta antes).</td></tr>
+                <tr><td><strong>Segurança e governança</strong></td><td>Regras, permissões e padrões aplicados a tudo o que a empresa cria na nuvem.</td></tr>
+                <tr><td><strong>Gerenciabilidade</strong></td><td>Cuidar dos recursos pelo portal, pela linha de comando ou por código, de qualquer lugar.</td></tr>
+              </tbody></table></div>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C3</span>
+              <h3>As seis vantagens, segundo a AWS</h3>
+              <p>A AWS resume os benefícios em seis frases. Elas voltam no Cloud Foundations e na prova de certificação da AWS:</p>
+              <ol>
+                <li><strong>Trocar a despesa fixa pela variável:</strong> em vez de comprar servidores antes, pagar pelo que usar.</li>
+                <li><strong>Ganhar com a economia de escala:</strong> como o provedor compra para milhões de clientes, o preço por uso fica menor.</li>
+                <li><strong>Parar de adivinhar a capacidade:</strong> nada de comprar servidor demais (e pagar por ele parado) ou de menos (e o site cair).</li>
+                <li><strong>Mais velocidade e agilidade:</strong> um recurso novo fica pronto em minutos, não em semanas.</li>
+                <li><strong>Parar de gastar com data center:</strong> a energia, o espaço e a manutenção ficam com o provedor.</li>
+                <li><strong>Ficar global em minutos:</strong> pôr a aplicação em outras regiões do mundo com poucos cliques.</li>
+              </ol>
+              <p class="fonte">Fonte: <a href="https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html">AWS, Overview of Amazon Web Services: seis vantagens da computação em nuvem</a>.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== TUTORIAL ===================== -->
+        <section class="parte" id="tutorial">
+          <div class="cab">
+            <span class="olho">T1 · tutorial</span>
+            <h2>Mão na massa: do módulo à ficha da empresa</h2>
+            <p>Faça um passo de cada vez. Cada item da atividade, lá embaixo, diz qual passo mostra como fazer.</p>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-1">
+            <div class="texto">
+              <span class="olho">Passo 1 · item 1 da atividade</span>
+              <h3>Os benefícios no Microsoft Learn</h3>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Abra o módulo <a href="https://learn.microsoft.com/pt-br/training/modules/describe-benefits-use-cloud-services/">Descrever os benefícios do uso de serviços de nuvem</a> e entre com a sua conta Microsoft.</li>
+                  <li>Leia as unidades na ordem: alta disponibilidade e escalabilidade; confiabilidade e previsibilidade; segurança e governança; gerenciabilidade.</li>
+                  <li>Faça a verificação de conhecimento no fim do módulo.</li>
+                </ol>
+              </div>
+              <div class="faca-assim">
+                <strong>Teste:</strong>
+                <ol>
+                  <li>Explique, com as suas palavras, a diferença entre escalabilidade e elasticidade. Travou? Volte ao conceito C2.</li>
+                  <li>Uma loja on-line que dobra os servidores no Natal e volta ao normal em janeiro, sozinha: é elasticidade ou só escalabilidade?</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-2">
+            <div class="texto">
+              <span class="olho">Passo 2 · item 3 da atividade · desafio</span>
+              <h3>Qual é o modelo? Pública, privada, híbrida ou multinuvem</h3>
+              <p>Oito situações. Cada acerto de primeira vale <strong>10 XP</strong>; errou, a dica aparece e você tenta de novo. No fim, você ganha uma insígnia.</p>
+              <div class="faca-assim desafio">
+                <strong>Agora é com você:</strong>
+                <div class="classifica" data-opcoes="publica:Pública,privada:Privada,hibrida:Híbrida,multi:Multinuvem" data-dica="Pergunte: é de quem a infraestrutura, e é um provedor só ou mais de um?">
+                  <p class="classifica-placar" aria-live="polite"></p>
+                  <ol class="classifica-itens">
+                    <li data-resposta="publica" data-explica="Tudo num provedor, dividindo a infraestrutura com outros clientes: nuvem pública.">Uma startup que coloca o aplicativo inteiro na AWS.</li>
+                    <li data-resposta="privada" data-explica="Infraestrutura reservada para uma organização só: nuvem privada.">Um banco que montou, no próprio data center, uma nuvem só para os sistemas dele.</li>
+                    <li data-resposta="hibrida" data-explica="Uma parte no prédio e outra na nuvem pública, conversando: nuvem híbrida.">Uma clínica que mantém o prontuário no servidor do prédio e usa a nuvem pública para o site e o backup.</li>
+                    <li data-resposta="multi" data-explica="Dois provedores de nuvem pública ao mesmo tempo: multinuvem.">Uma loja que roda o site na AWS e a análise de dados no Google Cloud.</li>
+                    <li data-resposta="hibrida" data-explica="Os dados sigilosos ficam em casa e a nuvem pública ajuda nos picos: híbrida.">Uma prefeitura que guarda os dados sigilosos no próprio data center e usa a nuvem pública nos picos de acesso do IPTU.</li>
+                    <li data-resposta="publica" data-explica="Um provedor só, com a infraestrutura dele: nuvem pública.">Um aplicativo de entregas que roda todo no Azure.</li>
+                    <li data-resposta="multi" data-explica="Usar AWS e Azure juntos para não depender de um só é multinuvem.">Uma empresa que espalha os sistemas entre AWS e Azure, para não depender de um provedor só.</li>
+                    <li data-resposta="privada" data-explica="Uma nuvem dentro de casa, só para a própria empresa: privada.">Uma indústria que monta, no prédio dela, uma nuvem só para os próprios setores.</li>
+                  </ol>
+                  <button type="button" class="botao contorno classifica-reiniciar">Jogar de novo</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-3">
+            <div class="texto">
+              <span class="olho">Passo 3 · item 4 da atividade</span>
+              <h3>A ficha do Ateliê</h3>
+              <p>Leia o estudo de caso, logo abaixo, e preencha a ficha da empresa. Ela é a primeira parte do trabalho da Unidade 1, então guarde bem.</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Abra um documento novo (Word ou Google Docs) com o título <strong>Ficha do Ateliê Doce Byte</strong>.</li>
+                  <li><strong>O que a empresa tem hoje:</strong> liste os sistemas e onde cada um roda.</li>
+                  <li><strong>Os problemas:</strong> escreva três, com as palavras do caso.</li>
+                  <li><strong>O modelo de implantação que você indica</strong> (pública, privada, híbrida ou multinuvem), com uma frase de justificativa.</li>
+                  <li><strong>Os benefícios que resolvem cada problema</strong>, usando os nomes do conceito C2.</li>
+                </ol>
+              </div>
+              <div class="faca-assim">
+                <strong>Teste:</strong>
+                <ol>
+                  <li>Cada problema da sua ficha tem um benefício ligado a ele? Se sobrou problema sem benefício, a ficha ainda não está pronta.</li>
+                </ol>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -128,13 +251,15 @@
             <h2>O Ateliê Doce Byte quer ir para a nuvem</h2>
           </div>
           <div class="cartao caso">
-            <p>O Ateliê Doce Byte é uma confeitaria de Brasília com loja on-line. O site, o sistema de pedidos e as planilhas rodam num servidor antigo, numa salinha atrás da cozinha.</p>
-            <p>Em datas como o Dia das Mães, o site fica lento. E, quando falta energia, a loja on-line sai do ar.</p>
+            <p>O <strong>Ateliê Doce Byte</strong> é uma confeitaria de Brasília, com seis funcionários e uma loja on-line de bolos e doces sob encomenda. Os pedidos chegam pelo site e pelo WhatsApp.</p>
+            <p>O site, o sistema de pedidos e as planilhas de estoque rodam num servidor antigo, numa salinha atrás da cozinha, sem ar-condicionado próprio. O backup é um HD externo que a dona leva para casa às sextas.</p>
+            <p>No Dia das Mães, o site fica lento e cai na hora de mais movimento. Quando falta energia no bairro, a loja on-line sai do ar. E a dona tem medo de perder os dados dos clientes.</p>
             <h3>Para discutir</h3>
             <ol>
-              <li>Que problema da empresa a nuvem pública resolve? E qual ela não resolve?</li>
+              <li>Que problemas do Ateliê a nuvem pública resolve? E qual problema ela <strong>não</strong> resolve sozinha?</li>
               <li>Faz sentido uma nuvem privada para uma empresa desse tamanho? Por quê?</li>
-              <li>Qual benefício da nuvem resolve o problema do Dia das Mães?</li>
+              <li>Qual benefício resolve o Dia das Mães: escalabilidade, elasticidade ou alta disponibilidade? Pode ser mais de um.</li>
+              <li>Das seis vantagens da AWS, quais a dona do Ateliê sentiria no bolso?</li>
             </ol>
             <p class="fonte">Caso fictício, criado para a disciplina. Ele acompanha o semestre inteiro.</p>
           </div>
@@ -154,12 +279,32 @@
               <span class="barra-progresso"><span></span></span>
             </div>
             <ol class="checklist" id="passos-aula-03">
-              <li><label><input type="checkbox"><span>Fiz o módulo do Learn Descrever os benefícios do uso de serviços de nuvem.</span></label></li>
-              <li><label><input type="checkbox"><span>Sei explicar a diferença entre escalabilidade e elasticidade.</span></label></li>
-              <li><label><input type="checkbox"><span>Diferenciei nuvem pública, privada, híbrida e multinuvem.</span></label></li>
-              <li><label><input type="checkbox"><span>Escrevi, em cinco linhas, o que o Ateliê Doce Byte tem hoje e o que precisa.</span></label></li>
-              <li><label><input type="checkbox"><span>Revisei o Módulo 1 do Cloud Foundations.</span></label></li>
+              <li><label><input type="checkbox"><span>Fiz o módulo do Learn sobre os benefícios, com a verificação de conhecimento. <a href="#passo-1">Veja o passo 1</a>.</span></label></li>
+              <li><label><input type="checkbox"><span>Sei explicar a diferença entre escalabilidade e elasticidade. <a href="#conceitos">Veja o conceito C2</a>.</span></label></li>
+              <li><label><input type="checkbox"><span>Fiz o desafio "Qual é o modelo?" e ganhei a minha insígnia. <a href="#passo-2">Veja o passo 2</a>.</span></label></li>
+              <li><label><input type="checkbox"><span>Preenchi a ficha do Ateliê Doce Byte. <a href="#passo-3">Veja o passo 3</a>.</span></label></li>
+              <li><label><input type="checkbox"><span>Revisei o Módulo 1 do Cloud Foundations, agora pensando no Ateliê.</span></label></li>
             </ol>
+          </div>
+        </section>
+
+        <!-- ===================== CONEXÃO STEAM ===================== -->
+        <section class="parte" id="steam">
+          <div class="cab">
+            <span class="olho">S1 · conexão STEAM</span>
+            <h2>Disponibilidade fora da tela</h2>
+          </div>
+          <div class="steam">
+            <div class="cartao">
+              <span class="letra">M</span>
+              <h3>Matemática</h3>
+              <p>Um ano tem 8.760 horas. Um SLA de 99,9% permite até 0,1% fora do ar: 8,76 horas por ano. Com 99,99%, são uns 53 minutos. Cada "9" a mais custa caro.</p>
+            </div>
+            <div class="cartao">
+              <span class="letra">E</span>
+              <h3>Engenharia</h3>
+              <p>Alta disponibilidade é como o gerador do hospital: quando a energia da rua cai, outro caminho assume e ninguém percebe. Na nuvem, o "outro caminho" é outra zona de disponibilidade.</p>
+            </div>
           </div>
         </section>
 
@@ -170,17 +315,23 @@
             <h2>AWS Academy e Microsoft Learn</h2>
           </div>
           <div class="repos">
-            <a class="repo luz" href="https://www.awsacademy.com/">
+            <a class="repo luz" href="https://learn.microsoft.com/pt-br/training/modules/describe-benefits-use-cloud-services/">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Microsoft Learn</span>
+              <h4>Descrever os benefícios do uso de serviços de nuvem</h4>
+              <p>O módulo de hoje, da trilha 1 do AZ-900.</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/azure.svg" alt="" width="20" height="20"></span>Azure</span><span class="etiqueta">como é no Azure</span></span>
+            </a>
+            <a class="repo luz" href="https://www.awsacademy.com/vforcesite/LMS_Login">
               <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS Academy</span>
               <h4>Cloud Foundations</h4>
-              <p>Módulo 1 (revisão).</p>
+              <p>Módulo 1 (revisão), agora pensando no Ateliê.</p>
               <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/aws.svg" alt="" width="20" height="20"></span>AWS</span><span class="etiqueta">trilha</span></span>
             </a>
-            <a class="repo luz" href="https://learn.microsoft.com/pt-br/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/">
-              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Microsoft Learn</span>
-              <h4>Trilha 1: conceitos de nuvem</h4>
-              <p>Módulo Descrever os benefícios do uso de serviços de nuvem.</p>
-              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/azure.svg" alt="" width="20" height="20"></span>Azure</span><span class="etiqueta">como é no Azure</span></span>
+            <a class="repo luz" href="https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS</span>
+              <h4>As seis vantagens da computação em nuvem</h4>
+              <p>A página oficial da AWS, curta, com as seis vantagens do conceito C3.</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/aws.svg" alt="" width="20" height="20"></span>AWS</span><span class="etiqueta">leitura</span></span>
             </a>
           </div>
         </section>
@@ -191,8 +342,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             <div>
               <span class="olho">E1 · entrega</span>
-              <h3>Ficha da empresa</h3>
-              <p>Guarde a sua ficha do Ateliê Doce Byte: ela abre o trabalho da Unidade 1.</p>
+              <h3>A ficha do Ateliê Doce Byte</h3>
+              <p>Guarde a ficha: ela abre o trabalho da Unidade 1. Nas próximas aulas, o Ateliê ganha as contas (quanto custa) e a escolha da região (onde os dados ficam).</p>
             </div>
           </div>
         </section>
@@ -231,6 +382,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
   <script src="../assets/js/conta.js?v=5" data-disciplina="fundamentos-nuvem"></script>
   <script src="../assets/js/aulas.js?v=3"></script>
+  <script src="../assets/js/classifica.js?v=2"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
 </body>
 </html>
