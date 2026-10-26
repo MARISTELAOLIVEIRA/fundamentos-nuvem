@@ -6,7 +6,7 @@
 
   <!-- EDITE AQUI: número e tema da aula -->
   <title>Aula 5: Comprar ou alugar? · Fundamentos de Computação em Nuvem · Stela</title>
-  <meta name="description" content="Aula 5 de Fundamentos de Computação em Nuvem: CapEx e OpEx, custo total de propriedade (TCO), faturamento e níveis gratuitos.">
+  <meta name="description" content="Aula 5 de Fundamentos de Computação em Nuvem: CapEx e OpEx, o custo total de propriedade, como a nuvem cobra e a calculadora comprar ou alugar.">
 
   <link rel="icon" href="../assets/img/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/img/favicon-32.png">
@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../assets/css/aula.css?v=2">
   <link rel="stylesheet" href="../assets/css/neon.css?v=1">
   <link rel="stylesheet" href="../assets/css/conta.css?v=4">
+  <link rel="stylesheet" href="../assets/css/interativos.css?v=2">
 </head>
 <body>
 
@@ -33,6 +34,7 @@
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#tutorial">Tutorial</a>
         <a href="#caso">Caso</a>
         <a href="#atividade">Atividade</a>
         <a href="#materiais">Materiais</a>
@@ -77,8 +79,8 @@
           <span class="etiqueta">Estudo de caso</span>
           <span class="etiqueta">Unidade 1</span>
         </div>
-        <h1>Economia da nuvem: CapEx, OpEx e pagamento pelo uso</h1>
-        <p class="subtitulo">CapEx e OpEx, custo total de propriedade (TCO), faturamento e níveis gratuitos.</p>
+        <h1>Economia da <span class="neon">nuvem</span>: comprar ou alugar?</h1>
+        <p class="subtitulo">CapEx e OpEx, os custos que ninguém vê num servidor próprio e como a nuvem cobra a conta.</p>
       </div>
     </section>
 
@@ -92,11 +94,11 @@
           </div>
           <div class="cartao">
             <span class="olho">Antes da aula</span>
-            <p>Fazer o Módulo 2 do Cloud Foundations (Economia e faturamento da nuvem).</p>
+            <p>Ter a ficha do Ateliê Doce Byte, da aula 3: as contas de hoje são para ele.</p>
           </div>
           <div class="cartao">
             <span class="olho">Como conta ponto</span>
-            <p>Atividade da aula.</p>
+            <p>Atividade da aula: a lista de custos do servidor próprio e a sua conta "comprar ou alugar".</p>
           </div>
         </div>
       </div>
@@ -108,15 +110,164 @@
         <!-- ===================== CONCEITOS ===================== -->
         <section class="parte" id="conceitos">
           <div class="cab">
-            <span class="olho">C1 · conceitos</span>
-            <h2>O que você vai ver</h2>
+            <span class="olho">C1–C3 · conceitos</span>
+            <h2>Para onde vai o dinheiro</h2>
           </div>
-          <div class="cartao">
-            <ul>
-              <li>CapEx (investir antes de usar) e OpEx (pagar pelo que usou).</li>
-              <li>Custo total de propriedade: os custos que ninguém vê (energia, espaço, pessoas, manutenção).</li>
-              <li>Faturamento na nuvem, níveis gratuitos e alertas de gasto.</li>
-            </ul>
+
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C1</span>
+              <h3>CapEx e OpEx</h3>
+              <p>São dois jeitos de gastar dinheiro com tecnologia, e a nuvem muda de um para o outro.</p>
+              <div class="tabela-rola"><table class="metodos"><thead><tr><th></th><th>CapEx (despesa de capital)</th><th>OpEx (despesa operacional)</th></tr></thead><tbody>
+                <tr><td><strong>O que é</strong></td><td>Comprar um bem que dura anos, antes de usar.</td><td>Pagar conforme usa, todo mês.</td></tr>
+                <tr><td><strong>Exemplos</strong></td><td>Servidor, nobreak, ar-condicionado da sala, licença comprada para sempre.</td><td>Conta da nuvem, internet, energia, assinatura de software.</td></tr>
+                <tr><td><strong>O risco</strong></td><td>Comprar demais (e pagar por máquina parada) ou de menos (e o sistema não aguentar).</td><td>Esquecer recurso ligado e a conta crescer sem ninguém ver.</td></tr>
+                <tr><td><strong>Na nuvem</strong></td><td colspan="2">A nuvem troca o CapEx pelo OpEx: em vez de comprar o servidor antes, você paga pelo que usar. É a primeira das seis vantagens da aula 3.</td></tr>
+              </tbody></table></div>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C2</span>
+              <h3>O custo total de propriedade (TCO)</h3>
+              <p>O preço do servidor é só a ponta do iceberg. O <strong>custo total de propriedade</strong> (TCO, em inglês) soma tudo o que a empresa gasta para ter aquele servidor funcionando durante a vida útil dele:</p>
+              <ul>
+                <li><strong>Compra:</strong> o servidor, os discos, o nobreak, o rack.</li>
+                <li><strong>Espaço e energia:</strong> a sala, a conta de luz do servidor e do ar-condicionado.</li>
+                <li><strong>Pessoas:</strong> quem instala, atualiza, faz o backup e conserta.</li>
+                <li><strong>Manutenção:</strong> peças de reposição, garantia, licenças.</li>
+                <li><strong>O tempo fora do ar:</strong> o que a empresa deixa de vender quando o servidor para.</li>
+                <li><strong>A troca:</strong> depois de alguns anos, tudo isso recomeça com um servidor novo.</li>
+              </ul>
+              <p class="dica cuidado"><strong>Comparar só o preço do servidor com a conta da nuvem é injusto com a nuvem.</strong> A comparação honesta é TCO contra TCO: na nuvem também entram as pessoas e o tempo de quem cuida dela.</p>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C3</span>
+              <h3>Como a nuvem cobra a conta</h3>
+              <p>Segundo a própria AWS, três coisas pesam na conta: <strong>computação</strong> (paga por hora ou por segundo, do momento em que liga até desligar), <strong>armazenamento</strong> (por gigabyte guardado) e <strong>transferência de dados para fora</strong> (por gigabyte que sai). Na maioria dos casos, a entrada de dados não é cobrada.</p>
+              <p>E existem jeitos diferentes de pagar a mesma máquina:</p>
+              <div class="tabela-rola"><table class="metodos"><thead><tr><th>Jeito de pagar</th><th>Como funciona</th><th>Bom para</th></tr></thead><tbody>
+                <tr><td><strong>Sob demanda</strong></td><td>Paga pelo que usar, sem compromisso.</td><td>Começar, testar, uso que muda muito.</td></tr>
+                <tr><td><strong>Reserva ou plano de economia</strong></td><td>Você se compromete a usar por um ou três anos e ganha desconto.</td><td>O que fica ligado o tempo todo, como o site da loja.</td></tr>
+                <tr><td><strong>Capacidade ociosa (spot)</strong></td><td>Usa a sobra do provedor com desconto grande, mas a máquina pode ser desligada a qualquer hora.</td><td>Tarefas que podem parar e recomeçar, como gerar relatórios.</td></tr>
+              </tbody></table></div>
+              <p>Para a conta não virar surpresa, os provedores têm <strong>orçamentos e alertas</strong>: você define um limite e recebe um aviso quando o gasto chega perto (AWS Budgets, na AWS; Gerenciamento de Custos, no Azure).</p>
+              <p class="fonte">Fonte: <a href="https://docs.aws.amazon.com/pt_br/whitepapers/latest/how-aws-pricing-works/key-principles.html">AWS, How AWS Pricing Works: princípios</a>.</p>
+              <p class="dica">Os provedores têm níveis gratuitos e créditos para quem está começando, e para estudantes, como o <a href="https://azure.microsoft.com/pt-br/free/students/">Azure for Students</a>. As regras mudam com frequência: confira sempre a página oficial antes de criar qualquer coisa.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== TUTORIAL ===================== -->
+        <section class="parte" id="tutorial">
+          <div class="cab">
+            <span class="olho">T1 · tutorial</span>
+            <h2>Mão na massa: as contas do Ateliê</h2>
+            <p>Faça um passo de cada vez. Cada item da atividade, lá embaixo, diz qual passo mostra como fazer.</p>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-1">
+            <div class="texto">
+              <span class="olho">Passo 1 · item 1 da atividade</span>
+              <h3>O Módulo 2 da AWS Academy</h3>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Entre na <a href="https://www.awsacademy.com/vforcesite/LMS_Login">AWS Academy</a> e abra o curso <strong>Cloud Foundations</strong>.</li>
+                  <li>Em <strong>Módulos</strong>, abra o <strong>Módulo 2: Economia e faturamento da nuvem</strong>.</li>
+                  <li>Estude as partes sobre os fundamentos de preço e o custo total de propriedade. A atividade da calculadora fica para a aula 6.</li>
+                  <li>Faça o teste de conhecimento do módulo.</li>
+                </ol>
+              </div>
+              <div class="faca-assim">
+                <strong>Teste:</strong>
+                <ol>
+                  <li>Quais são as três coisas que mais pesam na conta da AWS? Travou? Volte ao conceito C3.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-2">
+            <div class="texto">
+              <span class="olho">Passo 2 · item 3 da atividade · desafio</span>
+              <h3>CapEx ou OpEx?</h3>
+              <p>Oito gastos de uma empresa. Cada acerto de primeira vale <strong>10 XP</strong>; errou, a dica aparece e você tenta de novo.</p>
+              <div class="faca-assim desafio">
+                <strong>Agora é com você:</strong>
+                <div class="classifica" data-opcoes="capex:CapEx,opex:OpEx" data-dica="Pergunte: é um bem comprado antes de usar, ou uma conta que chega conforme o uso?">
+                  <p class="classifica-placar" aria-live="polite"></p>
+                  <ol class="classifica-itens">
+                    <li data-resposta="capex" data-explica="O servidor é comprado antes e dura anos: CapEx.">Comprar um servidor novo.</li>
+                    <li data-resposta="opex" data-explica="A conta da nuvem chega todo mês, conforme o uso: OpEx.">Pagar a conta mensal da AWS.</li>
+                    <li data-resposta="capex" data-explica="Obra e equipamento da sala são investimento feito antes: CapEx.">Montar a sala de servidores, com ar-condicionado e nobreak.</li>
+                    <li data-resposta="opex" data-explica="Assinatura mensal é despesa de uso: OpEx.">A assinatura mensal do Microsoft 365.</li>
+                    <li data-resposta="opex" data-explica="Pagar por hora de máquina ligada é o exemplo clássico de OpEx.">Pagar por hora uma máquina virtual na nuvem.</li>
+                    <li data-resposta="capex" data-explica="A licença comprada para sempre é paga antes, de uma vez: CapEx.">Comprar a licença de um programa para sempre.</li>
+                    <li data-resposta="opex" data-explica="A internet é uma conta de todo mês: OpEx.">Pagar a internet da empresa todo mês.</li>
+                    <li data-resposta="capex" data-explica="Os discos novos são equipamento comprado antes de usar: CapEx.">Comprar discos novos para o servidor guardar mais fotos.</li>
+                  </ol>
+                  <button type="button" class="botao contorno classifica-reiniciar">Jogar de novo</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-3">
+            <div class="texto">
+              <span class="olho">Passo 3 · item 4 da atividade · calculadora</span>
+              <h3>Comprar ou alugar? Faça a conta</h3>
+              <p>A calculadora divide o preço do servidor pelos meses de uso e soma os custos de todo mês. Já vem com os <strong>valores de exemplo do Ateliê</strong> (fictícios). Troque os números e veja a conclusão mudar na hora.</p>
+              <form class="calc-custo" aria-label="Calculadora comprar ou alugar">
+                <div class="calc-campos">
+                  <label>Preço do servidor, à vista (R$)<input type="number" min="0" step="any" inputmode="decimal" data-papel="preco" value="12000"></label>
+                  <label>Vida útil do servidor (anos)<input type="number" min="0" step="any" inputmode="decimal" data-papel="anos" value="4"></label>
+                  <label>Energia do servidor e do ar, por mês (R$)<input type="number" min="0" step="any" inputmode="decimal" data-papel="mensal" value="120"></label>
+                  <label>Manutenção e peças, por mês (R$)<input type="number" min="0" step="any" inputmode="decimal" data-papel="mensal" value="100"></label>
+                  <label>Técnico que cuida do servidor, por mês (R$)<input type="number" min="0" step="any" inputmode="decimal" data-papel="mensal" value="300"></label>
+                  <label>Backup e outros, por mês (R$)<input type="number" min="0" step="any" inputmode="decimal" data-papel="mensal" value="50"></label>
+                  <label class="calc-nuvem">Estimativa da nuvem, por mês (R$)<input type="number" min="0" step="any" inputmode="decimal" data-papel="nuvem" value="450"></label>
+                </div>
+                <output class="calc-resultado" aria-live="polite"></output>
+              </form>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Leia o resultado com os valores de exemplo. Quem ganha?</li>
+                  <li>Mude a <strong>vida útil</strong> para 6 anos. O que acontece com o servidor próprio?</li>
+                  <li>Zere o <strong>técnico</strong>, como se a dona cuidasse do servidor sozinha. A conta muda de lado?</li>
+                  <li>Anote, para a entrega, os seus números finais e a conclusão.</li>
+                </ol>
+              </div>
+              <div class="faca-assim desafio">
+                <strong>Agora é com você:</strong>
+                <ol>
+                  <li>Qual é o valor da nuvem, por mês, em que as duas opções empatam com os outros números de exemplo? (Dica: é o custo mensal do servidor próprio.)</li>
+                  <li>Que custo do conceito C2 ficou de fora da calculadora? Como você colocaria esse custo na conta?</li>
+                </ol>
+              </div>
+              <p class="dica cuidado"><strong>Os números do Ateliê são fictícios</strong>, só para treinar a conta. A estimativa de verdade da nuvem você monta na aula 6, na calculadora oficial da AWS.</p>
+            </div>
+          </div>
+
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-4">
+            <div class="texto">
+              <span class="olho">Passo 4 · item 5 da atividade</span>
+              <h3>Os custos pelo lado da Microsoft</h3>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Abra o módulo <a href="https://learn.microsoft.com/pt-br/training/modules/describe-cost-management-azure/">Descrever o gerenciamento de custos no Azure</a> e entre com a sua conta Microsoft.</li>
+                  <li>Leia as unidades sobre os fatores que afetam o custo e o gerenciamento de custos. A calculadora de preços do Azure fica para a aula 6.</li>
+                  <li>Faça a verificação de conhecimento no fim do módulo.</li>
+                </ol>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -127,15 +278,16 @@
             <h2>As contas do servidor novo</h2>
           </div>
           <div class="cartao caso">
-            <p>O servidor do Ateliê Doce Byte precisa ser trocado. A loja de informática ofereceu um servidor novo, pago à vista.</p>
-            <p>A dona quer saber se compensa mais comprar ou alugar na nuvem.</p>
+            <p>O servidor do <strong>Ateliê Doce Byte</strong> está velho e precisa ser trocado. A loja de informática ofereceu um servidor novo por <strong>R$ 12.000 à vista</strong>, que deve durar uns quatro anos.</p>
+            <p>A dona acha caro, mas tem medo da nuvem: "e se a conta vier enorme?". O sobrinho, que cuida do servidor nos fins de semana, diz que o problema nem é o preço, é o tempo que ele gasta.</p>
             <h3>Para discutir</h3>
             <ol>
-              <li>Além do preço do servidor, que outros custos a empresa tem para mantê-lo?</li>
-              <li>Quais desses custos somem na nuvem? Quais aparecem?</li>
-              <li>Para uma confeitaria que vende muito em poucas datas do ano, qual modelo faz mais sentido?</li>
+              <li>Além dos R$ 12.000, que custos o Ateliê tem para manter o servidor? Use a lista do conceito C2.</li>
+              <li>O tempo do sobrinho é um custo? Como colocar isso na conta?</li>
+              <li>O que a dona pode fazer para a conta da nuvem não vir enorme?</li>
+              <li>Para uma confeitaria que vende muito em poucas datas do ano, CapEx ou OpEx faz mais sentido?</li>
             </ol>
-            <p class="fonte">Caso fictício, criado para a disciplina.</p>
+            <p class="fonte">Caso fictício, criado para a disciplina. Os valores são exemplos, não preços reais.</p>
           </div>
         </section>
 
@@ -149,15 +301,36 @@
 
           <div class="cartao">
             <div class="progresso-atividade" data-progresso="passos-aula-05">
-              <span class="contagem">0 de 4</span>
+              <span class="contagem">0 de 5</span>
               <span class="barra-progresso"><span></span></span>
             </div>
             <ol class="checklist" id="passos-aula-05">
-              <li><label><input type="checkbox"><span>Fiz o Módulo 2 do Cloud Foundations.</span></label></li>
-              <li><label><input type="checkbox"><span>Sei explicar CapEx e OpEx com um exemplo.</span></label></li>
-              <li><label><input type="checkbox"><span>Listei os custos escondidos de um servidor próprio.</span></label></li>
-              <li><label><input type="checkbox"><span>Fiz o módulo do Learn Descrever o gerenciamento de custos no Azure.</span></label></li>
+              <li><label><input type="checkbox"><span>Fiz o Módulo 2 do Cloud Foundations, com o teste de conhecimento. <a href="#passo-1">Veja o passo 1</a>.</span></label></li>
+              <li><label><input type="checkbox"><span>Sei explicar CapEx e OpEx com um exemplo de cada. <a href="#conceitos">Veja o conceito C1</a>.</span></label></li>
+              <li><label><input type="checkbox"><span>Fiz o desafio "CapEx ou OpEx?". <a href="#passo-2">Veja o passo 2</a>.</span></label></li>
+              <li><label><input type="checkbox"><span>Fiz a conta "comprar ou alugar" e anotei os números e a conclusão. <a href="#passo-3">Veja o passo 3</a>.</span></label></li>
+              <li><label><input type="checkbox"><span>Fiz o módulo do Learn sobre o gerenciamento de custos. <a href="#passo-4">Veja o passo 4</a>.</span></label></li>
             </ol>
+          </div>
+        </section>
+
+        <!-- ===================== CONEXÃO STEAM ===================== -->
+        <section class="parte" id="steam">
+          <div class="cab">
+            <span class="olho">S1 · conexão STEAM</span>
+            <h2>A conta fora da tela</h2>
+          </div>
+          <div class="steam">
+            <div class="cartao">
+              <span class="letra">M</span>
+              <h3>Matemática</h3>
+              <p>Dividir para comparar: R$ 12.000 em 4 anos são 48 meses, ou R$ 250 por mês. É assim que um gasto de uma vez (CapEx) vira um valor mensal, comparável com a conta da nuvem (OpEx).</p>
+            </div>
+            <div class="cartao">
+              <span class="letra">E</span>
+              <h3>Engenharia</h3>
+              <p>Um servidor que gasta 300 W, ligado 24 horas por 30 dias, consome 0,3 kW × 720 h = 216 kWh por mês. Olhe a sua conta de luz e veja quanto isso custaria na sua casa.</p>
+            </div>
           </div>
         </section>
 
@@ -168,17 +341,23 @@
             <h2>AWS Academy e Microsoft Learn</h2>
           </div>
           <div class="repos">
-            <a class="repo luz" href="https://www.awsacademy.com/">
+            <a class="repo luz" href="https://www.awsacademy.com/vforcesite/LMS_Login">
               <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS Academy</span>
               <h4>Cloud Foundations</h4>
               <p>Módulo 2: Economia e faturamento da nuvem.</p>
               <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/aws.svg" alt="" width="20" height="20"></span>AWS</span><span class="etiqueta">trilha</span></span>
             </a>
-            <a class="repo luz" href="https://learn.microsoft.com/pt-br/training/paths/describe-azure-management-governance/">
+            <a class="repo luz" href="https://learn.microsoft.com/pt-br/training/modules/describe-cost-management-azure/">
               <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Microsoft Learn</span>
-              <h4>Trilha 3: gerenciamento e governança</h4>
-              <p>Módulo Descrever o gerenciamento de custos no Azure.</p>
+              <h4>Descrever o gerenciamento de custos no Azure</h4>
+              <p>O módulo de hoje, da trilha 3 do AZ-900.</p>
               <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/azure.svg" alt="" width="20" height="20"></span>Azure</span><span class="etiqueta">como é no Azure</span></span>
+            </a>
+            <a class="repo luz" href="https://aws.amazon.com/pt/pricing/">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS</span>
+              <h4>Como funciona a definição de preço da AWS</h4>
+              <p>A página oficial de preços, com os jeitos de pagar e o nível gratuito.</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/aws.svg" alt="" width="20" height="20"></span>AWS</span><span class="etiqueta">leitura</span></span>
             </a>
           </div>
         </section>
@@ -189,8 +368,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             <div>
               <span class="olho">E1 · entrega</span>
-              <h3>Atividade da aula</h3>
-              <p>A lista de custos do servidor próprio, no Moodle.</p>
+              <h3>A conta do Ateliê</h3>
+              <p>No Moodle: a lista de custos do servidor próprio e a sua conta "comprar ou alugar", com os números e a conclusão. Na próxima aula, a estimativa de verdade, na calculadora da AWS.</p>
             </div>
           </div>
         </section>
@@ -229,6 +408,8 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
   <script src="../assets/js/conta.js?v=5" data-disciplina="fundamentos-nuvem"></script>
   <script src="../assets/js/aulas.js?v=3"></script>
+  <script src="../assets/js/classifica.js?v=2"></script>
+  <script src="../assets/js/contas.js?v=1"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
 </body>
 </html>

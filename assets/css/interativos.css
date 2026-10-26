@@ -1,5 +1,5 @@
 /*
-  interativos.css: as peças interativas e as tabelas das aulas deste site (versão 1 · 2026-10-26).
+  interativos.css: as peças interativas e as tabelas das aulas deste site (versão 2 · 2026-10-26: calculadora "Comprar ou alugar?").
   Só deste site (Fundamentos de Computação em Nuvem). Mudou? Aumente o ?v=N nas aulas.
   Carregue depois do aula.css e do neon.css.
 */
@@ -137,4 +137,68 @@
   .classifica-itens > li {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---------- calculadora "Comprar ou alugar?" (contas.js) ---------- */
+.calc-custo {
+  margin-top: 1rem;
+  display: grid;
+  gap: .9rem;
+}
+
+.calc-campos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: .7rem 1rem;
+}
+
+.calc-campos label {
+  display: grid;
+  gap: .3rem;
+  font-size: .92rem;
+  color: var(--texto-2);
+}
+
+.calc-campos input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: .5rem .7rem;
+  border-radius: var(--raio-p);
+  border: 1px solid var(--borda-forte);
+  background: var(--superficie);
+  color: var(--texto);
+  font: 500 1rem var(--f-mono);
+}
+
+.calc-campos input:focus-visible {
+  outline: 2px solid var(--neon);
+  outline-offset: 2px;
+}
+
+.calc-campos .calc-nuvem input {
+  border-color: color-mix(in srgb, var(--neon) 55%, transparent);
+}
+
+.calc-resultado {
+  display: block;
+  padding: .8rem 1rem;
+  border-radius: var(--raio-p);
+  border: 1px solid color-mix(in srgb, var(--neon) 45%, transparent);
+  background: color-mix(in srgb, var(--neon) 8%, transparent);
+}
+
+.calc-resultado p {
+  margin: 0;
+  color: var(--texto-2);
+}
+
+.calc-resultado p + p {
+  margin-top: .25rem;
+}
+
+.calc-resultado .calc-conclusao {
+  margin-top: .5rem;
+  font-family: var(--f-titulo);
+  font-weight: 700;
+  color: var(--texto);
 }
