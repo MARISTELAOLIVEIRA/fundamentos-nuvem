@@ -1,5 +1,5 @@
 /* ===================================================================
-   atividades.js: as atividades que a professora publica pelo Placa-Mãe · versão 3 · 2026-10-19 (aviso "ainda não há atividade" some quando há alguma)
+   atividades.js: as atividades que a professora publica pelo Placa-Mãe · versão 4 · 2026-11-06 (atividade com pasta própria só aparece depois de liberada)
    (cópia comum às disciplinas)
 
    O Placa-Mãe escreve a lista em assets/data/atividades.json (e os anexos em assets/atividades/).
@@ -8,17 +8,25 @@
        se a seção e o link do menu estão escondidos ([data-atividades-secao], [data-atividades-link],
        eles aparecem quando há pelo menos uma atividade; o aviso [data-atividades-vazio] some;
      - em atividade.html?a=<id>, a atividade inteira: instruções, link e anexo
-       (imagem aparece na página; outro arquivo vira botão de baixar).
+       (imagem aparece na página; outro arquivo vira botão de baixar);
+     - em qualquer página, o que aponta para uma atividade com pasta própria (escape/, simulador/...)
+       leva data-pasta="escape/" e começa escondido (style="display:none"); aparece quando o
+       Placa-Mãe libera a atividade. Link no meio de uma frase leva também data-pasta-texto:
+       sem a atividade no ar, vira texto comum.
    Os textos entram com textContent: nada do que vem do arquivo vira HTML.
    =================================================================== */
 (function () {
+  // a raiz do site vem do endereço deste arquivo (.../assets/js/atividades.js): vale em qualquer pasta
+  const script = document.currentScript;
+  const raiz = script ? script.src.replace(/assets\/js\/atividades\.js.*$/, "") : "";
   const lista = document.querySelector("[data-atividades]");
   const pagina = document.querySelector("[data-atividade]");
-  if (!lista && !pagina) return;
+  const comPasta = document.querySelector("[data-pasta]");
+  if (!lista && !pagina && !comPasta) return;
 
-  // o caminho do arquivo de dados vem do atributo (cada página sabe onde está)
+  // o caminho do arquivo de dados vem do atributo (cada página sabe onde está) ou da raiz
   const alvo = lista || pagina;
-  const base = alvo.dataset.base || "";
+  const base = (alvo && alvo.dataset.base) || raiz;
 
   function el(tag, classe, texto) {
     const e = document.createElement(tag);
@@ -47,8 +55,10 @@
     }
     const primeiro = lista.firstElementChild;
     atividades.forEach(function (a, i) {
+      // atividade com pasta e card fixo na página: quem mostra o card é o mostrarPastas
+      if (a.pasta && lista.querySelector('[data-pasta="' + a.pasta + '"]')) return;
       const card = el("a", "repo luz");
-      card.href = base + "atividade.html?a=" + encodeURIComponent(a.id);
+      card.href = base + (a.pasta || "atividade.html?a=" + encodeURIComponent(a.id));
       card.setAttribute("data-revela", "");
       card.classList.add("visivel");
       card.style.setProperty("--i", i);
@@ -62,6 +72,21 @@
       pe.appendChild(el("span", "etiqueta ouro", etiquetaValor(a)));
       card.appendChild(pe);
       lista.insertBefore(card, primeiro);
+    });
+  }
+
+  // ---------- atividades com pasta própria: só aparecem depois de liberadas ----------
+  function mostrarPastas(atividades) {
+    const noAr = atividades.map(function (a) { return a.pasta; }).filter(Boolean);
+    document.querySelectorAll("[data-pasta]").forEach(function (e) {
+      const liberada = noAr.indexOf(e.dataset.pasta) >= 0;
+      if (e.hasAttribute("data-pasta-texto")) {
+        // link no meio de uma frase: sem a atividade no ar, fica só o texto
+        if (!liberada) e.replaceWith(document.createTextNode(e.textContent));
+      } else if (liberada) {
+        e.style.display = "";
+        e.classList.add("visivel");
+      }
     });
   }
 
@@ -117,6 +142,7 @@
     .then(function (r) { return r.ok ? r.json() : []; })
     .catch(function () { return []; })
     .then(function (atividades) {
+      mostrarPastas(atividades);
       if (lista) montarCards(atividades);
       if (pagina) montarPagina(atividades);
     });
