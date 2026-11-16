@@ -1,5 +1,5 @@
 /* ===================================================================
-   conta.js: login dos alunos nos sites das disciplinas · versão 5 · 2026-10-21 (progresso dos checklists na conta; ranking das atividades)
+   conta.js: login dos alunos nos sites das disciplinas · versão 7 · 2026-11-16 ("Esqueci a senha": link pelo e-mail e tela da senha nova)
    (cópia comum às disciplinas; o dos preparatórios é outro, em js/conta.js de lá)
 
    O site continua aberto para todo mundo. Para REGISTRAR o resultado de um quiz
@@ -7,6 +7,9 @@
    O resultado vai para o Supabase (tabelas disc_..., SQL em
    Placa-Mae/supabase/tabelas-disciplinas.sql) e o Placa-Mãe da professora busca de lá.
    O login é o mesmo em todos os sites (estão no mesmo endereço) e nos preparatórios.
+   Esqueceu a senha (versão 7)? O Supabase manda um link; ele volta para a mesma página, e a janela
+   abre sozinha pedindo a senha nova (evento PASSWORD_RECOVERY). O endereço dos sites precisa estar
+   em Authentication › URL Configuration › Redirect URLs, no Supabase.
 
    Uso numa atividade:
      const registro = await CONTA.registrarTentativa({
@@ -106,7 +109,18 @@ window.CONTA = (function () {
       return "Este e-mail já tem conta. Use a aba Já tenho conta.";
     }
     if (texto.includes("rate limit") || codigo === "over_email_send_rate_limit") {
-      return "Muitas contas criadas agora há pouco. Espere alguns minutos e tente de novo.";
+      return aba === "esqueci"
+        ? "Muitos e-mails enviados agora há pouco. Espere alguns minutos e tente de novo."
+        : "Muitas contas criadas agora há pouco. Espere alguns minutos e tente de novo.";
+    }
+    if (codigo === "same_password" || texto.includes("different from the old")) {
+      return "A senha nova precisa ser diferente da antiga.";
+    }
+    if (aba === "esqueci") {
+      return "Não deu para mandar o e-mail agora. Confira o endereço e tente de novo.";
+    }
+    if (aba === "nova" && !texto.includes("password")) {
+      return "O link expirou ou já foi usado. Peça um novo em Entrar › Esqueci a senha.";
     }
     if (texto.includes("password")) {
       return "A senha precisa ter pelo menos 6 letras ou números.";
@@ -339,6 +353,7 @@ window.CONTA = (function () {
         <p class="conta-msg" aria-live="polite"></p>
         <div class="conta-botoes">
           <button type="submit">Entrar</button>
+          <button type="button" data-acao="esqueci" class="sec so-entrar">Esqueci a senha</button>
           <button type="button" data-acao="fechar" class="sec">Cancelar</button>
         </div>
         <p class="conta-lgpd">Guardamos só o seu nome, o e-mail, os itens marcados nas aulas e os resultados das
@@ -352,6 +367,7 @@ window.CONTA = (function () {
         aba = b.dataset.aba;
         janela.querySelectorAll("[data-aba]").forEach((x) => x.setAttribute("aria-selected", String(x === b)));
         janela.querySelector(".so-criar").hidden = aba !== "criar";
+        janela.querySelector(".so-entrar").hidden = aba === "criar";
         form.querySelector('button[type="submit"]').textContent = aba === "criar" ? "Criar conta" : "Entrar";
         form.senha.autocomplete = aba === "criar" ? "new-password" : "current-password";
         msg.textContent = "";
@@ -373,8 +389,7 @@ window.CONTA = (function () {
       msg.textContent = "Um instante…";
       if (aba === "criar") {
         // o link de confirmação do e-mail (se estiver ligado no Supabase) volta para esta página
-        const voltarPara = location.origin + location.pathname.replace(/[^/]*$/, "");
-        const { data, error } = await nuvem.auth.signUp({ email: email, password: senha, options: { data: { nome: nome }, emailRedirectTo: voltarPara } });
+        const { data, error } = await nuvem.auth.signUp({ email: email, password: senha, options: { data: { nome: nome }, emailRedirectTo: voltarPara() } });
         if (error) {
           msg.textContent = explicarErro(error, "criar");
         } else if (!data.session) {
@@ -390,6 +405,83 @@ window.CONTA = (function () {
           janela.close();
         }
       }
+    });
+  }
+
+  // o endereço para onde voltam os links do e-mail: a pasta da página atual
+  function voltarPara() {
+    return location.origin + location.pathname.replace(/[^/]*$/, "");
+  }
+
+  // versão 7: pedir o link para criar uma senha nova
+  function desenharEsqueci(emailDigitado) {
+    janela.innerHTML = `
+      <h2 id="conta-titulo">Esqueci a senha</h2>
+      <p class="conta-explica">Digite o e-mail da faculdade. Mandamos um link para você criar uma senha nova.</p>
+      <form class="conta-form" novalidate>
+        <label>E-mail da faculdade<input name="email" type="email" autocomplete="email" placeholder="seu.nome${CONTA_DOMINIO}" required></label>
+        <p class="conta-msg" aria-live="polite"></p>
+        <div class="conta-botoes">
+          <button type="submit">Mandar o link</button>
+          <button type="button" data-acao="voltar" class="sec">Voltar</button>
+        </div>
+      </form>`;
+    const form = janela.querySelector("form");
+    const msg = janela.querySelector(".conta-msg");
+    form.email.value = emailDigitado || "";
+    form.email.focus();
+    form.addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      const email = form.email.value.trim().toLowerCase();
+      if (!emailDaFaculdade(email)) {
+        msg.textContent = "Use o e-mail da faculdade, que termina com " + CONTA_DOMINIO + ".";
+        return;
+      }
+      msg.textContent = "Um instante…";
+      const { error } = await nuvem.auth.resetPasswordForEmail(email, { redirectTo: voltarPara() });
+      msg.textContent = error
+        ? explicarErro(error, "esqueci")
+        : "Pronto! Se este e-mail tiver conta, o link chega em alguns minutos (confira também o spam). Abra o link neste mesmo navegador.";
+    });
+  }
+
+  // versão 7: a pessoa voltou pelo link do e-mail; escolhe a senha nova
+  function desenharNovaSenha() {
+    janela.innerHTML = `
+      <h2 id="conta-titulo">Crie a senha nova</h2>
+      <p class="conta-explica">Escolha uma senha de pelo menos 6 letras ou números e digite duas vezes.</p>
+      <form class="conta-form" novalidate>
+        <label>Senha nova<input name="senha" type="password" autocomplete="new-password" minlength="6" required></label>
+        <label>Repita a senha nova<input name="repete" type="password" autocomplete="new-password" minlength="6" required></label>
+        <p class="conta-msg" aria-live="polite"></p>
+        <div class="conta-botoes">
+          <button type="submit">Salvar a senha</button>
+          <button type="button" data-acao="fechar" class="sec">Depois</button>
+        </div>
+      </form>`;
+    const form = janela.querySelector("form");
+    const msg = janela.querySelector(".conta-msg");
+    form.addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      const senha = form.senha.value;
+      if (senha.length < 6) {
+        msg.textContent = "A senha precisa ter pelo menos 6 letras ou números.";
+        return;
+      }
+      if (senha !== form.repete.value) {
+        msg.textContent = "As duas senhas não são iguais. Digite de novo.";
+        return;
+      }
+      msg.textContent = "Um instante…";
+      const { error } = await nuvem.auth.updateUser({ password: senha });
+      if (error) {
+        msg.textContent = explicarErro(error, "nova");
+        return;
+      }
+      janela.innerHTML = `
+        <h2 id="conta-titulo">Senha trocada!</h2>
+        <p>Pronto: você já está conectado, e da próxima vez é só entrar com a senha nova.</p>
+        <div class="conta-botoes"><button type="button" data-acao="fechar">Fechar</button></div>`;
     });
   }
 
@@ -413,6 +505,13 @@ window.CONTA = (function () {
       janela.close();
       conferirFechamento();
     }
+    if (acao === "esqueci") {
+      const campo = janela.querySelector('input[name="email"]');
+      desenharEsqueci(campo ? campo.value.trim() : "");
+    }
+    if (acao === "voltar") {
+      desenharJanela();
+    }
     if (acao === "trocar") {
       await nuvem.auth.signOut();
       desenharJanela();
@@ -432,6 +531,13 @@ window.CONTA = (function () {
     nuvem.auth.onAuthStateChange((evento, sessao) => {
       const u = sessao ? sessao.user : null;
       if ((u && u.id) !== (usuario && usuario.id)) mudou(u);
+      if (evento === "PASSWORD_RECOVERY") {
+        // espera a página terminar de montar (o aviso chega logo no carregamento)
+        setTimeout(() => {
+          desenharNovaSenha();
+          if (!janela.open) janela.showModal();
+        }, 0);
+      }
     });
   }
 
@@ -444,6 +550,7 @@ window.CONTA = (function () {
     ranking,
     disciplina: DISCIPLINA,
     usuario: () => usuario,
+    cliente: () => nuvem, // versão 6: o Stela Cloud chama as funções sc_ com o mesmo login
     nome: () => nomeConta,
     formatarNome,
     daFaculdade: () => Boolean(usuario && emailDaFaculdade(usuario.email)),
