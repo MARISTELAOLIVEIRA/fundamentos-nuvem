@@ -202,3 +202,130 @@
   font-weight: 700;
   color: var(--texto);
 }
+
+/* ===================== versão 3 · 2026-11-19: aulas com conteúdo próprio ===================== */
+
+/* a Stela conversando com o aluno */
+.fala-stela {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr;
+  gap: .9rem;
+  align-items: start;
+  margin: 1.2rem 0;
+}
+.fala-stela .avatar {
+  width: 3.2rem; height: 3.2rem;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--superficie-2);
+  border: 1px solid color-mix(in srgb, var(--ouro) 55%, transparent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--ouro) 25%, transparent);
+}
+.fala-stela .avatar img { width: 1.9rem; height: auto; }
+.fala-stela .balao {
+  position: relative;
+  padding: .9rem 1.1rem;
+  border-radius: var(--raio);
+  background: color-mix(in srgb, var(--ouro) 9%, var(--superficie));
+  border: 1px solid color-mix(in srgb, var(--ouro) 35%, transparent);
+  color: var(--texto);
+}
+.fala-stela .balao::before {
+  content: ""; position: absolute; left: -.45rem; top: 1.1rem;
+  width: .8rem; height: .8rem; transform: rotate(45deg);
+  background: inherit; border-left: inherit; border-bottom: inherit;
+}
+.fala-stela .balao p { margin: 0; }
+.fala-stela .balao p + p { margin-top: .5rem; }
+.fala-stela .quem { display: block; font: 600 .78rem var(--f-mono); color: var(--ouro); margin-bottom: .3rem; letter-spacing: .02em; }
+
+/* espaço do vídeo gravado pela professora */
+.video-stela {
+  margin-top: 1rem;
+  border-radius: var(--raio);
+  border: 1px dashed var(--borda-forte);
+  background: var(--superficie);
+  overflow: hidden;
+}
+.video-stela .moldura { position: relative; aspect-ratio: 16 / 9; display: grid; place-items: center; text-align: center; padding: 1rem; }
+.video-stela iframe, .video-stela video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-stela .em-breve { color: var(--texto-2); max-width: 32rem; }
+.video-stela .em-breve strong { display: block; font: 700 1.1rem var(--f-titulo); color: var(--texto); margin-bottom: .3rem; }
+.video-stela .em-breve span { font-size: 2.2rem; display: block; margin-bottom: .4rem; }
+
+/* verdade ou mito */
+.vf .vf-itens { list-style: none; padding: 0; margin: .8rem 0 0; display: grid; gap: .6rem; }
+.vf-itens > li {
+  display: grid; grid-template-columns: 1fr auto; gap: .4rem .8rem; align-items: center;
+  padding: .7rem .9rem; border-radius: var(--raio-p);
+  border: 1px solid var(--borda); background: var(--superficie);
+}
+.vf-itens > li.certo { border-color: color-mix(in srgb, var(--menta) 55%, transparent); }
+.vf-botoes { display: flex; gap: .4rem; }
+.vf-botoes button, .escolha-opcoes button {
+  padding: .4rem .8rem; border-radius: 999px;
+  border: 1px solid var(--borda-forte); background: var(--superficie-2);
+  color: var(--texto); font: 600 .88rem var(--f-mono); cursor: pointer;
+}
+.vf-botoes button:hover, .escolha-opcoes button:hover { border-color: var(--ouro); }
+.vf-botoes button:focus-visible, .escolha-opcoes button:focus-visible, .carta:focus-visible, .aba:focus-visible { outline: 2px solid var(--ouro); outline-offset: 2px; }
+.vf-botoes button.acertou, .escolha-opcoes button.acertou { background: color-mix(in srgb, var(--menta) 25%, transparent); border-color: var(--menta); }
+.vf-botoes button.errou, .escolha-opcoes button.errou { opacity: .55; text-decoration: line-through; }
+.vf-retorno { grid-column: 1 / -1; font-size: .93rem; color: var(--texto-2); }
+.vf-retorno:empty { display: none; }
+.vf-placar { font: 600 .86rem var(--f-mono); color: var(--ouro); margin: 0; }
+@media (max-width: 520px) { .vf-itens > li { grid-template-columns: 1fr; } }
+
+/* cartas que viram */
+.cartas { display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: .8rem; margin-top: 1rem; }
+.carta {
+  position: relative; min-height: 8.5rem; padding: 1rem;
+  border-radius: var(--raio); border: 1px solid var(--borda-forte);
+  background: linear-gradient(160deg, var(--superficie-2), var(--superficie));
+  color: var(--texto); text-align: left; cursor: pointer; font: inherit;
+}
+.carta .frente { display: block; font: 700 1.05rem var(--f-titulo); }
+.carta .frente small { display: block; margin-top: .5rem; font: 500 .78rem var(--f-mono); color: var(--texto-3); }
+.carta .verso { display: none; font-size: .94rem; color: var(--texto); }
+.carta.virada { border-color: color-mix(in srgb, var(--ouro) 60%, transparent); background: color-mix(in srgb, var(--ouro) 8%, var(--superficie)); }
+.carta.virada .frente { display: none; }
+.carta.virada .verso { display: block; }
+
+/* abas AWS, Azure e Google Cloud */
+.abas-nuvem { margin-top: 1rem; border: 1px solid var(--borda); border-radius: var(--raio); background: var(--superficie); }
+.abas-lista { display: flex; flex-wrap: wrap; gap: .3rem; padding: .5rem; border-bottom: 1px solid var(--borda); }
+.aba {
+  padding: .45rem .9rem; border-radius: 999px; border: 1px solid var(--borda-forte);
+  background: transparent; color: var(--texto-2); font: 600 .88rem var(--f-mono); cursor: pointer;
+}
+.aba[aria-selected="true"] { color: var(--texto); background: var(--superficie-2); }
+.aba-aws[aria-selected="true"] { border-color: #ff9900; box-shadow: inset 0 -2px 0 #ff9900; }
+.aba-azure[aria-selected="true"] { border-color: #3a96dd; box-shadow: inset 0 -2px 0 #3a96dd; }
+.aba-gcp[aria-selected="true"] { border-color: #34a853; box-shadow: inset 0 -2px 0 #34a853; }
+.abas-nuvem > section { padding: 1rem 1.1rem; }
+.abas-nuvem > section > :first-child { margin-top: 0; }
+
+/* tabela das três nuvens */
+.tres-nuvens th.aws { color: #ff9900; }
+.tres-nuvens th.azure { color: #3a96dd; }
+.tres-nuvens th.gcp { color: #34a853; }
+
+/* escolha rápida */
+.escolha { margin-top: 1rem; padding: .9rem 1rem; border-radius: var(--raio-p); border: 1px solid var(--borda); background: var(--superficie); }
+.escolha-pergunta { margin: 0 0 .6rem; font-weight: 600; }
+.escolha-opcoes { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+.escolha-opcoes button { text-align: left; font-family: var(--f-texto); font-weight: 500; }
+.escolha-retorno { margin: .7rem 0 0; color: var(--texto-2); font-size: .94rem; }
+.escolha-retorno:empty { display: none; }
+
+/* termômetro da conta */
+.termometro { margin-top: 1rem; padding: 1rem; border-radius: var(--raio-p); border: 1px solid var(--borda); background: var(--superficie); }
+.termometro label { display: block; font-weight: 600; margin-bottom: .4rem; }
+.termometro input[type=range] { width: 100%; accent-color: var(--ouro); }
+.termometro output { display: block; margin-top: .6rem; color: var(--texto); }
+
+/* resumo de bolso */
+.bolso { margin-top: 1rem; padding: 1rem 1.2rem; border-radius: var(--raio); border: 1px solid color-mix(in srgb, var(--menta) 40%, transparent); background: color-mix(in srgb, var(--menta) 6%, var(--superficie)); }
+.bolso h3 { margin-top: 0; }
+.bolso ul { margin-bottom: 0; }
+.video-stela .moldura:has(.em-breve) { aspect-ratio: auto; min-height: 11rem; }

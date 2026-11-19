@@ -6,7 +6,7 @@
 
   <!-- EDITE AQUI: número e tema da aula -->
   <title>Aula 13: Quem pode fazer o quê · Fundamentos de Computação em Nuvem · Stela</title>
-  <meta name="description" content="Aula 13 de Fundamentos de Computação em Nuvem: Identidades e acessos, menor privilégio, MFA, criptografia, controle de custos e LGPD.">
+  <meta name="description" content="Aula 13 de Fundamentos de Computação em Nuvem: Quem pode fazer o quê, o menor privilégio, a MFA, a criptografia e o controle de custos, nas três nuvens.">
 
   <link rel="icon" href="../assets/img/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/img/favicon-32.png">
@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../assets/css/aula.css?v=2">
   <link rel="stylesheet" href="../assets/css/neon.css?v=1">
   <link rel="stylesheet" href="../assets/css/conta.css?v=4">
+  <link rel="stylesheet" href="../assets/css/interativos.css?v=3">
 </head>
 <body>
 
@@ -32,11 +33,11 @@
       <button type="button" class="btn-menu" id="btn-menu" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
+        <a href="#video">Vídeo</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#pratica">Prática</a>
         <a href="#caso">Caso</a>
-        <a href="#atividade">Atividade</a>
-        <a href="#materiais">Materiais</a>
-        <a href="#entrega">Entrega</a>
+        <a href="#atividade">Checklist</a>
       </nav>
       <div class="ajustes">
         <button type="button" id="btn-tema" aria-label="Mudar para o tema claro">
@@ -69,16 +70,14 @@
           <a href="../#aulas">Aulas</a> <span aria-hidden="true">/</span>
           <span>Aula 13</span>
         </p>
-
-        <!-- EDITE AQUI: número, tipo de aula, unidade e título -->
         <div class="aula-etiquetas">
           <span class="etiqueta senac">Fac Senac DF</span>
           <span class="etiqueta ouro">Aula 13</span>
           <span class="etiqueta">Projeto</span>
           <span class="etiqueta">Unidade 2</span>
         </div>
-        <h1>Identidade, segurança e governança, e o lançamento do projeto final</h1>
-        <p class="subtitulo">Identidades e acessos, menor privilégio, MFA, criptografia, controle de custos e LGPD.</p>
+        <h1>Identidade, <span class="neon">segurança</span> e governança</h1>
+        <p class="subtitulo">Quem pode fazer o quê, o menor privilégio, a MFA, a criptografia e o controle de custos, nas três nuvens.</p>
       </div>
     </section>
 
@@ -91,12 +90,12 @@
             <p>Aplicar o menor privilégio e definir as regras de acesso de uma empresa na nuvem.</p>
           </div>
           <div class="cartao">
-            <span class="olho">Antes da aula</span>
-            <p>Revisar o Módulo 4 do Cloud Foundations (Segurança na nuvem).</p>
+            <span class="olho">Tempo de estudo</span>
+            <p>Uns 60 minutos.</p>
           </div>
           <div class="cartao">
             <span class="olho">Como conta ponto</span>
-            <p>Participação na definição do projeto.</p>
+            <p>O checklist desta página ajuda no <strong>Acesso ao conteúdo da Unidade 2</strong> e prepara você para o <strong>Questionário da Unidade 2</strong>, no Moodle. As regras de acesso de hoje valem <strong>3 pontos no Trabalho da Unidade 2</strong>.</p>
           </div>
         </div>
       </div>
@@ -105,37 +104,109 @@
     <div class="bloco">
       <div class="envolve aula-corpo">
 
+        <!-- ===================== ABERTURA E VÍDEO ===================== -->
+        <section class="parte" id="video">
+          <div class="cab">
+            <span class="olho">V1 · abertura</span>
+            <h2>A aula preferida da professora de Segurança da Informação</h2>
+          </div>
+          <div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>Sou especialista em Segurança da Informação, então se prepara: hoje eu fico empolgada. 🛡️</p><p>A maior parte dos incidentes na nuvem não vem de hacker de filme. Vem de senha fraca, de login compartilhado e de gente com mais permissão do que precisa. E isso a gente resolve hoje.</p></div>
+          </div>
+          <div class="video-stela">
+            <div class="moldura">
+              <!-- EDITE AQUI: quando o vídeo estiver pronto, troque o bloco "em-breve" pelo player, por exemplo:
+                   <iframe src="https://www.youtube.com/embed/CODIGO" title="Vídeo da aula 13" allowfullscreen></iframe> -->
+              <p class="em-breve"><span aria-hidden="true">🎬</span><strong>O vídeo da Stela chega aqui</strong>Estou gravando o crachá, a catraca e o menor privilégio. Enquanto isso, a aula inteira está nesta página: leia com calma, faça as atividades e volte quantas vezes quiser.</p>
+            </div>
+          </div>
+        </section>
+
         <!-- ===================== CONCEITOS ===================== -->
         <section class="parte" id="conceitos">
           <div class="cab">
-            <span class="olho">C1 · conceitos</span>
-            <h2>O que você vai ver</h2>
+            <span class="olho">C · conceitos</span>
+            <h2>Quem pode fazer o quê</h2>
           </div>
-          <div class="cartao">
-            <ul>
-              <li>Gestão de identidades e acessos: usuários, grupos e permissões.</li>
-              <li>Menor privilégio e autenticação multifator (MFA).</li>
-              <li>Criptografia dos dados, controle de custos e conformidade com a LGPD.</li>
-              <li>O projeto final: o que entregar e como vai ser avaliado.</li>
-            </ul>
+          
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C1</span>
+              <h3>Identidade e acesso: o crachá</h3>
+              
+              <p>Na nuvem, toda pessoa (e todo sistema) que acessa alguma coisa tem uma <strong>identidade</strong>. A gestão de identidades e acessos (IAM) responde a duas perguntas:</p><div class="cartas"><button type="button" class="carta"><span class="frente">Autenticação<small>toque para virar</small></span><span class="verso"><strong>Quem é você?</strong> É mostrar o crachá na portaria: login, senha e o segundo fator.</span></button><button type="button" class="carta"><span class="frente">Autorização<small>toque para virar</small></span><span class="verso"><strong>O que você pode fazer?</strong> É a catraca liberar só os andares do seu crachá: permissões.</span></button><button type="button" class="carta"><span class="frente">MFA (autenticação multifator)<small>toque para virar</small></span><span class="verso">É pedir <strong>duas provas</strong>: algo que você sabe (senha) e algo que você tem (o código no celular). Roubaram a senha? Sem o celular, não entra.</span></button><button type="button" class="carta"><span class="frente">Menor privilégio<small>toque para virar</small></span><span class="verso">Cada um recebe <strong>só as permissões de que precisa</strong> para trabalhar, e nada além. A atendente vê pedidos; não apaga servidores.</span></button></div>
+            </div>
           </div>
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C2</span>
+              <h3>Os nomes em cada nuvem</h3>
+              <div class="tabela-rola"><table class="metodos tres-nuvens"><thead><tr><th>Peça</th><th class="aws">AWS</th><th class="azure">Azure</th><th class="gcp">Google Cloud</th></tr></thead><tbody><tr><td>Identidades e permissões</td><td>AWS IAM</td><td>Microsoft Entra ID (identidades) e Azure RBAC (permissões)</td><td>Cloud IAM</td></tr><tr><td>Guardar chaves de criptografia</td><td>AWS KMS</td><td>Azure Key Vault</td><td>Cloud KMS</td></tr><tr><td>Alerta de orçamento</td><td>AWS Budgets</td><td>Gerenciamento de Custos (orçamentos)</td><td>Orçamentos do Cloud Billing</td></tr><tr><td>Regras e conformidade</td><td>AWS Organizations (políticas)</td><td>Azure Policy</td><td>Políticas da organização</td></tr></tbody></table></div><p class="dica">O <strong>Microsoft Entra ID</strong> é o novo nome do Azure Active Directory. Se você vir "Azure AD" num tutorial antigo, é a mesma coisa.</p><div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>Repara que a <strong>conta raiz</strong> (o "dono" da conta da nuvem) é como a chave mestra do prédio: não se usa no dia a dia, fica guardada, com MFA, e pronto.</p></div>
+          </div>
+            </div>
+          </div>
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C3</span>
+              <h3>Criptografia, custos e LGPD</h3>
+              
+              <ul>
+                <li><strong>Criptografia</strong> embaralha os dados para que só quem tem a chave consiga ler. As três nuvens criptografam os dados guardados por padrão em muitos serviços; o cuidado é com <strong>quem tem acesso às chaves</strong>.</li>
+                <li><strong>Controle de custos</strong> também é governança: alerta de orçamento evita que um recurso esquecido vire uma conta assustadora.</li>
+                <li><strong>LGPD</strong>: dados pessoais dos clientes pedem acesso restrito, registro de quem acessou e cuidado com onde ficam.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== PRÁTICA ===================== -->
+        <section class="parte" id="pratica">
+          <div class="cab">
+            <span class="olho">P · prática interativa</span>
+            <h2>Agora é a sua vez</h2>
+            <p>Errou? Ótimo: é errando aqui que você acerta na avaliação. Cada resposta traz a explicação.</p>
+          </div>
+          <div class="faca-assim desafio">
+                <strong>Verdade ou mito?</strong>
+                <div class="vf"><p class="vf-placar" aria-live="polite"></p><ol class="vf-itens"><li data-v="f" data-explica="Login compartilhado impede saber quem fez o quê e dá a todos as mesmas permissões. Cada pessoa precisa do seu.">A dona, o sobrinho e a atendente podem usar o mesmo login, desde que a senha seja forte.</li><li data-v="v" data-explica="O invasor também precisaria do segundo fator, como o código do celular.">Com MFA, uma senha roubada sozinha não basta para entrar.</li><li data-v="f" data-explica="Isso é o contrário do menor privilégio. Um clique errado de quem não precisava apaga tudo.">Dar acesso de administrador para todo mundo evita que o trabalho trave.</li><li data-v="v" data-explica="Mudou de nome em 2023.">O Microsoft Entra ID é o serviço de identidades da Microsoft, antigo Azure AD.</li><li data-v="v" data-explica="Governança inclui controlar o gasto, não só a segurança.">Um alerta de orçamento ajuda a governança da conta.</li></ol></div>
+              </div><div class="escolha" data-explica="Menor privilégio: só o necessário para o trabalho dela."><p class="escolha-pergunta">A atendente do Ateliê só precisa ver os pedidos. Qual permissão ela deve ter?</p><ul><li data-certa>Só leitura dos pedidos.</li><li>Administrador da conta.</li><li>Acesso ao banco inteiro, para garantir.</li><li>A mesma permissão da dona.</li></ul></div>
         </section>
 
         <!-- ===================== ESTUDO DE CASO ===================== -->
         <section class="parte" id="caso">
           <div class="cab">
-            <span class="olho">EC1 · estudo de caso</span>
-            <h2>Quem pode fazer o quê na conta?</h2>
+            <span class="olho">EC · estudo de caso</span>
+            <h2>Quem pode fazer o quê na conta da nuvem?</h2>
           </div>
           <div class="cartao caso">
-            <p>No Ateliê Doce Byte, todo mundo usa o mesmo login na conta da nuvem: a dona, o sobrinho que fez o site e a atendente que vê os pedidos.</p>
-            <h3>Para discutir</h3>
+            <p>No Ateliê, todo mundo usa o mesmo login na conta da nuvem: a <strong>Dona Lu</strong>, o <strong>sobrinho</strong> que fez o site e a <strong>atendente</strong> que vê os pedidos. A senha está num post-it no monitor. 😬</p><div class="tabela-rola"><table class="metodos"><thead><tr><th>Pessoa</th><th>O que precisa fazer</th><th>Permissão sugerida</th><th>MFA?</th></tr></thead><tbody><tr><td>Dona Lu</td><td>Ver custos, aprovar mudanças</td><td>Leitura de tudo + faturamento</td><td>Sim</td></tr><tr><td>Sobrinho</td><td>Atualizar o site</td><td>Só os recursos do site</td><td>Sim</td></tr><tr><td>Atendente</td><td>Ver os pedidos</td><td>?</td><td>?</td></tr></tbody></table></div>
+            <h3>Para pensar</h3>
             <ol>
-              <li>Que problema esse login único causa?</li>
-              <li>Que permissões cada pessoa precisa, e nada mais?</li>
-              <li>Onde a MFA é obrigatória?</li>
-            </ol>
+              <li>Que problemas o login único e o post-it causam?</li>
+              <li>Complete a linha da atendente na tabela.</li>
+              <li>Escolha uma nuvem: que serviço você usaria para criar esses acessos?</li>
+            </ol><div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>Essa tabela, completa, é exatamente o que o Trabalho da Unidade 2 pede nas "regras de acesso". Já sai daqui com ela pronta!</p></div>
+          </div>
             <p class="fonte">Caso fictício, criado para a disciplina.</p>
+          </div>
+        </section>
+
+        <!-- ===================== RESUMO DE BOLSO ===================== -->
+        <section class="parte" id="bolso">
+          <div class="cab">
+            <span class="olho">R · resumo de bolso</span>
+            <h2>Para levar no bolso</h2>
+            <p>Vire as cartas e veja se você explica cada termo antes de ler o verso.</p>
+          </div>
+          <div class="cartas"><button type="button" class="carta"><span class="frente">Autenticação<small>toque para virar</small></span><span class="verso">Quem é você? O crachá.</span></button><button type="button" class="carta"><span class="frente">Autorização<small>toque para virar</small></span><span class="verso">O que você pode fazer? A catraca.</span></button><button type="button" class="carta"><span class="frente">MFA<small>toque para virar</small></span><span class="verso">Duas provas: senha e celular.</span></button><button type="button" class="carta"><span class="frente">Menor privilégio<small>toque para virar</small></span><span class="verso">Só o necessário, nada além.</span></button><button type="button" class="carta"><span class="frente">IAM nas três nuvens<small>toque para virar</small></span><span class="verso">AWS IAM, Microsoft Entra ID + Azure RBAC, Cloud IAM.</span></button></div>
+          <div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>Agora a conta do Ateliê está trancada direitinho. Na próxima aula, a gente junta tudo num diagrama: a arquitetura da empresa!</p></div>
           </div>
         </section>
 
@@ -146,18 +217,13 @@
             <h2>Checklist da aula</h2>
             <p>O que você marcar fica salvo neste navegador e, se você entrar com o e-mail da faculdade (botão <strong>Entrar</strong>, no topo), na sua conta.</p>
           </div>
-
           <div class="cartao">
             <div class="progresso-atividade" data-progresso="passos-aula-13">
               <span class="contagem">0 de 5</span>
               <span class="barra-progresso"><span></span></span>
             </div>
             <ol class="checklist" id="passos-aula-13">
-              <li><label><input type="checkbox"><span>Revisei o Módulo 4 do Cloud Foundations.</span></label></li>
-              <li><label><input type="checkbox"><span>Sei explicar o menor privilégio com um exemplo.</span></label></li>
-              <li><label><input type="checkbox"><span>Montei a tabela de acessos do Ateliê (quem, o quê, por quê).</span></label></li>
-              <li><label><input type="checkbox"><span>Fiz os módulos do Learn sobre identidade, acesso e segurança e sobre governança e conformidade.</span></label></li>
-              <li><label><input type="checkbox"><span>Li as regras do projeto final.</span></label></li>
+              <li><label><input type="checkbox"><span>Sei a diferença entre autenticação e autorização. <a href="#conceitos">Veja o conceito C1</a>.</span></label></li><li><label><input type="checkbox"><span>Sei explicar menor privilégio e MFA com um exemplo.</span></label></li><li><label><input type="checkbox"><span>Reconheço os serviços de identidade das três nuvens. <a href="#conceitos">Veja o conceito C2</a>.</span></label></li><li><label><input type="checkbox"><span>Fiz o Verdade ou mito e a escolha rápida. <a href="#pratica">Veja a prática</a>.</span></label></li><li><label><input type="checkbox"><span>Completei a tabela de acessos do Ateliê.</span></label></li>
             </ol>
           </div>
         </section>
@@ -166,20 +232,33 @@
         <section class="parte" id="materiais">
           <div class="cab">
             <span class="olho">J1 · materiais</span>
-            <h2>AWS Academy e Microsoft Learn</h2>
+            <h2>Para ir além (tudo gratuito)</h2>
+            <p>Nada aqui é obrigatório: a aula está completa nesta página. É para quem quer ver mais.</p>
           </div>
           <div class="repos">
-            <a class="repo luz" href="https://www.awsacademy.com/">
-              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS Academy</span>
-              <h4>Cloud Foundations</h4>
-              <p>Módulo 4: Segurança na nuvem (revisão).</p>
-              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/aws.svg" alt="" width="20" height="20"></span>AWS</span><span class="etiqueta">trilha</span></span>
+            <a class="repo luz" href="https://learn.microsoft.com/pt-br/entra/fundamentals/whatis">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Microsoft Learn</span>
+              <h4>O que é o Microsoft Entra ID?</h4>
+              <p>A documentação da Microsoft, em português.</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/azure.svg" alt="" width="20" height="20"></span>Azure</span><span class="etiqueta">leitura</span></span>
+            </a>
+            <a class="repo luz" href="https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/introduction.html">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS</span>
+              <h4>O que é o IAM?</h4>
+              <p>A documentação da AWS, em português.</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/aws.svg" alt="" width="20" height="20"></span>AWS</span><span class="etiqueta">leitura</span></span>
+            </a>
+            <a class="repo luz" href="https://cloud.google.com/iam/docs/overview?hl=pt-br">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Google Cloud</span>
+              <h4>Visão geral do IAM</h4>
+              <p>A documentação do Google.</p>
+              <span class="repo-pe"><span class="ling" style="--cor:#ecc874"><i></i>Google Cloud</span><span class="etiqueta">leitura</span></span>
             </a>
             <a class="repo luz" href="https://learn.microsoft.com/pt-br/training/paths/azure-fundamentals-describe-azure-architecture-services/">
               <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Microsoft Learn</span>
-              <h4>Trilhas 2 e 3</h4>
-              <p>Módulos Descrever a identidade, o acesso e a segurança do Azure e Descrever recursos e ferramentas no Azure para governança e conformidade.</p>
-              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/azure.svg" alt="" width="20" height="20"></span>Azure</span><span class="etiqueta">como é no Azure</span></span>
+              <h4>Trilha 2: arquitetura e serviços</h4>
+              <p>Módulo "Descrever a identidade, o acesso e a segurança do Azure".</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/azure.svg" alt="" width="20" height="20"></span>Azure</span><span class="etiqueta">opcional, gratuito</span></span>
             </a>
           </div>
         </section>
@@ -191,13 +270,12 @@
             <div>
               <span class="olho">E1 · entrega</span>
               <h3>Tabela de acessos</h3>
-              <p>Ela entra no diagrama da aula 14 e no projeto final.</p>
+              <p>Pelo menos dois perfis, com menor privilégio e MFA: entra no <strong>Trabalho da Unidade 2</strong>.</p>
             </div>
           </div>
         </section>
 
         <nav class="nav-aulas" aria-label="Outras aulas">
-          <!-- EDITE AQUI: use <a href="aula-NN.html"> quando a página da aula vizinha for liberada; <span> enquanto não for -->
           <a class="anterior" href="aula-12.html">
             <span class="olho">← aula anterior</span>
             <strong>Aula 12: Bancos de dados gerenciados</strong>
@@ -217,7 +295,7 @@
     <div class="envolve">
       <div class="rodape-fim" style="margin-top:0; padding-top:0; border-top:0">
         <span><a href="../">Fundamentos de Computação em Nuvem</a> · Feito com ♥ e sucata eletrônica.</span>
-        <span>aws ec2 describe-regions --region sa-east-1</span>
+        <span>echo "a nuvem é o computador de outra pessoa"</span>
       </div>
     </div>
   </footer>
@@ -230,6 +308,8 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
   <script src="../assets/js/conta.js?v=7" data-disciplina="fundamentos-nuvem"></script>
   <script src="../assets/js/aulas.js?v=3"></script>
+  <script src="../assets/js/classifica.js?v=2"></script>
+  <script src="../assets/js/interativos.js?v=1"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
 </body>
 </html>

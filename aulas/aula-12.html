@@ -6,7 +6,7 @@
 
   <!-- EDITE AQUI: número e tema da aula -->
   <title>Aula 12: Bancos de dados gerenciados · Fundamentos de Computação em Nuvem · Stela</title>
-  <meta name="description" content="Aula 12 de Fundamentos de Computação em Nuvem: Bancos relacionais e não relacionais, e o que muda quando o provedor cuida do banco.">
+  <meta name="description" content="Aula 12 de Fundamentos de Computação em Nuvem: Relacional ou não relacional, instalado na mão ou gerenciado pelo provedor, nas três nuvens.">
 
   <link rel="icon" href="../assets/img/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/img/favicon-32.png">
@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../assets/css/aula.css?v=2">
   <link rel="stylesheet" href="../assets/css/neon.css?v=1">
   <link rel="stylesheet" href="../assets/css/conta.css?v=4">
+  <link rel="stylesheet" href="../assets/css/interativos.css?v=3">
 </head>
 <body>
 
@@ -32,11 +33,11 @@
       <button type="button" class="btn-menu" id="btn-menu" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
+        <a href="#video">Vídeo</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#pratica">Prática</a>
         <a href="#caso">Caso</a>
-        <a href="#atividade">Atividade</a>
-        <a href="#materiais">Materiais</a>
-        <a href="#entrega">Entrega</a>
+        <a href="#atividade">Checklist</a>
       </nav>
       <div class="ajustes">
         <button type="button" id="btn-tema" aria-label="Mudar para o tema claro">
@@ -69,16 +70,14 @@
           <a href="../#aulas">Aulas</a> <span aria-hidden="true">/</span>
           <span>Aula 12</span>
         </p>
-
-        <!-- EDITE AQUI: número, tipo de aula, unidade e título -->
         <div class="aula-etiquetas">
           <span class="etiqueta senac">Fac Senac DF</span>
           <span class="etiqueta ouro">Aula 12</span>
-          <span class="etiqueta">Laboratório de práticas</span>
+          <span class="etiqueta">Laboratório</span>
           <span class="etiqueta">Unidade 2</span>
         </div>
-        <h1>Bancos de dados gerenciados</h1>
-        <p class="subtitulo">Bancos relacionais e não relacionais, e o que muda quando o provedor cuida do banco.</p>
+        <h1>Bancos de dados <span class="neon">gerenciados</span></h1>
+        <p class="subtitulo">Relacional ou não relacional, instalado na mão ou gerenciado pelo provedor, nas três nuvens.</p>
       </div>
     </section>
 
@@ -88,15 +87,15 @@
         <div class="resumo">
           <div class="cartao">
             <span class="olho">Objetivo do dia</span>
-            <p>Escolher entre banco relacional e não relacional, gerenciado ou instalado.</p>
+            <p>Escolher entre banco relacional e não relacional, gerenciado ou instalado numa máquina virtual.</p>
           </div>
           <div class="cartao">
-            <span class="olho">Antes da aula</span>
-            <p>Fazer o Módulo 8 do Cloud Foundations (Bancos de dados).</p>
+            <span class="olho">Tempo de estudo</span>
+            <p>Uns 50 minutos.</p>
           </div>
           <div class="cartao">
             <span class="olho">Como conta ponto</span>
-            <p>Participação no laboratório.</p>
+            <p>O checklist desta página ajuda no <strong>Acesso ao conteúdo da Unidade 2</strong> e prepara você para o <strong>Questionário da Unidade 2</strong>, no Moodle. O que você decidir hoje entra no <strong>diagrama do Trabalho da Unidade 2</strong>.</p>
           </div>
         </div>
       </div>
@@ -105,36 +104,111 @@
     <div class="bloco">
       <div class="envolve aula-corpo">
 
+        <!-- ===================== ABERTURA E VÍDEO ===================== -->
+        <section class="parte" id="video">
+          <div class="cab">
+            <span class="olho">V1 · abertura</span>
+            <h2>O coração da loja: os dados</h2>
+          </div>
+          <div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>Eu amo banco de dados (MySQL, PostgreSQL, SQLite, me chama que eu vou). Mas cuidar de banco na mão dá trabalho: instalar, atualizar, fazer backup, recuperar quando dá pau.</p><p>Hoje você descobre como a nuvem tira esse peso das suas costas.</p></div>
+          </div>
+          <div class="video-stela">
+            <div class="moldura">
+              <!-- EDITE AQUI: quando o vídeo estiver pronto, troque o bloco "em-breve" pelo player, por exemplo:
+                   <iframe src="https://www.youtube.com/embed/CODIGO" title="Vídeo da aula 12" allowfullscreen></iframe> -->
+              <p class="em-breve"><span aria-hidden="true">🎬</span><strong>O vídeo da Stela chega aqui</strong>Estou gravando o cadastro e o carrinho do Ateliê. Enquanto isso, a aula inteira está nesta página: leia com calma, faça as atividades e volte quantas vezes quiser.</p>
+            </div>
+          </div>
+        </section>
+
         <!-- ===================== CONCEITOS ===================== -->
         <section class="parte" id="conceitos">
           <div class="cab">
-            <span class="olho">C1 · conceitos</span>
-            <h2>O que você vai ver</h2>
+            <span class="olho">C · conceitos</span>
+            <h2>Dois tipos de banco, dois jeitos de cuidar</h2>
           </div>
-          <div class="cartao">
-            <ul>
-              <li>Bancos relacionais e não relacionais.</li>
-              <li>Banco gerenciado (o provedor cuida da instalação, do backup e das atualizações) ou instalado numa máquina virtual.</li>
-              <li>Disponibilidade e cópias do banco.</li>
-            </ul>
+          
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C1</span>
+              <h3>Relacional e não relacional</h3>
+              <div class="cartas"><button type="button" class="carta"><span class="frente">Banco relacional (SQL)<small>toque para virar</small></span><span class="verso">É a <strong>planilha muito bem organizada</strong>: tabelas com colunas fixas, ligadas entre si (cliente → pedidos → itens). Ótimo quando tudo precisa bater certinho.</span></button><button type="button" class="carta"><span class="frente">Banco não relacional (NoSQL)<small>toque para virar</small></span><span class="verso">É o <strong>caderno de recados flexível</strong>: cada anotação pode ter um formato diferente. Rápido e fácil de crescer. Ótimo para carrinho de compras, sessões e catálogos.</span></button></div>
+            </div>
           </div>
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C2</span>
+              <h3>Instalado na VM ou gerenciado?</h3>
+              <div class="tabela-rola"><table class="metodos"><thead><tr><th>Quem faz</th><th>Banco instalado numa VM</th><th>Banco gerenciado</th></tr></thead><tbody><tr><td>Instalar e atualizar</td><td>Você</td><td>Provedor</td></tr><tr><td>Backup automático</td><td>Você configura</td><td>Provedor (você escolhe por quanto tempo guardar)</td></tr><tr><td>Cópia em outra zona</td><td>Você monta</td><td>Um clique (ou uma opção)</td></tr><tr><td>Criar tabelas e escolher quem acessa</td><td>Você</td><td><strong>Você</strong> (isso é sempre seu)</td></tr></tbody></table></div><div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>Banco gerenciado é PaaS de banco de dados! Viu como os conceitos do 1º bimestre voltam o tempo todo?</p></div>
+          </div>
+            </div>
+          </div>
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C3</span>
+              <h3>Os nomes em cada nuvem</h3>
+              <div class="tabela-rola"><table class="metodos tres-nuvens"><thead><tr><th>Tipo</th><th class="aws">AWS</th><th class="azure">Azure</th><th class="gcp">Google Cloud</th></tr></thead><tbody><tr><td>Relacional gerenciado (MySQL, PostgreSQL...)</td><td>Amazon RDS (e Amazon Aurora)</td><td>Banco de Dados do Azure para MySQL/PostgreSQL e Azure SQL Database</td><td>Cloud SQL (e AlloyDB)</td></tr><tr><td>Não relacional gerenciado</td><td>Amazon DynamoDB</td><td>Azure Cosmos DB</td><td>Firestore e Bigtable</td></tr></tbody></table></div><div class="abas-nuvem">
+                <section data-aba="AWS" data-cor="aws"><p>Na <strong>AWS</strong>, o Amazon RDS gerencia MySQL, PostgreSQL, SQL Server e outros. O DynamoDB é o NoSQL da casa, famoso por aguentar tráfego gigante.</p></section>
+                <section data-aba="Azure" data-cor="azure"><p>No <strong>Azure</strong>, o Azure SQL Database é o SQL Server gerenciado (o queridinho das empresas que já usam Microsoft). O Cosmos DB é o NoSQL, com distribuição global.</p></section>
+                <section data-aba="Google Cloud" data-cor="gcp"><p>No <strong>Google Cloud</strong>, o Cloud SQL gerencia MySQL, PostgreSQL e SQL Server. Para NoSQL, o Firestore é muito usado em aplicativos, e o Bigtable em volumes enormes.</p></section>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== PRÁTICA ===================== -->
+        <section class="parte" id="pratica">
+          <div class="cab">
+            <span class="olho">P · prática interativa</span>
+            <h2>Agora é a sua vez</h2>
+            <p>Errou? Ótimo: é errando aqui que você acerta na avaliação. Cada resposta traz a explicação.</p>
+          </div>
+          <div class="faca-assim desafio">
+                <strong>Classifique! Relacional ou não relacional?</strong>
+                <div class="classifica" data-opcoes="rel:Relacional,nosql:Não relacional" data-dica="Pergunte: os dados têm formato fixo e relações entre si, ou mudam de formato o tempo todo?">
+                  <p class="classifica-placar" aria-live="polite"></p>
+                  <ol class="classifica-itens"><li data-resposta="rel" data-explica="Tabelas ligadas que precisam bater: relacional.">Cadastro de clientes, pedidos e itens de cada pedido.</li><li data-resposta="nosql" data-explica="Dados flexíveis e muito acessados: não relacional.">O carrinho de compras, que muda a cada clique.</li><li data-resposta="rel" data-explica="Precisa de consistência total: relacional.">O controle financeiro da loja, com débitos e créditos.</li><li data-resposta="nosql" data-explica="Formato varia de cliente para cliente: não relacional.">As preferências de cada cliente no aplicativo (cada um com campos diferentes).</li></ol>
+                  <button type="button" class="botao contorno classifica-reiniciar">Jogar de novo</button>
+                </div>
+              </div><div class="escolha" data-explica="O Cosmos DB é o NoSQL do Azure, como o DynamoDB na AWS e o Firestore no Google."><p class="escolha-pergunta">Qual é o banco não relacional (NoSQL) do Azure?</p><ul><li>Azure Files</li><li data-certa>Azure Cosmos DB</li><li>Azure SQL Database</li><li>Azure Functions</li></ul></div><div class="faca-assim desafio">
+                <strong>Verdade ou mito?</strong>
+                <div class="vf"><p class="vf-placar" aria-live="polite"></p><ol class="vf-itens"><li data-v="f" data-explica="O provedor cuida da instalação e do backup. Quem acessa o quê é sempre decisão do cliente.">Num banco gerenciado, o provedor decide quem pode acessar os dados da empresa.</li><li data-v="v" data-explica="Ele gerencia MySQL, PostgreSQL e SQL Server.">O Cloud SQL do Google pode rodar MySQL e PostgreSQL.</li></ol></div>
+              </div>
         </section>
 
         <!-- ===================== ESTUDO DE CASO ===================== -->
         <section class="parte" id="caso">
           <div class="cab">
-            <span class="olho">EC1 · estudo de caso</span>
+            <span class="olho">EC · estudo de caso</span>
             <h2>O cadastro e o carrinho</h2>
           </div>
           <div class="cartao caso">
-            <p>A loja on-line do Ateliê Doce Byte tem o cadastro de clientes e pedidos, com tudo bem amarrado, e o carrinho de compras, que muda a cada clique.</p>
-            <h3>Para discutir</h3>
+            <p>A loja on-line do Ateliê tem o <strong>cadastro de clientes e pedidos</strong>, com tudo bem amarrado, e o <strong>carrinho de compras</strong>, que muda a cada clique.</p>
+            <h3>Para pensar</h3>
             <ol>
               <li>Qual dos dois combina com um banco relacional? E com um não relacional?</li>
-              <li>O que a empresa ganha com um banco gerenciado?</li>
-              <li>Quem faz o backup do banco, em cada caso?</li>
+              <li>O que o Ateliê ganha com um banco gerenciado, em vez de instalar o banco numa VM?</li>
+              <li>Escolha uma nuvem e diga os nomes dos dois bancos que você usaria.</li>
             </ol>
             <p class="fonte">Caso fictício, criado para a disciplina.</p>
+          </div>
+        </section>
+
+        <!-- ===================== RESUMO DE BOLSO ===================== -->
+        <section class="parte" id="bolso">
+          <div class="cab">
+            <span class="olho">R · resumo de bolso</span>
+            <h2>Para levar no bolso</h2>
+            <p>Vire as cartas e veja se você explica cada termo antes de ler o verso.</p>
+          </div>
+          <div class="cartas"><button type="button" class="carta"><span class="frente">Relacional<small>toque para virar</small></span><span class="verso">Planilha organizada: RDS, Azure SQL, Cloud SQL.</span></button><button type="button" class="carta"><span class="frente">Não relacional<small>toque para virar</small></span><span class="verso">Caderno flexível: DynamoDB, Cosmos DB, Firestore.</span></button><button type="button" class="carta"><span class="frente">Banco gerenciado<small>toque para virar</small></span><span class="verso">PaaS de banco: o provedor instala, atualiza e faz backup.</span></button><button type="button" class="carta"><span class="frente">O que é sempre seu<small>toque para virar</small></span><span class="verso">As tabelas, os dados e quem pode acessar.</span></button></div>
+          <div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>Dados organizados! Na próxima aula, o tema mais importante para a segurança da Dona Lu: quem pode fazer o quê.</p></div>
           </div>
         </section>
 
@@ -145,17 +219,13 @@
             <h2>Checklist da aula</h2>
             <p>O que você marcar fica salvo neste navegador e, se você entrar com o e-mail da faculdade (botão <strong>Entrar</strong>, no topo), na sua conta.</p>
           </div>
-
           <div class="cartao">
             <div class="progresso-atividade" data-progresso="passos-aula-12">
-              <span class="contagem">0 de 4</span>
+              <span class="contagem">0 de 5</span>
               <span class="barra-progresso"><span></span></span>
             </div>
             <ol class="checklist" id="passos-aula-12">
-              <li><label><input type="checkbox"><span>Fiz o Módulo 8 do Cloud Foundations e o laboratório dele.</span></label></li>
-              <li><label><input type="checkbox"><span>Sei a diferença entre banco relacional e não relacional.</span></label></li>
-              <li><label><input type="checkbox"><span>Expliquei o que muda com um banco gerenciado.</span></label></li>
-              <li><label><input type="checkbox"><span>Escolhi o banco do cadastro e o do carrinho do Ateliê.</span></label></li>
+              <li><label><input type="checkbox"><span>Sei a diferença entre banco relacional e não relacional. <a href="#conceitos">Veja o conceito C1</a>.</span></label></li><li><label><input type="checkbox"><span>Sei o que muda com um banco gerenciado. <a href="#conceitos">Veja o conceito C2</a>.</span></label></li><li><label><input type="checkbox"><span>Reconheço os bancos de cada nuvem. <a href="#conceitos">Veja o conceito C3</a>.</span></label></li><li><label><input type="checkbox"><span>Fiz o Classifique!, a escolha rápida e o Verdade ou mito. <a href="#pratica">Veja a prática</a>.</span></label></li><li><label><input type="checkbox"><span>Escolhi o banco do cadastro e o do carrinho do Ateliê.</span></label></li>
             </ol>
           </div>
         </section>
@@ -164,14 +234,27 @@
         <section class="parte" id="materiais">
           <div class="cab">
             <span class="olho">J1 · materiais</span>
-            <h2>AWS Academy e Microsoft Learn</h2>
+            <h2>Para ir além (tudo gratuito)</h2>
+            <p>Nada aqui é obrigatório: a aula está completa nesta página. É para quem quer ver mais.</p>
           </div>
           <div class="repos">
-            <a class="repo luz" href="https://www.awsacademy.com/">
-              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS Academy</span>
-              <h4>Cloud Foundations</h4>
-              <p>Módulo 8: Bancos de dados.</p>
-              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/aws.svg" alt="" width="20" height="20"></span>AWS</span><span class="etiqueta">trilha</span></span>
+            <a class="repo luz" href="https://cloud.google.com/docs/get-started/aws-azure-gcp-service-comparison">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Google Cloud</span>
+              <h4>AWS, Azure e Google Cloud lado a lado</h4>
+              <p>A tabela oficial do Google com os serviços equivalentes das três nuvens (em inglês).</p>
+              <span class="repo-pe"><span class="ling" style="--cor:#ecc874"><i></i>Comparação</span><span class="etiqueta">leitura</span></span>
+            </a>
+            <a class="repo luz" href="https://learn.microsoft.com/pt-br/azure/architecture/aws-professional/">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Microsoft</span>
+              <h4>Azure para quem conhece a AWS</h4>
+              <p>A Microsoft compara, serviço por serviço, a AWS com o Azure.</p>
+              <span class="repo-pe"><span class="ling" style="--cor:#ecc874"><i></i>Comparação</span><span class="etiqueta">leitura</span></span>
+            </a>
+            <a class="repo luz" href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-a-database">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Microsoft Azure</span>
+              <h4>O que é um banco de dados?</h4>
+              <p>Relacional e não relacional, em português.</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/azure.svg" alt="" width="20" height="20"></span>Azure</span><span class="etiqueta">leitura</span></span>
             </a>
           </div>
         </section>
@@ -183,13 +266,12 @@
             <div>
               <span class="olho">E1 · entrega</span>
               <h3>Escolhas de banco de dados</h3>
-              <p>Anote as escolhas: elas também entram no diagrama da aula 14.</p>
+              <p>Anote as escolhas: entram no <strong>diagrama do Trabalho da Unidade 2</strong>.</p>
             </div>
           </div>
         </section>
 
         <nav class="nav-aulas" aria-label="Outras aulas">
-          <!-- EDITE AQUI: use <a href="aula-NN.html"> quando a página da aula vizinha for liberada; <span> enquanto não for -->
           <a class="anterior" href="aula-11.html">
             <span class="olho">← aula anterior</span>
             <strong>Aula 11: Objetos, blocos e arquivos</strong>
@@ -209,7 +291,7 @@
     <div class="envolve">
       <div class="rodape-fim" style="margin-top:0; padding-top:0; border-top:0">
         <span><a href="../">Fundamentos de Computação em Nuvem</a> · Feito com ♥ e sucata eletrônica.</span>
-        <span>aws ec2 describe-regions --region sa-east-1</span>
+        <span>echo "a nuvem é o computador de outra pessoa"</span>
       </div>
     </div>
   </footer>
@@ -222,6 +304,8 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
   <script src="../assets/js/conta.js?v=7" data-disciplina="fundamentos-nuvem"></script>
   <script src="../assets/js/aulas.js?v=3"></script>
+  <script src="../assets/js/classifica.js?v=2"></script>
+  <script src="../assets/js/interativos.js?v=1"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
 </body>
 </html>

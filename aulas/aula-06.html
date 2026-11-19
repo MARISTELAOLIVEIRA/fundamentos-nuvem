@@ -6,7 +6,7 @@
 
   <!-- EDITE AQUI: número e tema da aula -->
   <title>Aula 6: Quanto custa a nuvem? · Fundamentos de Computação em Nuvem · Stela</title>
-  <meta name="description" content="Aula 6 de Fundamentos de Computação em Nuvem: a estimativa do Ateliê na AWS Pricing Calculator e na calculadora do Azure, passo a passo, e os alertas de gasto.">
+  <meta name="description" content="Aula 6 de Fundamentos de Computação em Nuvem: A estimativa de verdade, nas calculadoras oficiais, e os alertas que impedem a conta de virar surpresa.">
 
   <link rel="icon" href="../assets/img/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/img/favicon-32.png">
@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="../assets/css/aula.css?v=2">
   <link rel="stylesheet" href="../assets/css/neon.css?v=1">
   <link rel="stylesheet" href="../assets/css/conta.css?v=4">
-  <link rel="stylesheet" href="../assets/css/interativos.css?v=2">
+  <link rel="stylesheet" href="../assets/css/interativos.css?v=3">
 </head>
 <body>
 
@@ -33,12 +33,11 @@
       <button type="button" class="btn-menu" id="btn-menu" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
+        <a href="#video">Vídeo</a>
         <a href="#conceitos">Conceitos</a>
-        <a href="#tutorial">Tutorial</a>
+        <a href="#pratica">Prática</a>
         <a href="#caso">Caso</a>
-        <a href="#atividade">Atividade</a>
-        <a href="#materiais">Materiais</a>
-        <a href="#entrega">Entrega</a>
+        <a href="#atividade">Checklist</a>
       </nav>
       <div class="ajustes">
         <button type="button" id="btn-tema" aria-label="Mudar para o tema claro">
@@ -71,16 +70,14 @@
           <a href="../#aulas">Aulas</a> <span aria-hidden="true">/</span>
           <span>Aula 6</span>
         </p>
-
-        <!-- EDITE AQUI: número, tipo de aula, unidade e título -->
         <div class="aula-etiquetas">
           <span class="etiqueta senac">Fac Senac DF</span>
           <span class="etiqueta ouro">Aula 6</span>
-          <span class="etiqueta">Laboratório de práticas</span>
+          <span class="etiqueta">Laboratório</span>
           <span class="etiqueta">Unidade 1</span>
         </div>
-        <h1>Calculadoras de preço: quanto custa a <span class="neon">nuvem</span> do Ateliê?</h1>
-        <p class="subtitulo">A estimativa de verdade, na calculadora da AWS e na do Azure, e os alertas que impedem a conta de virar surpresa.</p>
+        <h1>Calculadoras de preço: quanto custa a nuvem do <span class="neon">Ateliê</span>?</h1>
+        <p class="subtitulo">A estimativa de verdade, nas calculadoras oficiais, e os alertas que impedem a conta de virar surpresa.</p>
       </div>
     </section>
 
@@ -93,12 +90,12 @@
             <p>Estimar o custo mensal de uma solução na nuvem com as calculadoras de preço oficiais.</p>
           </div>
           <div class="cartao">
-            <span class="olho">Antes da aula</span>
-            <p>Ter a ficha do Ateliê (aula 3) e a sua conta "comprar ou alugar" (aula 5).</p>
+            <span class="olho">Tempo de estudo</span>
+            <p>Uns 90 minutos: é laboratório, com calma e com o site da calculadora aberto ao lado.</p>
           </div>
           <div class="cartao">
             <span class="olho">Como conta ponto</span>
-            <p>Começa aqui o trabalho da Unidade 1 (3,0 pontos), com entrega na aula 7.</p>
+            <p>Esta aula é o coração do <strong>Trabalho da Unidade 1</strong> (estimativa na calculadora, 4 pontos).</p>
           </div>
         </div>
       </div>
@@ -107,13 +104,31 @@
     <div class="bloco">
       <div class="envolve aula-corpo">
 
+        <!-- ===================== ABERTURA E VÍDEO ===================== -->
+        <section class="parte" id="video">
+          <div class="cab">
+            <span class="olho">V1 · abertura</span>
+            <h2>Hoje tem laboratório!</h2>
+          </div>
+          <div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>Abre duas abas: esta aula e a calculadora. Vai fazendo junto comigo, passo a passo. As calculadoras são gratuitas e <strong>não pedem conta nem cartão</strong>.</p><p>Se a tela da calculadora estiver diferente da minha descrição, não se assusta: os provedores mudam o visual o tempo todo. Procura pelos nomes que eu dou.</p></div>
+          </div>
+          <div class="video-stela">
+            <div class="moldura">
+              <!-- EDITE AQUI: quando o vídeo estiver pronto, troque o bloco "em-breve" pelo player, por exemplo:
+                   <iframe src="https://www.youtube.com/embed/CODIGO" title="Vídeo da aula 6" allowfullscreen></iframe> -->
+              <p class="em-breve"><span aria-hidden="true">🎬</span><strong>O vídeo da Stela chega aqui</strong>Estou gravando a estimativa do Ateliê, clique a clique. Enquanto isso, a aula inteira está nesta página: leia com calma, faça as atividades e volte quantas vezes quiser.</p>
+            </div>
+          </div>
+        </section>
+
         <!-- ===================== CONCEITOS ===================== -->
         <section class="parte" id="conceitos">
           <div class="cab">
-            <span class="olho">C1–C3 · conceitos</span>
+            <span class="olho">C · conceitos</span>
             <h2>Antes de abrir a calculadora</h2>
           </div>
-
           <div class="conceito" style="grid-template-columns:1fr">
             <div class="texto">
               <span class="olho">C1</span>
@@ -159,33 +174,28 @@
               </ol>
             </div>
           </div>
-        </section>
-
-        <!-- ===================== TUTORIAL ===================== -->
-        <section class="parte" id="tutorial">
-          <div class="cab">
-            <span class="olho">T1 · tutorial</span>
-            <h2>Mão na massa: a estimativa do Ateliê, nas duas nuvens</h2>
-            <p>As duas calculadoras são gratuitas e não pedem conta nem cartão. Faça um passo de cada vez; cada item da atividade, lá embaixo, diz qual passo mostra como fazer.</p>
-          </div>
-
-          <div class="conceito" style="grid-template-columns:1fr" id="passo-1">
+          <div class="conceito" style="grid-template-columns:1fr">
             <div class="texto">
-              <span class="olho">Passo 1 · item 1 da atividade</span>
-              <h3>A atividade do Módulo 2, na AWS Academy</h3>
-              <div class="faca-assim">
-                <strong>Faça assim:</strong>
-                <ol>
-                  <li>Entre na <a href="https://www.awsacademy.com/vforcesite/LMS_Login">AWS Academy</a>, abra o curso <strong>Cloud Foundations</strong> e o <strong>Módulo 2</strong>.</li>
-                  <li>Faça a atividade <strong>Calculadora Mensal Simples</strong>, seguindo as instruções do módulo.</li>
-                </ol>
-              </div>
+              <span class="olho">C4</span>
+              <h3>A calculadora de cada nuvem</h3>
+              <div class="tabela-rola"><table class="metodos tres-nuvens"><thead><tr><th>O quê</th><th class="aws">AWS</th><th class="azure">Azure</th><th class="gcp">Google Cloud</th></tr></thead><tbody><tr><td>Calculadora oficial</td><td><a href="https://calculator.aws/">AWS Pricing Calculator</a></td><td><a href="https://azure.microsoft.com/pt-br/pricing/calculator/">Calculadora de preços do Azure</a></td><td><a href="https://cloud.google.com/products/calculator?hl=pt-br">Calculadora de preços do Google Cloud</a></td></tr><tr><td>Moeda</td><td>Dólar (USD)</td><td>Dá para trocar para real</td><td>Dá para trocar a moeda</td></tr><tr><td>Região de São Paulo</td><td>América do Sul (São Paulo)</td><td>Brazil South</td><td>southamerica-east1 (São Paulo)</td></tr></tbody></table></div><div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>No trabalho, vale usar a da AWS (é a que o enunciado pede). Fazer também no Azure ou no Google é um charme a mais, e ótimo para o portfólio.</p></div>
+          </div>
             </div>
           </div>
+        </section>
 
+        <!-- ===================== PRÁTICA ===================== -->
+        <section class="parte" id="pratica">
+          <div class="cab">
+            <span class="olho">P · prática interativa</span>
+            <h2>Mão na massa: a estimativa do Ateliê</h2>
+            <p>Errou? Ótimo: é errando aqui que você acerta na avaliação. Cada resposta traz a explicação.</p>
+          </div>
           <div class="conceito" style="grid-template-columns:1fr" id="passo-2">
             <div class="texto">
-              <span class="olho">Passo 2 · item 2 da atividade</span>
+              <span class="olho">Passo 1</span>
               <h3>A máquina do Ateliê na AWS Pricing Calculator</h3>
               <div class="faca-assim">
                 <strong>Faça assim:</strong>
@@ -210,11 +220,9 @@
                 </ol>
               </div>
             </div>
-          </div>
-
-          <div class="conceito" style="grid-template-columns:1fr" id="passo-3">
+          </div><div class="conceito" style="grid-template-columns:1fr" id="passo-3">
             <div class="texto">
-              <span class="olho">Passo 3 · item 3 da atividade</span>
+              <span class="olho">Passo 2</span>
               <h3>As fotos e o backup, e o link da estimativa</h3>
               <div class="faca-assim">
                 <strong>Faça assim:</strong>
@@ -227,11 +235,9 @@
               </div>
               <p class="dica">Não coloque nome de cliente, senha nem dado pessoal na descrição: o link da estimativa é público.</p>
             </div>
-          </div>
-
-          <div class="conceito" style="grid-template-columns:1fr" id="passo-4">
+          </div><div class="conceito" style="grid-template-columns:1fr" id="passo-4">
             <div class="texto">
-              <span class="olho">Passo 4 · item 4 da atividade</span>
+              <span class="olho">Passo 3</span>
               <h3>A mesma estimativa na calculadora do Azure</h3>
               <div class="faca-assim">
                 <strong>Faça assim:</strong>
@@ -254,11 +260,9 @@
                 </ol>
               </div>
             </div>
-          </div>
-
-          <div class="conceito" style="grid-template-columns:1fr" id="passo-5">
+          </div><div class="conceito" style="grid-template-columns:1fr" id="passo-5">
             <div class="texto">
-              <span class="olho">Passo 5 · item 5 da atividade · desafio</span>
+              <span class="olho">Passo 4 · desafio</span>
               <h3>Isso entra na conta?</h3>
               <p>Oito situações do dia a dia da nuvem. Cada acerto de primeira vale <strong>10 XP</strong>; errou, a dica aparece e você tenta de novo.</p>
               <div class="faca-assim desafio">
@@ -286,21 +290,32 @@
         <!-- ===================== ESTUDO DE CASO ===================== -->
         <section class="parte" id="caso">
           <div class="cab">
-            <span class="olho">EC1 · estudo de caso</span>
-            <h2>A estimativa do Ateliê</h2>
+            <span class="olho">EC · estudo de caso</span>
+            <h2>O orçamento que a Dona Lu pediu</h2>
           </div>
           <div class="cartao caso">
-            <p>A dona do <strong>Ateliê Doce Byte</strong> gostou da conta da aula 5, mas quer números de verdade antes de decidir: "quanto vou pagar por mês, em reais? E no Dia das Mães, quando o site precisar de mais força?"</p>
-            <p>Ela também quer saber se dá para pagar menos se prometer ficar na nuvem por alguns anos.</p>
-            <h3>Para discutir</h3>
+            <p>A Dona Lu quer um número: <strong>quanto vai custar, por mês, levar o Ateliê para a nuvem?</strong> E quer o link da estimativa, para mostrar ao contador.</p>
+            <h3>Para pensar</h3>
             <ol>
-              <li>Qual região você escolheu? Por que não a mais barata?</li>
-              <li>O que mais pesa na conta mensal do Ateliê: a máquina, o disco ou as fotos?</li>
-              <li>Para o Dia das Mães, o que você mudaria na estimativa, e por quantos dias?</li>
-              <li>Vale a pena um plano de economia de 3 anos para uma empresa que ainda está testando a nuvem? Por quê?</li>
-              <li>Que alerta de gasto você criaria para a dona dormir tranquila?</li>
+              <li>Qual foi o total mensal da sua estimativa? Em dólar e, de forma aproximada, em reais?</li>
+              <li>Que item pesou mais na conta? Dá para diminuir?</li>
+              <li>Que alerta de orçamento você criaria para a Dona Lu não levar susto?</li>
             </ol>
             <p class="fonte">Caso fictício, criado para a disciplina.</p>
+          </div>
+        </section>
+
+        <!-- ===================== RESUMO DE BOLSO ===================== -->
+        <section class="parte" id="bolso">
+          <div class="cab">
+            <span class="olho">R · resumo de bolso</span>
+            <h2>Para levar no bolso</h2>
+            <p>Vire as cartas e veja se você explica cada termo antes de ler o verso.</p>
+          </div>
+          <div class="cartas"><button type="button" class="carta"><span class="frente">Região<small>toque para virar</small></span><span class="verso">O lugar do mundo onde o serviço roda. Muda o preço e a velocidade.</span></button><button type="button" class="carta"><span class="frente">vCPU e memória<small>toque para virar</small></span><span class="verso">O tamanho da máquina. Compare sempre tamanhos iguais.</span></button><button type="button" class="carta"><span class="frente">Saída de dados<small>toque para virar</small></span><span class="verso">O que sai da nuvem para a internet. Costuma ser cobrado.</span></button><button type="button" class="carta"><span class="frente">Alerta de orçamento<small>toque para virar</small></span><span class="verso">Um aviso quando o gasto passa do limite combinado.</span></button></div>
+          <div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>Estimativa pronta = metade do Trabalho da Unidade 1 feita! Na próxima aula: onde a nuvem fica no mapa e quem cuida do quê.</p></div>
           </div>
         </section>
 
@@ -311,40 +326,14 @@
             <h2>Checklist da aula</h2>
             <p>O que você marcar fica salvo neste navegador e, se você entrar com o e-mail da faculdade (botão <strong>Entrar</strong>, no topo), na sua conta.</p>
           </div>
-
           <div class="cartao">
             <div class="progresso-atividade" data-progresso="passos-aula-06">
-              <span class="contagem">0 de 6</span>
+              <span class="contagem">0 de 5</span>
               <span class="barra-progresso"><span></span></span>
             </div>
             <ol class="checklist" id="passos-aula-06">
-              <li><label><input type="checkbox"><span>Fiz a atividade Calculadora Mensal Simples, do Módulo 2. <a href="#passo-1">Veja o passo 1</a>.</span></label></li>
-              <li><label><input type="checkbox"><span>Configurei a máquina do Ateliê na AWS Pricing Calculator, sob demanda. <a href="#passo-2">Veja o passo 2</a>.</span></label></li>
-              <li><label><input type="checkbox"><span>Acrescentei as fotos e o backup e copiei o link da estimativa. <a href="#passo-3">Veja o passo 3</a>.</span></label></li>
-              <li><label><input type="checkbox"><span>Montei a mesma estimativa na calculadora do Azure, em reais. <a href="#passo-4">Veja o passo 4</a>.</span></label></li>
-              <li><label><input type="checkbox"><span>Fiz o desafio "Isso entra na conta?". <a href="#passo-5">Veja o passo 5</a>.</span></label></li>
-              <li><label><input type="checkbox"><span>Comparei as duas estimativas com o servidor próprio da aula 5.</span></label></li>
+              <li><label><input type="checkbox"><span>Configurei a máquina do Ateliê na calculadora, sob demanda. <a href="#passo-2">Veja o passo 1</a>.</span></label></li><li><label><input type="checkbox"><span>Acrescentei as fotos e o backup e copiei o link da estimativa. <a href="#passo-3">Veja o passo 2</a>.</span></label></li><li><label><input type="checkbox"><span>Montei a mesma estimativa em outra calculadora (Azure ou Google), se quis ir além. <a href="#passo-4">Veja o passo 3</a>.</span></label></li><li><label><input type="checkbox"><span>Fiz o desafio "Isso entra na conta?". <a href="#passo-5">Veja o passo 4</a>.</span></label></li><li><label><input type="checkbox"><span>Anotei o total, a região e os serviços para o Trabalho da Unidade 1.</span></label></li>
             </ol>
-          </div>
-        </section>
-
-        <!-- ===================== CONEXÃO STEAM ===================== -->
-        <section class="parte" id="steam">
-          <div class="cab">
-            <span class="olho">S1 · conexão STEAM</span>
-            <h2>A estimativa fora da tela</h2>
-          </div>
-          <div class="steam">
-            <div class="cartao">
-              <span class="letra">M</span>
-              <h3>Matemática</h3>
-              <p>Dólar vira real com uma multiplicação: US$ 40 com o dólar a R$ 5,50 (cotação de exemplo) dão R$ 220. Se o dólar subir para R$ 6,00, a mesma conta vira R$ 240, sem você mudar nada na nuvem.</p>
-            </div>
-            <div class="cartao">
-              <span class="letra">A</span>
-              <h3>Arte</h3>
-              <p>Desenhe a "lista de compras" do Ateliê em blocos: a máquina, o disco e o armazenamento das fotos, com o preço de cada um. É o rascunho do diagrama que vem na Unidade 2.</p>
-            </div>
           </div>
         </section>
 
@@ -352,38 +341,27 @@
         <section class="parte" id="materiais">
           <div class="cab">
             <span class="olho">J1 · materiais</span>
-            <h2>As calculadoras e os módulos</h2>
+            <h2>Para ir além (tudo gratuito)</h2>
+            <p>Nada aqui é obrigatório: a aula está completa nesta página. É para quem quer ver mais.</p>
           </div>
           <div class="repos">
-            <a class="repo luz" href="../simulador/" data-pasta="simulador/" style="display:none">
-              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>fundamentos-nuvem/simulador</span>
-              <h4>🖥 Simulador do portal de nuvem</h4>
-              <p>Crie a máquina do Ateliê no "portal", sem conta e sem cartão, e veja o que acontece com a conta quando você para e exclui.</p>
-              <span class="repo-pe"><span class="ling" style="--cor:#ff7aa8"><i></i>Simulador</span><span class="etiqueta ouro">atividade</span></span>
-            </a>
             <a class="repo luz" href="https://calculator.aws/">
               <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS</span>
               <h4>AWS Pricing Calculator</h4>
-              <p>A estimativa do custo mensal na AWS, sem conta e sem cartão.</p>
+              <p>A calculadora oficial da AWS. Não pede conta.</p>
               <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/aws.svg" alt="" width="20" height="20"></span>AWS</span><span class="etiqueta">ferramenta</span></span>
             </a>
             <a class="repo luz" href="https://azure.microsoft.com/pt-br/pricing/calculator/">
-              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Azure</span>
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Microsoft Azure</span>
               <h4>Calculadora de preços do Azure</h4>
-              <p>A mesma estimativa no Azure, em reais.</p>
+              <p>Em português, com valores em real.</p>
               <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/azure.svg" alt="" width="20" height="20"></span>Azure</span><span class="etiqueta">ferramenta</span></span>
             </a>
-            <a class="repo luz" href="https://www.awsacademy.com/vforcesite/LMS_Login">
-              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS Academy</span>
-              <h4>Cloud Foundations</h4>
-              <p>Módulo 2: a atividade Calculadora Mensal Simples.</p>
-              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/aws.svg" alt="" width="20" height="20"></span>AWS</span><span class="etiqueta">trilha</span></span>
-            </a>
-            <a class="repo luz" href="https://aws.amazon.com/pt/aws-cost-management/aws-budgets/">
-              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS</span>
-              <h4>AWS Budgets</h4>
-              <p>Orçamentos e alertas de gasto na AWS.</p>
-              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/aws.svg" alt="" width="20" height="20"></span>AWS</span><span class="etiqueta">leitura</span></span>
+            <a class="repo luz" href="https://cloud.google.com/products/calculator?hl=pt-br">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Google Cloud</span>
+              <h4>Calculadora de preços do Google Cloud</h4>
+              <p>A calculadora oficial do Google.</p>
+              <span class="repo-pe"><span class="ling" style="--cor:#ecc874"><i></i>Google Cloud</span><span class="etiqueta">ferramenta</span></span>
             </a>
           </div>
         </section>
@@ -394,14 +372,13 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             <div>
               <span class="olho">E1 · entrega</span>
-              <h3>Trabalho da Unidade 1, começado</h3>
-              <p>Junte a ficha do Ateliê (aula 3), a conta "comprar ou alugar" (aula 5) e os links das duas estimativas de hoje. A entrega é na aula 7, com a escolha da região.</p>
+              <h3>Trabalho da Unidade 1, quase pronto</h3>
+              <p>A região, os serviços, o valor mensal e o link da estimativa entram no <strong>Trabalho da Unidade 1</strong>, no Moodle.</p>
             </div>
           </div>
         </section>
 
         <nav class="nav-aulas" aria-label="Outras aulas">
-          <!-- EDITE AQUI: use <a href="aula-NN.html"> quando a página da aula vizinha for liberada; <span> enquanto não for -->
           <a class="anterior" href="aula-05.html">
             <span class="olho">← aula anterior</span>
             <strong>Aula 5: Comprar ou alugar?</strong>
@@ -421,7 +398,7 @@
     <div class="envolve">
       <div class="rodape-fim" style="margin-top:0; padding-top:0; border-top:0">
         <span><a href="../">Fundamentos de Computação em Nuvem</a> · Feito com ♥ e sucata eletrônica.</span>
-        <span>aws ec2 describe-regions --region sa-east-1</span>
+        <span>echo "a nuvem é o computador de outra pessoa"</span>
       </div>
     </div>
   </footer>
@@ -435,7 +412,8 @@
   <script src="../assets/js/conta.js?v=7" data-disciplina="fundamentos-nuvem"></script>
   <script src="../assets/js/aulas.js?v=3"></script>
   <script src="../assets/js/classifica.js?v=2"></script>
+  <script src="../assets/js/interativos.js?v=1"></script>
+  <script src="../assets/js/contas.js?v=1"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
-  <script src="../assets/js/atividades.js?v=4"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 
   <!-- EDITE AQUI: número e tema da aula -->
   <title>Aula 10: Máquina, contêiner ou função? · Fundamentos de Computação em Nuvem · Stela</title>
-  <meta name="description" content="Aula 10 de Fundamentos de Computação em Nuvem: Máquinas virtuais, contêineres e funções sem servidor (serverless), e como escolher.">
+  <meta name="description" content="Aula 10 de Fundamentos de Computação em Nuvem: Três jeitos de rodar o seu código na nuvem, com carro próprio, carona e aplicativo, nas três nuvens.">
 
   <link rel="icon" href="../assets/img/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/img/favicon-32.png">
@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../assets/css/aula.css?v=2">
   <link rel="stylesheet" href="../assets/css/neon.css?v=1">
   <link rel="stylesheet" href="../assets/css/conta.css?v=4">
+  <link rel="stylesheet" href="../assets/css/interativos.css?v=3">
 </head>
 <body>
 
@@ -32,11 +33,11 @@
       <button type="button" class="btn-menu" id="btn-menu" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
+        <a href="#video">Vídeo</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#pratica">Prática</a>
         <a href="#caso">Caso</a>
-        <a href="#atividade">Atividade</a>
-        <a href="#materiais">Materiais</a>
-        <a href="#entrega">Entrega</a>
+        <a href="#atividade">Checklist</a>
       </nav>
       <div class="ajustes">
         <button type="button" id="btn-tema" aria-label="Mudar para o tema claro">
@@ -69,16 +70,14 @@
           <a href="../#aulas">Aulas</a> <span aria-hidden="true">/</span>
           <span>Aula 10</span>
         </p>
-
-        <!-- EDITE AQUI: número, tipo de aula, unidade e título -->
         <div class="aula-etiquetas">
           <span class="etiqueta senac">Fac Senac DF</span>
           <span class="etiqueta ouro">Aula 10</span>
-          <span class="etiqueta">Laboratório de práticas</span>
+          <span class="etiqueta">Laboratório</span>
           <span class="etiqueta">Unidade 2</span>
         </div>
-        <h1>Computação: máquina virtual, contêiner ou função?</h1>
-        <p class="subtitulo">Máquinas virtuais, contêineres e funções sem servidor (serverless), e como escolher.</p>
+        <h1>Computação: máquina virtual, <span class="neon">contêiner</span> ou função?</h1>
+        <p class="subtitulo">Três jeitos de rodar o seu código na nuvem, com carro próprio, carona e aplicativo, nas três nuvens.</p>
       </div>
     </section>
 
@@ -91,12 +90,12 @@
             <p>Escolher o serviço de computação certo para cada parte de uma aplicação.</p>
           </div>
           <div class="cartao">
-            <span class="olho">Antes da aula</span>
-            <p>Fazer o Módulo 6 do Cloud Foundations (Computação).</p>
+            <span class="olho">Tempo de estudo</span>
+            <p>Uns 60 minutos.</p>
           </div>
           <div class="cartao">
             <span class="olho">Como conta ponto</span>
-            <p>Participação no laboratório.</p>
+            <p>O checklist desta página ajuda no <strong>Acesso ao conteúdo da Unidade 2</strong> e prepara você para o <strong>Questionário da Unidade 2</strong>, no Moodle. O que você decidir hoje entra no <strong>diagrama do Trabalho da Unidade 2</strong>.</p>
           </div>
         </div>
       </div>
@@ -105,37 +104,100 @@
     <div class="bloco">
       <div class="envolve aula-corpo">
 
+        <!-- ===================== ABERTURA E VÍDEO ===================== -->
+        <section class="parte" id="video">
+          <div class="cab">
+            <span class="olho">V1 · abertura</span>
+            <h2>Onde o seu código vai morar?</h2>
+          </div>
+          <div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>O código precisa de um lugar para rodar. Hoje você conhece as três opções principais e, mais importante, <strong>quando usar cada uma</strong>.</p><p>Essa é uma das perguntas mais comuns em entrevista de emprego na área. Bora treinar.</p></div>
+          </div>
+          <div class="video-stela">
+            <div class="moldura">
+              <!-- EDITE AQUI: quando o vídeo estiver pronto, troque o bloco "em-breve" pelo player, por exemplo:
+                   <iframe src="https://www.youtube.com/embed/CODIGO" title="Vídeo da aula 10" allowfullscreen></iframe> -->
+              <p class="em-breve"><span aria-hidden="true">🎬</span><strong>O vídeo da Stela chega aqui</strong>Estou gravando máquina virtual, contêiner e função num dia de entregas. Enquanto isso, a aula inteira está nesta página: leia com calma, faça as atividades e volte quantas vezes quiser.</p>
+            </div>
+          </div>
+        </section>
+
         <!-- ===================== CONCEITOS ===================== -->
         <section class="parte" id="conceitos">
           <div class="cab">
-            <span class="olho">C1 · conceitos</span>
-            <h2>O que você vai ver</h2>
+            <span class="olho">C · conceitos</span>
+            <h2>Três jeitos de rodar código</h2>
           </div>
-          <div class="cartao">
-            <ul>
-              <li>Máquinas virtuais: tipos e tamanhos de instância.</li>
-              <li>Contêineres: a aplicação empacotada com tudo de que precisa.</li>
-              <li>Funções sem servidor (serverless): o código roda só quando é chamado.</li>
-              <li>Como escolher: custo, esforço de gerenciamento e escala.</li>
-            </ul>
+          
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C1</span>
+              <h3>Carro próprio, van compartilhada e aplicativo</h3>
+              <div class="cartas"><button type="button" class="carta"><span class="frente">Máquina virtual<small>toque para virar</small></span><span class="verso">É o <strong>carro próprio alugado</strong>: fica à sua disposição o tempo todo, você escolhe tudo (até o sistema operacional) e paga mesmo parado na garagem.</span></button><button type="button" class="carta"><span class="frente">Contêiner<small>toque para virar</small></span><span class="verso">É a <strong>van compartilhada</strong>: cada passageiro (aplicação) com a sua mala pronta, dividindo o mesmo motor (o sistema operacional). Sobe rápido e leva vários de uma vez.</span></button><button type="button" class="carta"><span class="frente">Função sem servidor (serverless)<small>toque para virar</small></span><span class="verso">É o <strong>aplicativo de transporte</strong>: só aparece quando você chama, e você paga só a corrida. Sem pedido, sem custo.</span></button></div><div class="tabela-rola"><table class="metodos"><thead><tr><th></th><th>Máquina virtual</th><th>Contêiner</th><th>Função</th></tr></thead><tbody><tr><td>Você cuida de</td><td>Sistema operacional para cima</td><td>A imagem do contêiner e a aplicação</td><td>Só o código</td></tr><tr><td>Paga por</td><td>Tempo ligada</td><td>Recursos usados pelos contêineres</td><td>Cada execução (e o tempo dela)</td></tr><tr><td>Bom para</td><td>Sistemas antigos, controle total</td><td>Aplicações modernas, várias partes</td><td>Tarefas curtas e esporádicas</td></tr></tbody></table></div>
+            </div>
           </div>
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C2</span>
+              <h3>Os nomes em cada nuvem</h3>
+              <div class="tabela-rola"><table class="metodos tres-nuvens"><thead><tr><th>Jeito</th><th class="aws">AWS</th><th class="azure">Azure</th><th class="gcp">Google Cloud</th></tr></thead><tbody><tr><td>Máquina virtual</td><td>Amazon EC2</td><td>Azure Virtual Machines</td><td>Compute Engine</td></tr><tr><td>Contêiner gerenciado simples</td><td>Amazon ECS (com AWS Fargate)</td><td>Azure Container Apps</td><td>Cloud Run</td></tr><tr><td>Kubernetes gerenciado</td><td>Amazon EKS</td><td>Azure Kubernetes Service (AKS)</td><td>Google Kubernetes Engine (GKE)</td></tr><tr><td>Função sem servidor</td><td>AWS Lambda</td><td>Azure Functions</td><td>Cloud Run functions</td></tr></tbody></table></div><p class="dica"><strong>Kubernetes</strong> é o "maestro" que organiza muitos contêineres ao mesmo tempo. Foi criado no Google e hoje roda nas três nuvens. Por enquanto, basta saber que ele existe.</p><div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>"Serverless" não quer dizer que não tem servidor, viu? Tem, e muitos! Só que você não vê nem cuida de nenhum. É abstração, lembra da aula 4?</p></div>
+          </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== PRÁTICA ===================== -->
+        <section class="parte" id="pratica">
+          <div class="cab">
+            <span class="olho">P · prática interativa</span>
+            <h2>Agora é a sua vez</h2>
+            <p>Errou? Ótimo: é errando aqui que você acerta na avaliação. Cada resposta traz a explicação.</p>
+          </div>
+          <div class="faca-assim desafio">
+                <strong>Classifique! Qual jeito de rodar?</strong>
+                <div class="classifica" data-opcoes="vm:Máquina virtual,cont:Contêiner,func:Função" data-dica="Pergunte: fica ligado o tempo todo? Precisa de controle do sistema? Roda só quando é chamado?">
+                  <p class="classifica-placar" aria-live="polite"></p>
+                  <ol class="classifica-itens"><li data-resposta="vm" data-explica="Precisa de controle do sistema operacional: máquina virtual.">Um sistema antigo de estoque que só roda numa versão específica do Windows.</li><li data-resposta="func" data-explica="Tarefa curta, só quando acontece um pedido: função.">Enviar um e-mail de confirmação a cada pedido.</li><li data-resposta="cont" data-explica="Várias partes empacotadas e fáceis de multiplicar: contêineres.">O site da loja, dividido em partes (vitrine, carrinho, pagamento), que precisa subir rápido.</li><li data-resposta="func" data-explica="Disparada por um evento (a foto chegou): função.">Gerar uma miniatura toda vez que uma foto de doce é enviada.</li><li data-resposta="vm" data-explica="Controle total do sistema: máquina virtual.">Um servidor de jogos que precisa de um sistema operacional configurado à mão.</li></ol>
+                  <button type="button" class="botao contorno classifica-reiniciar">Jogar de novo</button>
+                </div>
+              </div><div class="escolha" data-explica="Azure Functions é o serverless da Microsoft, como o AWS Lambda e o Cloud Run functions."><p class="escolha-pergunta">Qual é a função sem servidor do Azure?</p><ul><li data-certa>Azure Functions</li><li>Azure Virtual Machines</li><li>Azure Container Apps</li><li>AKS</li></ul></div><div class="escolha" data-explica="O Cloud Run roda contêineres e cobra pelo uso, sem você cuidar das máquinas."><p class="escolha-pergunta">No Google Cloud, qual serviço roda contêineres sem você gerenciar servidores?</p><ul><li>Compute Engine</li><li data-certa>Cloud Run</li><li>Cloud SQL</li><li>Cloud CDN</li></ul></div>
         </section>
 
         <!-- ===================== ESTUDO DE CASO ===================== -->
         <section class="parte" id="caso">
           <div class="cab">
-            <span class="olho">EC1 · estudo de caso</span>
+            <span class="olho">EC · estudo de caso</span>
             <h2>Três tarefas, três serviços?</h2>
           </div>
           <div class="cartao caso">
-            <p>O Ateliê Doce Byte tem três tarefas: o site da loja, que fica no ar o tempo todo; um sistema antigo de estoque, que só roda em Windows; e o envio de um e-mail de confirmação a cada pedido.</p>
-            <h3>Para discutir</h3>
+            <p>O Ateliê tem três tarefas: o <strong>site da loja</strong>, que fica no ar o tempo todo; um <strong>sistema antigo de estoque</strong>, que só roda em Windows; e o <strong>e-mail de confirmação</strong> a cada pedido.</p>
+            <h3>Para pensar</h3>
             <ol>
-              <li>Qual serviço de computação você usaria para cada tarefa?</li>
-              <li>Qual delas fica mais barata com uma função sem servidor? Por quê?</li>
-              <li>O que a empresa precisa gerenciar em cada escolha?</li>
-            </ol>
+              <li>Qual serviço de computação você usaria para cada tarefa? Escolha uma nuvem e use os nomes dela.</li>
+              <li>Qual das três tarefas fica mais barata com uma função sem servidor? Por quê?</li>
+              <li>O que a Dona Lu (ou o sobrinho) precisa gerenciar em cada escolha?</li>
+            </ol><div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>Não existe resposta única aqui: existe resposta justificada. No trabalho, o que vale é o "porque".</p></div>
+          </div>
             <p class="fonte">Caso fictício, criado para a disciplina.</p>
+          </div>
+        </section>
+
+        <!-- ===================== RESUMO DE BOLSO ===================== -->
+        <section class="parte" id="bolso">
+          <div class="cab">
+            <span class="olho">R · resumo de bolso</span>
+            <h2>Para levar no bolso</h2>
+            <p>Vire as cartas e veja se você explica cada termo antes de ler o verso.</p>
+          </div>
+          <div class="cartas"><button type="button" class="carta"><span class="frente">Máquina virtual<small>toque para virar</small></span><span class="verso">Carro próprio: controle total, paga parado. EC2, Azure VMs, Compute Engine.</span></button><button type="button" class="carta"><span class="frente">Contêiner<small>toque para virar</small></span><span class="verso">Van compartilhada: aplicação empacotada. ECS, Container Apps, Cloud Run.</span></button><button type="button" class="carta"><span class="frente">Função<small>toque para virar</small></span><span class="verso">Aplicativo: roda só quando chamado. Lambda, Azure Functions, Cloud Run functions.</span></button><button type="button" class="carta"><span class="frente">Kubernetes<small>toque para virar</small></span><span class="verso">O maestro dos contêineres: EKS, AKS, GKE.</span></button></div>
+          <div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>Mais uma pecinha do quebra-cabeça! Na próxima: onde guardar cada coisa (objetos, blocos e arquivos).</p></div>
           </div>
         </section>
 
@@ -146,17 +208,13 @@
             <h2>Checklist da aula</h2>
             <p>O que você marcar fica salvo neste navegador e, se você entrar com o e-mail da faculdade (botão <strong>Entrar</strong>, no topo), na sua conta.</p>
           </div>
-
           <div class="cartao">
             <div class="progresso-atividade" data-progresso="passos-aula-10">
               <span class="contagem">0 de 4</span>
               <span class="barra-progresso"><span></span></span>
             </div>
             <ol class="checklist" id="passos-aula-10">
-              <li><label><input type="checkbox"><span>Fiz o Módulo 6 do Cloud Foundations e o laboratório dele.</span></label></li>
-              <li><label><input type="checkbox"><span>Sei explicar a diferença entre máquina virtual, contêiner e função.</span></label></li>
-              <li><label><input type="checkbox"><span>Escolhi um serviço para cada tarefa do Ateliê, com a justificativa.</span></label></li>
-              <li><label><input type="checkbox"><span>Fiz a parte de computação do módulo Descrever os serviços de computação e rede do Azure.</span></label></li>
+              <li><label><input type="checkbox"><span>Sei explicar a diferença entre máquina virtual, contêiner e função. <a href="#conceitos">Veja o conceito C1</a>.</span></label></li><li><label><input type="checkbox"><span>Reconheço os nomes nas três nuvens. <a href="#conceitos">Veja o conceito C2</a>.</span></label></li><li><label><input type="checkbox"><span>Fiz o Classifique! e as escolhas rápidas. <a href="#pratica">Veja a prática</a>.</span></label></li><li><label><input type="checkbox"><span>Escolhi um serviço para cada tarefa do Ateliê, com a justificativa.</span></label></li>
             </ol>
           </div>
         </section>
@@ -165,20 +223,27 @@
         <section class="parte" id="materiais">
           <div class="cab">
             <span class="olho">J1 · materiais</span>
-            <h2>AWS Academy e Microsoft Learn</h2>
+            <h2>Para ir além (tudo gratuito)</h2>
+            <p>Nada aqui é obrigatório: a aula está completa nesta página. É para quem quer ver mais.</p>
           </div>
           <div class="repos">
-            <a class="repo luz" href="https://www.awsacademy.com/">
-              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS Academy</span>
-              <h4>Cloud Foundations</h4>
-              <p>Módulo 6: Computação.</p>
-              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/aws.svg" alt="" width="20" height="20"></span>AWS</span><span class="etiqueta">trilha</span></span>
+            <a class="repo luz" href="https://cloud.google.com/docs/get-started/aws-azure-gcp-service-comparison">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Google Cloud</span>
+              <h4>AWS, Azure e Google Cloud lado a lado</h4>
+              <p>A tabela oficial do Google com os serviços equivalentes das três nuvens (em inglês).</p>
+              <span class="repo-pe"><span class="ling" style="--cor:#ecc874"><i></i>Comparação</span><span class="etiqueta">leitura</span></span>
+            </a>
+            <a class="repo luz" href="https://learn.microsoft.com/pt-br/azure/architecture/aws-professional/">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Microsoft</span>
+              <h4>Azure para quem conhece a AWS</h4>
+              <p>A Microsoft compara, serviço por serviço, a AWS com o Azure.</p>
+              <span class="repo-pe"><span class="ling" style="--cor:#ecc874"><i></i>Comparação</span><span class="etiqueta">leitura</span></span>
             </a>
             <a class="repo luz" href="https://learn.microsoft.com/pt-br/training/paths/azure-fundamentals-describe-azure-architecture-services/">
               <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Microsoft Learn</span>
               <h4>Trilha 2: arquitetura e serviços</h4>
-              <p>Módulo Descrever os serviços de computação e rede do Azure (computação).</p>
-              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/azure.svg" alt="" width="20" height="20"></span>Azure</span><span class="etiqueta">como é no Azure</span></span>
+              <p>Módulo "Descrever os serviços de computação e rede do Azure" (parte de computação).</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/azure.svg" alt="" width="20" height="20"></span>Azure</span><span class="etiqueta">opcional, gratuito</span></span>
             </a>
           </div>
         </section>
@@ -190,13 +255,12 @@
             <div>
               <span class="olho">E1 · entrega</span>
               <h3>Escolhas de computação</h3>
-              <p>Anote as suas escolhas: elas entram no diagrama da aula 14.</p>
+              <p>Anote as suas escolhas: elas entram no <strong>diagrama do Trabalho da Unidade 2</strong>.</p>
             </div>
           </div>
         </section>
 
         <nav class="nav-aulas" aria-label="Outras aulas">
-          <!-- EDITE AQUI: use <a href="aula-NN.html"> quando a página da aula vizinha for liberada; <span> enquanto não for -->
           <a class="anterior" href="aula-09.html">
             <span class="olho">← aula anterior</span>
             <strong>Aula 9: O que fica público</strong>
@@ -216,7 +280,7 @@
     <div class="envolve">
       <div class="rodape-fim" style="margin-top:0; padding-top:0; border-top:0">
         <span><a href="../">Fundamentos de Computação em Nuvem</a> · Feito com ♥ e sucata eletrônica.</span>
-        <span>aws ec2 describe-regions --region sa-east-1</span>
+        <span>echo "a nuvem é o computador de outra pessoa"</span>
       </div>
     </div>
   </footer>
@@ -229,6 +293,8 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
   <script src="../assets/js/conta.js?v=7" data-disciplina="fundamentos-nuvem"></script>
   <script src="../assets/js/aulas.js?v=3"></script>
+  <script src="../assets/js/classifica.js?v=2"></script>
+  <script src="../assets/js/interativos.js?v=1"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 
   <!-- EDITE AQUI: número e tema da aula -->
   <title>Aula 15: O site aguenta? · Fundamentos de Computação em Nuvem · Stela</title>
-  <meta name="description" content="Aula 15 de Fundamentos de Computação em Nuvem: Balanceamento de carga, escalabilidade automática, monitoramento e alarmes.">
+  <meta name="description" content="Aula 15 de Fundamentos de Computação em Nuvem: Balanceador de carga, escala automática e alarmes, para a promoção de Páscoa não derrubar a loja.">
 
   <link rel="icon" href="../assets/img/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/img/favicon-32.png">
@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../assets/css/aula.css?v=2">
   <link rel="stylesheet" href="../assets/css/neon.css?v=1">
   <link rel="stylesheet" href="../assets/css/conta.css?v=4">
+  <link rel="stylesheet" href="../assets/css/interativos.css?v=3">
 </head>
 <body>
 
@@ -32,11 +33,11 @@
       <button type="button" class="btn-menu" id="btn-menu" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
+        <a href="#video">Vídeo</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#pratica">Prática</a>
         <a href="#caso">Caso</a>
-        <a href="#atividade">Atividade</a>
-        <a href="#materiais">Materiais</a>
-        <a href="#entrega">Entrega</a>
+        <a href="#atividade">Checklist</a>
       </nav>
       <div class="ajustes">
         <button type="button" id="btn-tema" aria-label="Mudar para o tema claro">
@@ -69,16 +70,14 @@
           <a href="../#aulas">Aulas</a> <span aria-hidden="true">/</span>
           <span>Aula 15</span>
         </p>
-
-        <!-- EDITE AQUI: número, tipo de aula, unidade e título -->
         <div class="aula-etiquetas">
           <span class="etiqueta senac">Fac Senac DF</span>
           <span class="etiqueta ouro">Aula 15</span>
-          <span class="etiqueta">Laboratório de práticas</span>
+          <span class="etiqueta">Laboratório</span>
           <span class="etiqueta">Unidade 2</span>
         </div>
-        <h1>Escalabilidade e monitoramento: o site aguenta?</h1>
-        <p class="subtitulo">Balanceamento de carga, escalabilidade automática, monitoramento e alarmes.</p>
+        <h1>Escalabilidade e monitoramento: o site <span class="neon">aguenta</span>?</h1>
+        <p class="subtitulo">Balanceador de carga, escala automática e alarmes, para a promoção de Páscoa não derrubar a loja.</p>
       </div>
     </section>
 
@@ -91,12 +90,12 @@
             <p>Planejar uma aplicação que cresce e encolhe com o movimento, e que avisa quando algo dá errado.</p>
           </div>
           <div class="cartao">
-            <span class="olho">Antes da aula</span>
-            <p>Fazer o Módulo 10 do Cloud Foundations (Auto scaling e monitoramento).</p>
+            <span class="olho">Tempo de estudo</span>
+            <p>Uns 50 minutos.</p>
           </div>
           <div class="cartao">
             <span class="olho">Como conta ponto</span>
-            <p>Acompanhamento do projeto.</p>
+            <p>O checklist desta página ajuda no <strong>Acesso ao conteúdo da Unidade 2</strong> e prepara você para o <strong>Questionário da Unidade 2</strong>, no Moodle. Ótima aula para revisar antes do <strong>Quiz de revisão do 2º bimestre</strong>.</p>
           </div>
         </div>
       </div>
@@ -105,36 +104,114 @@
     <div class="bloco">
       <div class="envolve aula-corpo">
 
+        <!-- ===================== ABERTURA E VÍDEO ===================== -->
+        <section class="parte" id="video">
+          <div class="cab">
+            <span class="olho">V1 · abertura</span>
+            <h2>Uma influenciadora vai divulgar o Ateliê. Socorro? Não: planejamento!</h2>
+          </div>
+          <div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>Lembra da elasticidade, lá da aula 2? Hoje você vê como ela funciona de verdade, com as peças de cada nuvem.</p><p>E com esta aula, o conteúdo da disciplina está completo. Que orgulho de você, filhote! 💛</p></div>
+          </div>
+          <div class="video-stela">
+            <div class="moldura">
+              <!-- EDITE AQUI: quando o vídeo estiver pronto, troque o bloco "em-breve" pelo player, por exemplo:
+                   <iframe src="https://www.youtube.com/embed/CODIGO" title="Vídeo da aula 15" allowfullscreen></iframe> -->
+              <p class="em-breve"><span aria-hidden="true">🎬</span><strong>O vídeo da Stela chega aqui</strong>Estou gravando a promoção de Páscoa do Ateliê, minuto a minuto. Enquanto isso, a aula inteira está nesta página: leia com calma, faça as atividades e volte quantas vezes quiser.</p>
+            </div>
+          </div>
+        </section>
+
         <!-- ===================== CONCEITOS ===================== -->
         <section class="parte" id="conceitos">
           <div class="cab">
-            <span class="olho">C1 · conceitos</span>
-            <h2>O que você vai ver</h2>
+            <span class="olho">C · conceitos</span>
+            <h2>Crescer, encolher e avisar</h2>
           </div>
-          <div class="cartao">
-            <ul>
-              <li>Balanceamento de carga: dividir os acessos entre várias máquinas.</li>
-              <li>Escalabilidade automática: mais máquinas no pico, menos no resto do tempo.</li>
-              <li>Monitoramento e alarmes: saber antes do cliente reclamar.</li>
-            </ul>
+          
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C1</span>
+              <h3>O balanceador e a escala automática, no caixa do supermercado</h3>
+              <div class="cartas"><button type="button" class="carta"><span class="frente">Balanceador de carga<small>toque para virar</small></span><span class="verso">É o <strong>fiscal de caixa</strong> que manda cada cliente para o caixa mais livre. Divide os acessos entre várias máquinas e para de mandar gente para um caixa que travou.</span></button><button type="button" class="carta"><span class="frente">Escala automática<small>toque para virar</small></span><span class="verso">É o gerente que <strong>abre mais caixas quando a fila cresce</strong> e fecha quando esvazia. Mais máquinas no pico, menos de madrugada.</span></button><button type="button" class="carta"><span class="frente">Monitoramento e alarmes<small>toque para virar</small></span><span class="verso">É a <strong>câmera e o alarme</strong>: mede tudo (fila, tempo de atendimento, erros) e avisa antes de o cliente reclamar.</span></button></div>
+            </div>
           </div>
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C2</span>
+              <h3>Os nomes em cada nuvem</h3>
+              <div class="tabela-rola"><table class="metodos tres-nuvens"><thead><tr><th>Peça</th><th class="aws">AWS</th><th class="azure">Azure</th><th class="gcp">Google Cloud</th></tr></thead><tbody><tr><td>Balanceador de carga</td><td>Elastic Load Balancing</td><td>Azure Load Balancer e Application Gateway</td><td>Cloud Load Balancing</td></tr><tr><td>Escala automática de VMs</td><td>Grupos do Amazon EC2 Auto Scaling</td><td>Conjuntos de dimensionamento de VMs</td><td>Grupos gerenciados de instâncias</td></tr><tr><td>Monitoramento e alarmes</td><td>Amazon CloudWatch</td><td>Azure Monitor</td><td>Cloud Monitoring</td></tr></tbody></table></div><div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>Repara: os serviços PaaS e serverless (App Service, Cloud Run, Lambda...) já escalam sozinhos, quase sem configurar. É mais um motivo para empresas pequenas gostarem deles.</p></div>
+          </div>
+            </div>
+          </div>
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">C3</span>
+              <h3>Escalar para cima ou para os lados?</h3>
+              <div class="tabela-rola"><table class="metodos"><thead><tr><th>Tipo</th><th>Como é</th><th>Limite</th></tr></thead><tbody><tr><td><strong>Vertical</strong> (para cima)</td><td>Trocar por uma máquina maior.</td><td>Tem um teto, e costuma precisar reiniciar.</td></tr><tr><td><strong>Horizontal</strong> (para os lados)</td><td>Colocar mais máquinas iguais, atrás do balanceador.</td><td>Quase sem teto; é o que a escala automática faz.</td></tr></tbody></table></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== PRÁTICA ===================== -->
+        <section class="parte" id="pratica">
+          <div class="cab">
+            <span class="olho">P · prática interativa</span>
+            <h2>Agora é a sua vez</h2>
+            <p>Errou? Ótimo: é errando aqui que você acerta na avaliação. Cada resposta traz a explicação.</p>
+          </div>
+          
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-1">
+            <div class="texto">
+              <span class="olho">Passo 1</span>
+              <h3>Simule o fim de semana da promoção</h3>
+              <p>Uma máquina atende uns 100 acessos por minuto. Arraste para escolher quantas máquinas ficam ligadas e veja a conta de um fim de semana (48 horas), a US$ 0,05 por hora cada uma (valor fictício).</p><div class="termometro" data-modo="promo" data-preco="2.40" data-moeda="US$"><label for="termo-maquinas">Máquinas ligadas no fim de semana (× 48 horas × US$ 0,05)</label><input type="range" id="termo-maquinas" min="0" max="20" step="1" value="10"><output aria-live="polite"></output></div><p class="dica">Cada máquina no fim de semana inteiro custa 48 h × US$ 0,05 = US$ 2,40. Compare: 10 máquinas só no fim de semana custam bem menos que 10 máquinas ligadas o ano todo.</p>
+            </div>
+          </div><div class="faca-assim desafio">
+                <strong>Classifique! Que peça faz isso?</strong>
+                <div class="classifica" data-opcoes="lb:Balanceador,auto:Escala automática,mon:Monitoramento" data-dica="Pergunte: divide os acessos, liga e desliga máquinas, ou mede e avisa?">
+                  <p class="classifica-placar" aria-live="polite"></p>
+                  <ol class="classifica-itens"><li data-resposta="lb" data-explica="Dividir os acessos é papel do balanceador.">Mandar cada acesso para a máquina menos ocupada.</li><li data-resposta="auto" data-explica="Ligar e desligar máquinas pelo movimento é a escala automática.">Ligar mais 5 máquinas quando o processador passa de 70%.</li><li data-resposta="mon" data-explica="Medir e avisar é o monitoramento com alarmes.">Enviar um e-mail quando o site começa a dar erro.</li><li data-resposta="auto" data-explica="Encolher também é escala automática (elasticidade).">Desligar as máquinas extras na segunda-feira.</li><li data-resposta="mon" data-explica="Gráficos e métricas: monitoramento.">Mostrar um gráfico do tempo de resposta do site.</li></ol>
+                  <button type="button" class="botao contorno classifica-reiniciar">Jogar de novo</button>
+                </div>
+              </div><div class="escolha" data-explica="Azure Monitor é o monitoramento da Microsoft; CloudWatch é o da AWS; Cloud Monitoring, o do Google."><p class="escolha-pergunta">Qual é o serviço de monitoramento do Azure?</p><ul><li>Cloud Monitoring</li><li>Amazon CloudWatch</li><li data-certa>Azure Monitor</li><li>Azure Policy</li></ul></div>
         </section>
 
         <!-- ===================== ESTUDO DE CASO ===================== -->
         <section class="parte" id="caso">
           <div class="cab">
-            <span class="olho">EC1 · estudo de caso</span>
+            <span class="olho">EC · estudo de caso</span>
             <h2>O dia da grande promoção</h2>
           </div>
           <div class="cartao caso">
-            <p>O Ateliê Doce Byte vai fazer uma promoção de Páscoa divulgada por uma influenciadora. A previsão é de dez vezes mais acessos que num dia comum.</p>
-            <h3>Para discutir</h3>
+            <p>O Ateliê vai fazer uma promoção de Páscoa divulgada por uma influenciadora. A previsão é de <strong>dez vezes mais acessos</strong> que num dia comum, só no fim de semana.</p>
+            <h3>Para pensar</h3>
             <ol>
               <li>O que acontece com o site se nada mudar?</li>
-              <li>Como a escalabilidade automática resolve, e quanto isso custa?</li>
-              <li>Que alarme você criaria?</li>
-            </ol>
+              <li>Como o balanceador e a escala automática resolvem? Escolha uma nuvem e use os nomes dela.</li>
+              <li>Que alarme você criaria? E que alerta de orçamento, para a conta não assustar?</li>
+            </ol><div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>Acrescenta o balanceador e a escala automática no seu diagrama da aula 14. Fica com cara de arquitetura profissional! ✨</p></div>
+          </div>
             <p class="fonte">Caso fictício, criado para a disciplina.</p>
+          </div>
+        </section>
+
+        <!-- ===================== RESUMO DE BOLSO ===================== -->
+        <section class="parte" id="bolso">
+          <div class="cab">
+            <span class="olho">R · resumo de bolso</span>
+            <h2>Para levar no bolso</h2>
+            <p>Vire as cartas e veja se você explica cada termo antes de ler o verso.</p>
+          </div>
+          <div class="cartas"><button type="button" class="carta"><span class="frente">Balanceador de carga<small>toque para virar</small></span><span class="verso">O fiscal de caixa: ELB, Azure Load Balancer, Cloud Load Balancing.</span></button><button type="button" class="carta"><span class="frente">Escala automática<small>toque para virar</small></span><span class="verso">Abre e fecha caixas conforme a fila.</span></button><button type="button" class="carta"><span class="frente">Monitoramento<small>toque para virar</small></span><span class="verso">Câmera e alarme: CloudWatch, Azure Monitor, Cloud Monitoring.</span></button><button type="button" class="carta"><span class="frente">Vertical × horizontal<small>toque para virar</small></span><span class="verso">Máquina maior × mais máquinas iguais.</span></button></div>
+          <div class="fala-stela">
+            <span class="avatar" aria-hidden="true"><img src="../assets/img/estrela.webp" alt="" width="30" height="28"></span>
+            <div class="balao"><span class="quem">Stela, sua professora</span><p>Conteúdo da disciplina concluído! 🎉 Agora faz o Quiz de revisão do 2º bimestre e o Simulador do Ateliê, e entrega o Trabalho da Unidade 2. Eu estou torcendo por você.</p></div>
           </div>
         </section>
 
@@ -145,17 +222,13 @@
             <h2>Checklist da aula</h2>
             <p>O que você marcar fica salvo neste navegador e, se você entrar com o e-mail da faculdade (botão <strong>Entrar</strong>, no topo), na sua conta.</p>
           </div>
-
           <div class="cartao">
             <div class="progresso-atividade" data-progresso="passos-aula-15">
-              <span class="contagem">0 de 4</span>
+              <span class="contagem">0 de 5</span>
               <span class="barra-progresso"><span></span></span>
             </div>
             <ol class="checklist" id="passos-aula-15">
-              <li><label><input type="checkbox"><span>Fiz o Módulo 10 do Cloud Foundations e o laboratório dele.</span></label></li>
-              <li><label><input type="checkbox"><span>Sei explicar o balanceador de carga e a escalabilidade automática.</span></label></li>
-              <li><label><input type="checkbox"><span>Coloquei o balanceamento e a escalabilidade no diagrama do Ateliê.</span></label></li>
-              <li><label><input type="checkbox"><span>Fiz o módulo do Learn Descrever as ferramentas de monitoramento no Azure.</span></label></li>
+              <li><label><input type="checkbox"><span>Sei explicar balanceador de carga e escala automática com a analogia do supermercado. <a href="#conceitos">Veja o conceito C1</a>.</span></label></li><li><label><input type="checkbox"><span>Reconheço os nomes nas três nuvens. <a href="#conceitos">Veja o conceito C2</a>.</span></label></li><li><label><input type="checkbox"><span>Sei a diferença entre escalar na vertical e na horizontal. <a href="#conceitos">Veja o conceito C3</a>.</span></label></li><li><label><input type="checkbox"><span>Fiz a simulação, o Classifique! e a escolha rápida. <a href="#pratica">Veja a prática</a>.</span></label></li><li><label><input type="checkbox"><span>Fiz o <a href="../atividades/quiz.html?b=2">Quiz de revisão do 2º bimestre</a> e o <a href="../atividades/simulador.html">Simulador do Ateliê</a>.</span></label></li>
             </ol>
           </div>
         </section>
@@ -164,20 +237,27 @@
         <section class="parte" id="materiais">
           <div class="cab">
             <span class="olho">J1 · materiais</span>
-            <h2>AWS Academy e Microsoft Learn</h2>
+            <h2>Para ir além (tudo gratuito)</h2>
+            <p>Nada aqui é obrigatório: a aula está completa nesta página. É para quem quer ver mais.</p>
           </div>
           <div class="repos">
-            <a class="repo luz" href="https://www.awsacademy.com/">
-              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>AWS Academy</span>
-              <h4>Cloud Foundations</h4>
-              <p>Módulo 10: Auto scaling e monitoramento.</p>
-              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/aws.svg" alt="" width="20" height="20"></span>AWS</span><span class="etiqueta">trilha</span></span>
+            <a class="repo luz" href="https://cloud.google.com/docs/get-started/aws-azure-gcp-service-comparison">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Google Cloud</span>
+              <h4>AWS, Azure e Google Cloud lado a lado</h4>
+              <p>A tabela oficial do Google com os serviços equivalentes das três nuvens (em inglês).</p>
+              <span class="repo-pe"><span class="ling" style="--cor:#ecc874"><i></i>Comparação</span><span class="etiqueta">leitura</span></span>
+            </a>
+            <a class="repo luz" href="https://learn.microsoft.com/pt-br/azure/architecture/aws-professional/">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Microsoft</span>
+              <h4>Azure para quem conhece a AWS</h4>
+              <p>A Microsoft compara, serviço por serviço, a AWS com o Azure.</p>
+              <span class="repo-pe"><span class="ling" style="--cor:#ecc874"><i></i>Comparação</span><span class="etiqueta">leitura</span></span>
             </a>
             <a class="repo luz" href="https://learn.microsoft.com/pt-br/training/paths/describe-azure-management-governance/">
               <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>Microsoft Learn</span>
               <h4>Trilha 3: gerenciamento e governança</h4>
-              <p>Módulo Descrever as ferramentas de monitoramento no Azure.</p>
-              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/azure.svg" alt="" width="20" height="20"></span>Azure</span><span class="etiqueta">como é no Azure</span></span>
+              <p>Módulo "Descrever as ferramentas de monitoramento no Azure".</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/azure.svg" alt="" width="20" height="20"></span>Azure</span><span class="etiqueta">opcional, gratuito</span></span>
             </a>
           </div>
         </section>
@@ -188,14 +268,13 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             <div>
               <span class="olho">E1 · entrega</span>
-              <h3>Projeto em andamento</h3>
-              <p>Atualize o diagrama e a estimativa de custo com o que você viu hoje.</p>
+              <h3>Projeto finalizado</h3>
+              <p>Atualize o diagrama com o balanceamento e a escala automática e entregue o <strong>Trabalho da Unidade 2</strong> no Moodle.</p>
             </div>
           </div>
         </section>
 
         <nav class="nav-aulas" aria-label="Outras aulas">
-          <!-- EDITE AQUI: use <a href="aula-NN.html"> quando a página da aula vizinha for liberada; <span> enquanto não for -->
           <a class="anterior" href="aula-14.html">
             <span class="olho">← aula anterior</span>
             <strong>Aula 14: O diagrama da empresa</strong>
@@ -215,7 +294,7 @@
     <div class="envolve">
       <div class="rodape-fim" style="margin-top:0; padding-top:0; border-top:0">
         <span><a href="../">Fundamentos de Computação em Nuvem</a> · Feito com ♥ e sucata eletrônica.</span>
-        <span>aws ec2 describe-regions --region sa-east-1</span>
+        <span>echo "a nuvem é o computador de outra pessoa"</span>
       </div>
     </div>
   </footer>
@@ -228,6 +307,8 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
   <script src="../assets/js/conta.js?v=7" data-disciplina="fundamentos-nuvem"></script>
   <script src="../assets/js/aulas.js?v=3"></script>
+  <script src="../assets/js/classifica.js?v=2"></script>
+  <script src="../assets/js/interativos.js?v=1"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
 </body>
 </html>
