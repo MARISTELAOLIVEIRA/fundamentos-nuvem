@@ -1,0 +1,458 @@
+/*
+  atividades.css: páginas interativas do Lab I (atividades/): card, simulador e quiz.
+  versão 1 · 2026-10-14 · só deste site. Carregue depois do neon.css.
+  Usa as cores do estilo.css (--superficie, --ouro, --menta...) e o neon do Lab I (--neon, --neon-2).
+*/
+
+/* vermelho de erro: claro no tema escuro, escuro no tema claro (contraste) */
+:root {
+  --alerta: #f08a7e;
+}
+
+[data-tema="claro"] {
+  --alerta: #b42318;
+}
+
+.ativ-corpo {
+  display: grid;
+  gap: 2rem;
+}
+
+/* o .cartao do estilo.css usa display:flex, que venceria o atributo hidden */
+.ativ-corpo [hidden] {
+  display: none !important;
+}
+
+.ativ-aviso {
+  font-size: .92rem;
+  color: var(--texto-3);
+}
+
+/* ---------- formulários ---------- */
+.formulario {
+  display: grid;
+  gap: 1rem;
+}
+
+.formulario fieldset {
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-p);
+  padding: 1rem 1.1rem 1.2rem;
+  margin: 0;
+  display: grid;
+  gap: .8rem;
+  min-width: 0;
+}
+
+.formulario legend {
+  font-family: var(--f-titulo);
+  font-weight: 700;
+  padding: 0 .4rem;
+}
+
+.campo {
+  display: grid;
+  gap: .3rem;
+  min-width: 0;
+}
+
+.campo label,
+.campo .rotulo-campo {
+  font-size: .92rem;
+  color: var(--texto-2);
+}
+
+.campo input[type="text"],
+.campo select {
+  font: inherit;
+  font-size: 1rem;
+  color: var(--texto);
+  background: var(--superficie-2);
+  border: 1px solid var(--borda-forte);
+  border-radius: 10px;
+  padding: .55rem .75rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.campo input[type="text"]:focus,
+.campo select:focus {
+  border-color: var(--neon, var(--menta));
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--neon, var(--menta)) 25%, transparent);
+}
+
+.linha-skill {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 8.5rem;
+  gap: .6rem;
+  align-items: end;
+}
+
+.linha-skill input[type="range"] {
+  width: 100%;
+  accent-color: var(--neon, var(--menta));
+}
+
+.dica-campo {
+  font-size: .8rem;
+  color: var(--texto-3);
+}
+
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+}
+
+button.botao {
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button.botao:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.status.erro {
+  color: var(--alerta);
+}
+
+.status {
+  min-height: 1.4em;
+  font-size: .92rem;
+  color: var(--menta);
+}
+
+/* ---------- card do profissional ---------- */
+.card-area {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.card-previa {
+  position: sticky;
+  top: 5rem;
+}
+
+.card-prof {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 26px;
+  padding: 1.4rem;
+  background:
+    radial-gradient(120% 70% at 100% 0%, color-mix(in srgb, var(--neon-2, #a78bfa) 30%, transparent), transparent 60%),
+    radial-gradient(90% 60% at 0% 100%, color-mix(in srgb, var(--neon, #a3e635) 22%, transparent), transparent 60%),
+    #0b100e;
+  border: 2px solid var(--neon, #a3e635);
+  box-shadow: 0 0 22px var(--neon-brilho, transparent);
+  color: #f2efe6;
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+}
+
+.card-prof .topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .6rem;
+}
+
+.card-prof .sigla {
+  font-family: var(--f-titulo);
+  font-weight: 800;
+  font-size: .95rem;
+  color: #0b100e;
+  background: var(--neon, #a3e635);
+  border-radius: 10px;
+  padding: .2rem .6rem;
+}
+
+.card-prof .lab {
+  font-family: var(--f-mono);
+  font-size: .72rem;
+  color: #c9c3b2;
+}
+
+.card-prof .nome {
+  font-family: var(--f-titulo);
+  font-weight: 800;
+  font-size: 1.55rem;
+  line-height: 1.05;
+  color: #f2efe6;
+  overflow-wrap: anywhere;
+}
+
+.card-prof .perfil {
+  font-family: var(--f-mono);
+  font-size: .85rem;
+  color: var(--neon, #a3e635);
+}
+
+.card-prof .lema {
+  font-style: italic;
+  font-size: .9rem;
+  color: #d8d2c2;
+}
+
+.card-prof .titulo-bloco {
+  font-family: var(--f-mono);
+  font-size: .7rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #ecc874;
+}
+
+.card-prof .atributo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 6.5rem;
+  gap: .5rem;
+  align-items: center;
+  font-size: .85rem;
+}
+
+.card-prof .atributo span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-prof .nivel {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+}
+
+.card-prof .nivel i {
+  height: .55rem;
+  border-radius: 3px;
+  background: rgba(242, 239, 230, .15);
+}
+
+.card-prof .nivel i.on {
+  background: var(--neon, #a3e635);
+}
+
+.card-prof .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+}
+
+.card-prof .chips span {
+  font-size: .78rem;
+  border: 1px solid rgba(167, 139, 250, .6);
+  color: #ddd3ff;
+  border-radius: 999px;
+  padding: .08rem .55rem;
+}
+
+.card-prof .rodape-card {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: .5rem;
+  font-size: .78rem;
+  color: #c9c3b2;
+}
+
+/* ---------- simulador ---------- */
+.painel-ind {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.indicador {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-p);
+  padding: .9rem 1rem;
+  display: grid;
+  gap: .4rem;
+}
+
+.indicador .rotulo-ind {
+  display: flex;
+  justify-content: space-between;
+  font-size: .9rem;
+  color: var(--texto-2);
+}
+
+.indicador .rotulo-ind strong {
+  color: var(--texto);
+  font-family: var(--f-mono);
+}
+
+.indicador .trilho {
+  height: .6rem;
+  border-radius: 999px;
+  background: var(--superficie-2);
+  overflow: hidden;
+}
+
+.indicador .trilho span {
+  display: block;
+  height: 100%;
+  width: var(--v, 50%);
+  background: var(--neon, var(--menta));
+  transition: width .5s var(--suave);
+}
+
+.indicador.baixo .trilho span {
+  background: var(--alerta);
+}
+
+.rodada .situacao {
+  font-size: 1.08rem;
+}
+
+.opcoes {
+  display: grid;
+  gap: .7rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.opcoes button {
+  font: inherit;
+  text-align: left;
+  width: 100%;
+  color: var(--texto);
+  background: var(--superficie-2);
+  border: 1px solid var(--borda-forte);
+  border-radius: var(--raio-p);
+  padding: .85rem 1rem;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+}
+
+.opcoes button:hover:not(:disabled) {
+  border-color: var(--neon, var(--menta));
+}
+
+.opcoes button:disabled {
+  cursor: default;
+  opacity: .6;
+}
+
+.opcoes button.escolhida {
+  opacity: 1;
+  border-color: var(--neon, var(--menta));
+  background: color-mix(in srgb, var(--neon, var(--menta)) 10%, var(--superficie-2));
+}
+
+.opcoes button.certa {
+  opacity: 1;
+  border-color: var(--menta);
+  background: color-mix(in srgb, var(--menta) 14%, var(--superficie-2));
+}
+
+.opcoes button.errada {
+  opacity: 1;
+  border-color: var(--alerta);
+  background: color-mix(in srgb, var(--alerta) 12%, var(--superficie-2));
+}
+
+.consequencia {
+  border-left: 3px solid var(--neon, var(--menta));
+  padding: .6rem 0 .6rem 1rem;
+  display: grid;
+  gap: .35rem;
+}
+
+.consequencia .efeitos {
+  font-family: var(--f-mono);
+  font-size: .85rem;
+  color: var(--texto-2);
+}
+
+.mais { color: var(--menta); }
+.menos { color: var(--alerta); }
+
+.resultado-final {
+  display: grid;
+  gap: .8rem;
+}
+
+.contador {
+  font-family: var(--f-mono);
+  font-size: .85rem;
+  color: var(--texto-3);
+}
+
+/* ---------- quiz ---------- */
+.quiz-progresso {
+  height: .5rem;
+  border-radius: 999px;
+  background: var(--superficie-2);
+  overflow: hidden;
+}
+
+.quiz-progresso span {
+  display: block;
+  height: 100%;
+  width: var(--p, 0%);
+  background: var(--neon, var(--menta));
+  transition: width .4s var(--suave);
+}
+
+.revisao {
+  display: grid;
+  gap: .6rem;
+  padding-left: 1.2rem;
+}
+
+.revisao li span {
+  display: block;
+  font-size: .9rem;
+  color: var(--texto-2);
+}
+
+.certificado {
+  border: 2px solid var(--neon, var(--menta));
+  border-radius: var(--raio);
+  padding: 1.4rem;
+  display: grid;
+  gap: .4rem;
+  text-align: center;
+}
+
+.certificado .nota {
+  font-family: var(--f-titulo);
+  font-weight: 800;
+  font-size: 2.6rem;
+  color: var(--neon, var(--menta));
+}
+
+/* ---------- celular ---------- */
+@media (max-width: 860px) {
+  .card-area {
+    grid-template-columns: 1fr;
+  }
+
+  .card-previa {
+    position: static;
+  }
+
+  .painel-ind {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .linha-skill {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  .barra, .rodape, .botoes, .chuva-matrix { display: none !important; }
+}

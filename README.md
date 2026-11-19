@@ -1,5 +1,4 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/AWS_Academy-Cloud_Foundations-FF9900?style=for-the-badge&labelColor=141C27" alt="AWS Academy Cloud Foundations">
   <img src="https://img.shields.io/badge/aulas-18-5EC8FF?style=for-the-badge&labelColor=141C27" alt="18 aulas">
   <img src="https://img.shields.io/badge/Azure-Microsoft_Learn-0078D4?style=for-the-badge&labelColor=141C27" alt="Azure no Microsoft Learn">
 </p>
@@ -28,10 +27,10 @@ que decide sair da sala de servidores.
 
 ## O que tem aqui
 
-- **18 aulas**, cada uma com o conteúdo, um estudo de caso, um checklist e o módulo da AWS Academy e do Microsoft
+- **18 aulas**, cada uma com o conteúdo, um estudo de caso, um checklist e o módulo do Microsoft
   Learn que vai junto.
-- **AWS Academy Cloud Foundations**, a trilha principal, e as três trilhas do **AZ-900** no Microsoft Learn, para ver
-  como é no Azure.
+- **Atividades interativas** no próprio site: o Simulador Ateliê Doce Byte na nuvem e os quizzes de revisão dos dois bimestres.
+- As três trilhas do **AZ-900** no Microsoft Learn, para ver como é no Azure.
 - Ferramentas gratuitas, sem cartão de crédito: AWS Pricing Calculator, calculadora de preços do Azure e draw.io.
 
 ---
